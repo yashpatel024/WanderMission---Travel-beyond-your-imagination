@@ -1,0 +1,74 @@
+@use "sass:color";
+@import url('http://fonts.cdnfonts.com/css/montserrat');
+
+// Colors
+$page-back-color: rgba(0, 0, 0, 1);
+$corner-strip-color: #daa520;
+$gray-text: #b4b4b4;
+$mobile-bp: 480px;
+$scroll-bar-width: 14px;
+$tablet-bp: 768px;
+
+@mixin cartContainer() {
+    background-color: #222222;
+    padding: 10vh 10vw 10vh 10vw;
+    margin: 14px 0px 14px 14px ;
+    border-radius: 2vw;
+}
+
+@mixin wanderText($weight, $size, $colour) {
+    font-family: "Montserrat";
+    color: $colour;
+    font-weight: $weight;
+    font-size: $size;
+}
+
+#root {
+    scrollbar-color: #555555 #353535;
+    scrollbar-width: thin;
+    scroll-behavior: smooth;
+
+    &::-webkit-scrollbar {
+        width: $scroll-bar-width;
+        padding-right: 10px;
+        right: 10px;
+    }
+
+    /* Track */
+    &::-webkit-scrollbar-track {
+        background: #3535358b;
+    }
+
+    /* Handle */
+    &::-webkit-scrollbar-thumb {
+        background: #555555;
+        border-radius: 4em;
+        border: 4px solid rgba(0, 0, 0, 0);
+        background-clip: padding-box;
+    }
+
+    /* Handle on hover */
+    &::-webkit-scrollbar-thumb:hover {
+        background: #555;
+    }
+}
+
+.noselect {
+    -webkit-touch-callout: none;
+    /* iOS Safari */
+    -webkit-user-select: none;
+    /* Safari */
+    -khtml-user-select: none;
+    /* Konqueror HTML */
+    -moz-user-select: none;
+    /* Old versions of Firefox */
+    -ms-user-select: none;
+    /* Internet Explorer/Edge */
+    user-select: none;
+    /* Non-prefixed version, currently
+    supported by Chrome, Edge, Opera and Firefox */
+}
+
+.disable-blur {
+    backdrop-filter: none !important;
+}

@@ -1,0 +1,173 @@
+@import "./commonFiles";
+
+// Animation timings (duration delay)
+$large-circle-timing: 2s 750ms;
+$small-circle-timing: 2s 750ms;
+$spaceman-timing: 2s;
+
+.login {
+    height: 98vh;
+
+    .login-container {
+        display: flex;
+        flex-direction: row;
+        gap: 0;
+        height: 100%;
+
+        .background-graphics {
+            flex-grow: 1;
+            position: relative;
+            overflow: hidden;
+            width: 60vw;
+
+            .spaceman-image {
+                position: absolute;
+                top: 12vh;
+                right: 10vw;
+                width: 55%;
+                display: inline;
+                z-index: 100;
+                animation: spaceman-animation 2s ease-in-out infinite alternate;
+
+                @keyframes spaceman-animation {
+                    0% {
+                        transform:rotate(0deg);
+                    }
+                    100% {
+                        transform:rotate(2deg);
+                    }
+                }
+            }
+
+            .large-circle {
+                position: absolute;
+                $size: 3.5vh;
+                width: $size;
+                height: $size;
+                background-color: #ed815a;
+                border-radius: 50%;
+                filter: blur(0.1px);
+
+                
+                //initial state
+                opacity: 1;
+                top: 60vh;
+                right: 5vw;
+                z-index: 2;
+                transform: scale(12);
+                animation: large-circle-scale 1s ease-in-out;
+
+                @keyframes large-circle-scale {
+                    0% {
+                        transform: scale(9);
+                    }
+                    100% {
+                        transform: scale(12);
+                    }
+                }
+            }
+
+            .small-circle {
+                position: absolute;
+                $size: 2vh;
+                width: $size;
+                height: $size;
+                background-color: #f37c0d;
+                border-radius: 50%;
+                filter: blur(0.8px);
+
+                //initial state
+                opacity: 1;
+                top: 30vh;
+                right: 37vw;
+                transform: scale(5);
+                transition: all $small-circle-timing;
+                animation: small-circle-scale 1s ease-in-out;
+
+                @keyframes small-circle-scale {
+                    0% {
+                        transform: scale(3);
+                    }
+                    100% {
+                        transform: scale(5);
+                    }
+                }
+            }
+
+            .background-blur {
+                position: relative;
+                top: 0vh;
+                left: 10vw;
+                width: 60%;
+            }
+        }
+
+        .login-form-container {
+            flex-grow: 1;
+            width: 40vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 5vw 0 5vw 10vw;
+
+            .login-area {
+                background-color: #222222;
+                border-radius: 20px;
+
+                form {
+                    width: 30vw;
+                    padding: 55px;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+
+                    .formcontrol_field {
+                        width: 100%;
+                        margin: 0px 0 30px 0;
+                        border-radius: 7px;
+                        border-bottom: #ffc32b;
+
+                        div {
+                            background-color: #333333;
+                        }
+
+                        .css-g9m4e0-MuiInputBase-root-MuiFilledInput-root:after {
+                            border-bottom: 2px solid #ffc32b;
+                        }
+
+                        .css-g9m4e0-MuiInputBase-root-MuiFilledInput-root.Mui-error:after {
+                            border-bottom-color: #d32f2f;
+                        }
+
+                        .helper-text {
+                            color: #d32f2f;
+                        }
+
+                        input {
+                            color: #ffffff;
+                        }
+
+                        label,
+                        button {
+                            color: #808080;
+                        }
+
+                        button {
+                            font-size: 1.35rem;
+                        }
+                    }
+
+                    .sign-in-button {
+                        background-color: #ffc32b;
+                        color: #000000;
+                        width: 100%;
+                        border-radius: 7px;
+                        font-size: 15px;
+                        font-weight: 600;
+                        line-height: 2.6rem;
+                    }
+                }
+            }
+        }
+    }
+}

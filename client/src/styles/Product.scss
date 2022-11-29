@@ -1,0 +1,365 @@
+@import "./commonFiles";
+
+.container {
+    .section-1 {
+        margin: 10vh 10vw 0 10vw;
+        display: flex;
+        height: 100%;
+        min-height: 100vh;
+        position: sticky;
+
+        .content-container {
+            display: inline-flex;
+
+            .column-left {
+                .trip-image {
+                    margin-top: 10vh;
+
+                    .trip-image-main {
+                        width: 30vw;
+                    }
+                }
+            }
+
+            .column-right {
+                margin: 10vh 16vw;
+
+                .first-row {
+                    .partner-logo {
+                        .partner-logo-main {
+                            width: 6vw;
+                        }
+                    }
+
+                    .trip-name {
+                        .trip-name-main {
+                            font-family: "Montserrat";
+                            color: white;
+                            font-weight: 700;
+                            font-size: 6vw;
+                            margin-left: -3px;
+                            text-transform: uppercase;
+                        }
+                    }
+
+                    .stars {
+                        display: flex;
+                        float: right;
+
+                        .stars-main {
+                            font-family: "Montserrat";
+                            color: white;
+                            font-weight: 600;
+                            font-size: 25px;
+                            margin-left: 5px;
+                        }
+
+                        .gold-star {
+                            width: 23px;
+                        }
+                    }
+                }
+
+                .second-row {
+                    .description {
+                        margin-top: 5vh;
+
+                        .description-main {
+                            font-family: "Montserrat";
+                            color: white;
+                            font-weight: 400;
+                            font-size: 16px;
+                        }
+                    }
+                }
+
+                .third-row {
+                    margin-top: 1.8vh;
+
+                    .time-info {
+                        display: inline-table;
+
+                        .travel-time {
+                            display: inline-table;
+                            padding-right: 20px;
+
+                            .travel-text {
+                                font-family: "Montserrat";
+                                color: #9b9b9b;
+                                font-weight: 300;
+                                font-size: 13px;
+                            }
+
+                            .travel-time-main {
+                                font-family: "Montserrat";
+                                color: white;
+                                font-weight: 600;
+                                font-size: 16px;
+                            }
+                        }
+
+                        .stay-time {
+                            float: right;
+                            padding-left: 20px;
+                            border-color: #474747;
+                            border-style: solid;
+                            border-width: 0px 0px 0px 2px;
+
+                            .stay-text {
+                                font-family: "Montserrat";
+                                color: #9b9b9b;
+                                font-weight: 300;
+                                font-size: 13px;
+                            }
+
+                            .stay-time-main {
+                                display: block;
+                                font-family: "Montserrat";
+                                color: white;
+                                font-weight: 600;
+                                font-size: 16px;
+                            }
+                        }
+                    }
+                }
+
+                .fifth-row {
+                    margin-top: 3.5vh;
+
+                    .price {
+                        display: inline-flex;
+                        align-items: center;
+                        border-color: white;
+                        border-width: 1px;
+                        border-style: solid;
+                        border-radius: 200px;
+                        transition: 1100ms;
+
+                        &:hover {
+                            cursor: pointer;
+                            background-color: #ffc32b;
+                            border-color: black;
+
+                            .price-container {
+                                background-color: #ffc32b;
+                            }
+
+                            .cart-text {
+                                color: black;
+                                font-weight: 800;
+                                margin-left: 0vw;
+                            }
+
+                            .arrow-cart {
+                                width: 0px;
+                                margin-left: 0vw;
+                            }
+                        }
+
+                        .price-container {
+                            display: inline-flex;
+                            background-color: white;
+                            padding: 1.2vw 2vw 1.3vw 2vw;
+                            border-radius: 200px;
+                            align-items: center;
+
+                            .price-main {
+                                display: block;
+                                font-family: "Montserrat";
+                                color: black;
+                                font-weight: 700;
+                                font-size: 1.9vw;
+                            }
+
+                            .eth-logo {
+                                margin-left: 10px;
+                                width: 18px;
+                                height: 30px;
+                            }
+                        }
+
+                        .arrow-cart {
+                            margin-left: 2vw;
+                            width: 1.2vw;
+                        }
+
+                        .cart-text {
+                            margin-left: 2vw;
+                            margin-right: 2vw;
+                            display: block;
+                            font-family: "Montserrat";
+                            color: white;
+                            font-weight: 500;
+                            font-size: 1.7vw;
+                        }
+                    }
+                }
+
+                .sixth-row {
+                    .quantity {}
+                }
+            }
+        }
+    }
+
+    .section-2 {
+        display: inline-flex;
+
+        .left-side-container {
+            width: 50vw;
+
+            .left-container-1 {
+                @include cartContainer;
+                display: inline-flex;
+                display: flex;
+                justify-content: space-between;
+
+                .visitors {
+
+                    .number {
+
+                        .number-main {
+                            @include wanderText(700, 3vw, white);
+                        }
+                    }
+
+                    .text {
+                        .text-main {
+                            @include wanderText(300, 1.8vw, #B4B4B4);
+                        }
+                    }
+                }
+
+                .rating {
+                    margin-top: .3vh;
+                    display: inline-flex;
+
+                    .gold-star {
+                        .gold-star-main {
+                            width: 3vw;
+                        }
+                    }
+
+                    .rating {
+                        margin-left: 1vw;
+
+                        .rating-main {
+                            @include wanderText(700, 3vw, white);
+
+                        }
+                    }
+                }
+            }
+
+            .left-container-2 {
+                display: inline-flex;
+
+                .trip-container {
+                    background-color: #222222;
+                    padding: 5vh 5vw 5vh 10vw;
+                    margin: 0px 0px 14px 14px;
+                    border-radius: 2vw;
+
+                    .number-of-trips {
+                        @include wanderText(700, 2vw, white);
+                    }
+
+                    .frequency {
+                        @include wanderText(300, 1.8vw, #b4b4b4);
+                    }
+                }
+
+                .rocket-container {
+                    background-color: #222222;
+                    padding: 5vh 5vw 5vh 10vw;
+                    margin: 0px 0px 14px 14px;
+                    border-radius: 2vw;
+
+                    .rocket-name {
+                        @include wanderText(700, 2vw, white);
+                    }
+
+                    .rocket-name-2 {
+                        @include wanderText(300, 1.8vw, #b4b4b4);
+                    }
+                }
+
+            }
+
+        }
+
+        .right-side-container {
+            .right-container-1 {
+                @include cartContainer;
+                width: 50vw;
+
+
+                .heading {
+                    display: inline-flex;
+
+                    .heading-star {
+                        width: 20px;
+                    }
+
+                    .heading-text {
+                        @include wanderText(300, 1vw, #B4B4B4);
+                        padding-left: 10px;
+
+                    }
+                }
+
+                .comment-1 {
+                    margin-top: 2vh;
+                    .Person-name {
+                        @include wanderText(300, 1.2vw, #b4b4b4);
+                    }
+
+                    .comment-text {
+                        @include wanderText(300, 1.2vw, white);
+                    }
+                }
+                .comment-2 {
+                    margin-top: 2vh;
+                    .Person-name {
+                        @include wanderText(300, 1.2vw, #b4b4b4);
+                    }
+
+                    .comment-text {
+                        @include wanderText(300, 1.2vw, white);
+                    }
+                }
+                .divider{
+                    background-color: white;
+                    padding-top: 1px;
+                    margin-top: 1vh;
+                    margin-bottom: 1vh;
+                }
+                .comment-input{
+                    display: flex;
+                    justify-content: space-between;
+                    .input-field-comment{
+                        background-color: #333333;
+                            height: 7vh;
+                            width: 20vw;
+                            border-radius: 0.5vw;
+
+                    }
+                    .comment{
+                        background-color: white;
+                        color: black;
+                        border-radius: 50px;
+                        padding: 0.7vw 2vw 0.7vw 2vw;
+                        font-family: "Montserrat";
+                        font-weight: 600;
+                        font-size: 16px;
+                        text-transform: none;
+                        margin-left: 2vw;
+                    }
+                }
+
+            
+            }
+
+        }
+    }
+}

@@ -1,0 +1,31 @@
+#Assignment 4 Requirements:
+For this assignment, you will be enhancing your Assignment 2 by implementing additional features and retrieving content from a database of your choice.
+
+Products Database (3 marks)
+Comments Database (3 marks)
+Users Database (3 marks)
+Add Filters to product listing (3 marks)
+Add Sorting to product listing (3 marks)
+Demonstrate ability to add/remove/modify items to cart (9 marks)
+The changes must persist!
+Demonstrate ability to add/remove/modify comments/reviews (10 marks)
+The changes must persist!
+The average reviews must be dynamic
+Code Style and Organization (3 marks)
+How much refactoring was required to connect your code to a DB?
+Presentation (3 marks)
+
+
+#Ambitious:
+404 Page
+
+#InBetween:
+
+#Mandatory:
+Session
+Animation - Loadup,
+Json,
+Props passing in Add to cart(Pass only Id),
+Comment(feedback) - JSON,
+
+

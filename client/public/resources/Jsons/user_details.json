@@ -1,0 +1,12 @@
+{
+  "users":[
+    {
+      "username":"admin",
+      "hash_password":92668751
+    },
+    {
+      "username":"mayankCosmos",
+      "hash_password":-1107220701
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+@font-face {
+    font-family: "Montserrat";
+    src: url("./Montserrat/Montserrat.ttf") format("truetype");
+    font-display: block;
+}
+
+.font-primary {
+    font-family: "Montserrat";
+    line-height: 100%;
+}

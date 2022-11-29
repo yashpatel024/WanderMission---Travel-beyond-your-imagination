@@ -1,0 +1,12 @@
+React router:
+https://blog.webdevsimplified.com/2022-07/react-router/
+https://reactrouter.com/en/main
+
+Materil UI:
+https://mui.com/components/
+https://mui.com/material-ui/getting-started/templates/
+https://github.com/mui/material-ui/tree/v5.10.9/docs/data/material/getting-started/templates/sign-in-side
+
+Server-Side with Express, MongoDB(Atlas)
+https://www.mongodb.com/languages/mern-stack-tutorial
+https://www.mongodb.com/docs/atlas/getting-started/?_ga=2.80390164.2067389131.1669176722-844182913.1669176721
