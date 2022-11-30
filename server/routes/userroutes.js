@@ -31,6 +31,38 @@ userRoutes.route("/user").get(function (req, res) {
         });
 });
 
+/**
+ * Services Routes
+ */
+
+//Get ALL
+userRoutes.route("/services").get(function (req, res) {
+    //databasebname
+    let dbConnect = databaseConn.getDb("WanderMissionDatabase");
+
+    dbConnect
+        .collection("Services")
+        .find({})
+        .toArray(function (err, result) {
+            if (err) throw err;
+            res.json(result);
+        });
+});
+
+userRoutes.route("/agency").get(function (req, res) {
+    //databasebname
+    let dbConnect = databaseConn.getDb("WanderMissionDatabase");
+
+    dbConnect
+        .collection("Agency")
+        .find({})
+        .toArray(function (err, result) {
+            if (err) throw err;
+            res.json(result);
+        });
+});
+
+
 //GET by Id
 // userRoutes.route("/user/:id").get(function (req, res) {
 //     let db_connect = dbo.getDb();
