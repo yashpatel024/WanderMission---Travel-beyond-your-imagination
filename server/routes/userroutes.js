@@ -37,14 +37,46 @@ userRoutes.post("/signup", async (req, res) => {
     }
 });
 
-// userRoutes.route("/signin").get(function (req, res){
-//     try{
-//         const {username, password} = req.body;
+/**
+ * Services Routes
+ */
 
-//         //Validate using Joi's SignIn object
-//         await Joi.validate({ username, password}, SignIn);
+//Get ALL
+userRoutes.route("/services").get(function (req, res) {
+    //databasebname
+    let dbConnect = databaseConn.getDb("WanderMissionDatabase");
 
-//     }
+    dbConnect
+        .collection("Services")
+        .find({})
+        .toArray(function (err, result) {
+            if (err) throw err;
+            res.json(result);
+        });
+});
+
+userRoutes.route("/agency").get(function (req, res) {
+    //databasebname
+    let dbConnect = databaseConn.getDb("WanderMissionDatabase");
+
+    dbConnect
+        .collection("Agency")
+        .find({})
+        .toArray(function (err, result) {
+            if (err) throw err;
+            res.json(result);
+        });
+});
+
+
+//GET by Id
+// userRoutes.route("/user/:id").get(function (req, res) {
+//     let db_connect = dbo.getDb();
+//     let myquery = { _id: ObjectId(req.params.id) };
+//     db_connect.collection("records").findOne(myquery, function (err, result) {
+//         if (err) throw err;
+//         res.json(result);
+//     });
 // });
 
 export default userRoutes;
