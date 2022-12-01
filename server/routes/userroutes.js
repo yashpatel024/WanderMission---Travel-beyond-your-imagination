@@ -1,3 +1,7 @@
+import Joi from "joi";
+import { SignIn, SignUp } from "../validations/user";
+import User from "../models/user";
+
 const express = require("express");
 
 /*
@@ -7,84 +11,40 @@ const express = require("express");
  */
 const userRoutes = express.Router();
 
-//Connect to database
-const databaseConn = require("../database/conn");
-
-//Will help in convert String:Id to ObjectId for the _id
-const ObjectId = require("mongodb").ObjectId;
-
 /**
  * User Routes
  */
-
 //Get ALL
-userRoutes.route("/user").get(function (req, res) {
-    //databasebname
-    let dbConnect = databaseConn.getDb("WanderMissionDatabase");
+userRoutes.post("/signup", async (req, res) => {
+    try{
+        const {username, email, password} = req.body;
+        
+        console.log(req.body);
+        
+        //Validate using Joi's SignUp object
+        await Joi.validate({ username, email, password}, SignUp);
 
-    dbConnect
-        .collection("Users")
-        .find({})
-        .toArray(function (err, result) {
-            if (err) throw err;
-            res.json(result);
+        //Create new entry using User schema
+        const newUser = new User({ username, email, password });
+        await newUser.save();
+
+        res.send({
+            userId: newUser.id,
+            username
         });
+    }catch(err){
+        res.status(400).send(err);
+    }
 });
 
-//GET by Id
-// userRoutes.route("/user/:id").get(function (req, res) {
-//     let db_connect = dbo.getDb();
-//     let myquery = { _id: ObjectId(req.params.id) };
-//     db_connect.collection("records").findOne(myquery, function (err, result) {
-//         if (err) throw err;
-//         res.json(result);
-//     });
+// userRoutes.route("/signin").get(function (req, res){
+//     try{
+//         const {username, password} = req.body;
+
+//         //Validate using Joi's SignIn object
+//         await Joi.validate({ username, password}, SignIn);
+
+//     }
 // });
 
-// // This section will help you create a new record.
-// recordRoutes.route("/user/add").post(function (req, response) {
-//     let db_connect = dbo.getDb();
-//     let myobj = {
-//       name: req.body.name,
-//       position: req.body.position,
-//       level: req.body.level,
-//     };
-//     db_connect.collection("records").insertOne(myobj, function (err, res) {
-//       if (err) throw err;
-//       response.json(res);
-//     });
-//    });
-   
-
-//    // This section will help you update a record by id.
-// recordRoutes.route("/update/:id").post(function (req, response) {
-//     let db_connect = dbo.getDb();
-//     let myquery = { _id: ObjectId(req.params.id) };
-//     let newvalues = {
-//       $set: {
-//         name: req.body.name,
-//         position: req.body.position,
-//         level: req.body.level,
-//       },
-//     };
-//     db_connect
-//       .collection("records")
-//       .updateOne(myquery, newvalues, function (err, res) {
-//         if (err) throw err;
-//         console.log("1 document updated");
-//         response.json(res);
-//       });
-//    });
-
-//    // This section will help you delete a record
-// recordRoutes.route("/:id").delete((req, response) => {
-//     let db_connect = dbo.getDb();
-//     let myquery = { _id: ObjectId(req.params.id) };
-//     db_connect.collection("records").deleteOne(myquery, function (err, obj) {
-//       if (err) throw err;
-//       console.log("1 document deleted");
-//       response.json(obj);
-//     });
-//    });
-
-module.exports = userRoutes;
+export default userRoutes;

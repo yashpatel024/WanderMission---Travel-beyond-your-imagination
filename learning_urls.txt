@@ -10,3 +10,11 @@ https://github.com/mui/material-ui/tree/v5.10.9/docs/data/material/getting-start
 Server-Side with Express, MongoDB(Atlas)
 https://www.mongodb.com/languages/mern-stack-tutorial
 https://www.mongodb.com/docs/atlas/getting-started/?_ga=2.80390164.2067389131.1669176722-844182913.1669176721
+
+Auth:
+https://itnext.io/mastering-session-authentication-aa29096f6e22
+
+Mongoose
+https://kb.objectrocket.com/mongo-db/how-to-use-mongoose-custom-validators-923
+https://mongoosejs.com/docs/middleware.html
+https://chanwingkeihaha.medium.com/do-you-know-the-unique-option-is-not-a-validator-in-mongoose-85267fb1a085
