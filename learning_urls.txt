@@ -18,3 +18,9 @@ Mongoose
 https://kb.objectrocket.com/mongo-db/how-to-use-mongoose-custom-validators-923
 https://mongoosejs.com/docs/middleware.html
 https://chanwingkeihaha.medium.com/do-you-know-the-unique-option-is-not-a-validator-in-mongoose-85267fb1a085
+https://www.freecodecamp.org/news/build-a-restful-api-using-node-express-and-mongodb/
+https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/mongoose
+https://www.mongodb.com/developer/languages/javascript/getting-started-with-mongodb-and-mongoose/
+https://mongoosejs.com/docs/queries.html
+
+https://www.sitepoint.com/understanding-module-exports-exports-node-js/

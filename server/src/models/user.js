@@ -1,12 +1,5 @@
-import mongoose from "mongoose";
-import { compareSync, hashSync } from "bcryptjs";
+const mongoose = require('mongoose');
 
-/*
-* User Schema created using Mongoose
-* - Type defined for each field,
-* - Custom validator for username and email
-* - Simple validator "required" for password
-*/
 const UserSchema = new mongoose.Schema({
     username:{
         type: String,
@@ -50,7 +43,4 @@ UserSchema.methods.comparePasswords = function(password){
     return compareSync(password, this.password);
 }
 
-//Schema "User" creation
-const User = mongoose.model('User', UserSchema);
-
-export default User;
+module.exports = mongoose.model('User', UserSchema);
