@@ -1,14 +1,6 @@
 const mongoose = require('mongoose');
 
 const UserSchema = new mongoose.Schema({
-    username:{
-        type: String,
-        required: true,
-        validate:{
-            validator: username => User.doesNotExist({ username }),
-            message: "Username already exists"
-        }
-    },
     email:{
         type: String,
         required: true,
@@ -16,6 +8,14 @@ const UserSchema = new mongoose.Schema({
             validator: email => User.doesNotExist({ email }),
             message: "Email already exists"
         }
+    },
+    firstname:{
+        type: String,
+        required: true,
+    },
+    lastname:{
+        type: String,
+        required: true,
     },
     password:{
         type: String,

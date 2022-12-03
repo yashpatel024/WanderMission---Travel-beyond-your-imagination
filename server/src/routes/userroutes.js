@@ -1,6 +1,7 @@
 const express = require('express');
 const userroutes = express.Router();
 const UserModel = require('../models/user');
+const databaseConn = require("../database/conn");
 
 /**
  * User Routes
@@ -28,8 +29,14 @@ userroutes.post("/signup", async (req, res) => {
 });
 
 //Get all Method
-userroutes.get('/getAll', (req, res) => {
-    res.send('Get All API')
+userroutes.get('/getall', async (req, res) => {
+    try{
+        const data = await UserModel.find();
+        res.json(data);
+    }
+    catch(error){
+        res.status(500).json({message: error.message})
+    }
 })
 
 //Get by ID Method

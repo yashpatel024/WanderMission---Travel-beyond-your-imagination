@@ -18,11 +18,11 @@ const ServiceSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    no_of_reviewes:{
+    no_of_reviews:{
         type: Number,
         required: true
     },
-    service_rating:{
+    rating:{
         type: Decimal128,
         required: true,
     },
@@ -42,10 +42,27 @@ const ServiceSchema = new mongoose.Schema({
         type: Number,
         required: true
     },
+    total_seats:{
+        type: Number,
+        required: true
+    },
+    trip_type:{
+        type: String,
+        required: true
+    },
     agency_id:{
         type: String,
         required: true
-    }
+    },
+    comments:[
+        {
+            user_id: String,
+            content: String,
+            given_rating: Number,
+            created_date: Date,
+            updated_date: Date
+        }
+    ]
 }, {timestamps: true});
 
 module.exports = mongoose.model('Service', ServiceSchema);

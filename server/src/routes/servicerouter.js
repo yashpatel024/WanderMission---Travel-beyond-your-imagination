@@ -7,46 +7,70 @@ const ServiceModel = require('../models/service');
  */
 
 //Post Method
-serviceroute.post('/insertservice', async (req, res) => {
-    res.send('Post API')
-    try{
+serviceroute.post('/insertService', async (req, res) => {
+    try {
         //Create new entry using Service schema
         const newService = new ServiceModel(req.body);
 
-        const savedData = await newService.save();
-        res.status(200).json(savedData)       
-    }catch(err){
-        res.status(500).send({
-            message: error.messages
-        });
+        const dataToSave = newService.save();
+        res.status(200).json(dataToSave)
+    } catch (error) {
+        res.status(500).send({ message: error.messages });
     }
 })
 
 //Get all Method
 serviceroute.get('/getAll', async (req, res) => {
-    res.send('Get All API')
-    try{
+    try {
         const data = await ServiceModel.find();
         res.json(data);
     }
-    catch(error){
-        res.status(500).json({message: error.message})
+    catch (error) {
+        res.status(500).json({ message: error.message })
     }
 })
 
-//Get by ID Method
-serviceroute.get('/getOne/:id', (req, res) => {
-    res.send('Get by ID API')
+//Get by ID MeÍthod
+serviceroute.get('/getService/:id', async (req, res) => {
+    try {
+        const data = await ServiceModel.findById(req.params.id);
+        res.json(data)
+    }
+    catch (error) {
+        res.status(500).json({ message: error.message });
+    }
 })
 
 //Update by ID Method
-serviceroute.patch('/update/:id', (req, res) => {
-    res.send('Update by ID API')
+serviceroute.patch('/updateService/:id', async (req, res) => {
+    try {
+        //Service id
+        const id = req.params.id;
+        //Data to update
+        const updatedData = req.body;
+        //Options which specifies to return the updated data back
+        const options = { new: true };
+
+        const result = await ServiceModel.findByIdAndUpdate(
+            id, updatedData, options
+        )
+        res.send(result);
+    }
+    catch (error) {
+        res.status(400).json({ message: error.message })
+    }
 })
 
 //Delete by ID Method
-serviceroute.delete('/delete/:id', (req, res) => {
-    res.send('Delete by ID API')
+serviceroute.delete('/deleteService/:id', async (req, res) => {
+    try {
+        const id = req.params.id;
+        const data = await ServiceModel.findByIdAndDelete(id);
+        res.send(`Service with ${data.trip_name} has been deleted..`);
+    }
+    catch (error) {
+        res.status(400).json({ message: error.message })
+    }
 })
 
 module.exports = serviceroute;
