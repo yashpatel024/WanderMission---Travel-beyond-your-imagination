@@ -1,50 +1,45 @@
 import React, { useEffect, useState } from "react";
 import Trip from "./Trip";
-import { trip_metadata_json } from "../links";
-import { ShortTripsObject } from "./Generic/TripConstant";
 
-const ShortTrips = async () => {
-    let shortTripDetails;
-    const apiurl = 'http://localhost:5000/service'
-    const [showTrips, setShowTrips] = useState()
-    let displayData
-
+const ShortTrips = () => {
+    
+    const [items, setItems] = useState([])
     //To Fetch MetaData JSON
-    // useEffect(() => {
-    //     fetch(trip_metadata_json)
-    //         .then((Response) => Response.json())
-    //         .then((data) => {
-    //             shortTripDetails = data.trip_metadata.short_trips_metadata;
-    //         });
-    // });
-
-    const response = await fetch(apiurl)
-    const responseData = await response.json()
-    displayData = responseData.map(function (value) {
-
-        return (
-            <ul>
 
 
-
-                <Trip
-                    tripimageURL={value.tripImageURL}
-                    agencyLogo={value.travelPartnerLogoURL}
-                    tripName={value.destinationName}
-                    agencyName={value.travelPartnerName}
-                    stars={value.reviewStar}
-                    description={value.tripDescription}
-                    travelTime={value.travelTime}
-                    stayTime={value.stayTime}
-                    price={value.tripPrice}
-                    key={key}
-                    id={value.tripId}
-                />
+    useEffect(() => {
+        fetch('http://localhost:5000/wandermission/service/getAll')
+            .then((Response) => Response.json())
+            .then((service) => {
+                    const data = JSON.parse(JSON.stringify(service))
+                    setItems(data)
+            });
+            
+    });
 
 
-            </ul>
-        );
-    })
+    return (
+        <ul >
+            {
+                //Mapping over MetaDataObject
+                items.map((value) => (
+                    <Trip
+                        tripimageURL={value.trip_logo}
+                        key = {value.service_id}
+                        // agency_logo={value.travelPartnerLogoURL}
+                        tripName={value.trip_name}
+                        // trip_nae={value.travelPartnerName}
+                        stars={value.rating}
+                        description={value.service_description}
+                        travelTime={value.travel_time}
+                        stayTime={value.stay_time}
+                        price={value.price}
+                        service_id={value.tripId}
+                    />
+                ))
+            }
+        </ul>
+    );
 };
 
 export default ShortTrips;

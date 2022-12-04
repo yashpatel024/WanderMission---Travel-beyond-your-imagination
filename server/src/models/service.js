@@ -23,7 +23,7 @@ const ServiceSchema = new mongoose.Schema({
         required: true
     },
     rating:{
-        type: Decimal128,
+        type: Number,
         required: true,
     },
     travel_time:{
@@ -31,11 +31,11 @@ const ServiceSchema = new mongoose.Schema({
         required: true
     },
     stay_time:{
-        type: Decimal128,
+        type: Number,
         required: true
     },
     price:{
-        type: Decimal128,
+        type: Number,
         required: true
     },
     available_seats:{
