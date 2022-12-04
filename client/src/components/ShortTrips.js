@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from "react";
 import Trip from "./Trip";
+import {shortlink} from "./Trip";
+import { convertToYear } from "./Generic/convertToYear";
 
 const ShortTrips = () => {
     
     const [items, setItems] = useState([])
     //To Fetch MetaData JSON
 
-
     useEffect(() => {
-        fetch('http://localhost:5000/wandermission/service/shortTrips')
+        fetch(shortlink)
             .then((Response) => Response.json())
             .then((service) => {
                     const data = JSON.parse(JSON.stringify(service))

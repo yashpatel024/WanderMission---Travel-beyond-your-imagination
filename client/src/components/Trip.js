@@ -5,11 +5,12 @@ import { eth_logo } from "../links";
 import { gold_star } from "../links";
 import Button from "@mui/material/Button";
 import { useNavigate } from "react-router-dom";
+import { convertToYear } from "./Generic/convertToYear";
 
 function Trip(props) {
     const navigate = useNavigate();
 
-    const handleAddToCart = (button) => {
+    const handleAddToCart = () => {
         //const key = button.target.value;
         navigate("/Product", {
             state: {
@@ -27,7 +28,9 @@ function Trip(props) {
         });
     };
 
+    
     return (
+
         <div className="main-container">
             <div className="column-container">
                 <img className="trip-image" src={props.tripimageURL} />
@@ -51,11 +54,11 @@ function Trip(props) {
                     <div className="travel-info">
                         <div className="time-container">
                             <h4 className="travel-text">Travel</h4>
-                            <h4 className="travel-time">{props.travelTime}</h4>
+                            <h4 className="travel-time">{convertToYear(props.travelTime)}</h4>
                         </div>
                         <div className="stay-container">
                             <h4 className="stay-text">Stay</h4>
-                            <h4 className="stay-time">{props.stayTime}</h4>
+                            <h4 className="stay-time">{convertToYear(props.stayTime)}</h4>
                         </div>
                     </div>
                     <div className="fourth-container">
@@ -83,4 +86,10 @@ function Trip(props) {
         </div>
     );
 }
+export const shortlink ='http://localhost:5000/wandermission/service/shortTrips';
+export const longlink ='http://localhost:5000/wandermission/service/longTrips';
 export default Trip;
+
+
+
+

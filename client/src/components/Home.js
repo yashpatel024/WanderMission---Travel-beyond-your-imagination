@@ -59,7 +59,7 @@ export function Home() {
                         <h4 className="section-heading">Short trips</h4>
                     </div>
                     <div className="services">
-                        <ShortTrips />
+                        <ShortTrips/>
                     </div>
                 </div>
             </div>
@@ -74,7 +74,7 @@ export function Home() {
                         <h4 className="section-heading">Long trips</h4>
                     </div>
                     <div className="services">
-                        <LongTrips />
+                        <LongTrips/>
                     </div>
                 </div>
             </div>

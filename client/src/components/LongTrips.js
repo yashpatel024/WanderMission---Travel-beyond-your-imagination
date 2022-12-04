@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Trip from "./Trip";
+import { longlink } from "./Trip";
 
 const ShortTrips = () => {
     
@@ -8,7 +9,7 @@ const ShortTrips = () => {
 
 
     useEffect(() => {
-        fetch('http://localhost:5000/wandermission/service/longTrips')
+        fetch(longlink)
             .then((Response) => Response.json())
             .then((service) => {
                     const data = JSON.parse(JSON.stringify(service))

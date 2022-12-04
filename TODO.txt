@@ -18,8 +18,12 @@ Presentation (3 marks)
 
 #Ambitious:
 404 Page
+Email OTP
+After buying Email notification
+Deploy on Firebase or AWS
 
 #InBetween:
+Fake payment Flow
 
 #Mandatory:
 Session
