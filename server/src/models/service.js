@@ -1,24 +1,27 @@
-const { Decimal128 } = require('mongodb');
 const mongoose = require('mongoose');
+const uniqueValidator = require('mongoose-unique-validator');
 
 const ServiceSchema = new mongoose.Schema({
-    service_id:{
+    service_id: {
+        type: String,
+        required: true,
+        unique: true,
+        lowercase: true
+    },
+    trip_name: {
+        type: String,
+        required: true,
+        index: true
+    },
+    trip_logo: {
         type: String,
         required: true
     },
-    trip_name:{
+    service_description: {
         type: String,
         required: true
     },
-    trip_logo:{
-        type: String,
-        required: true
-    },
-    service_description:{
-        type: String,
-        required: true
-    },
-    no_of_reviews:{
+    no_of_reviews: {
         type: Number,
         required: true
     },
@@ -26,7 +29,7 @@ const ServiceSchema = new mongoose.Schema({
         type: Number,
         required: true,
     },
-    travel_time:{
+    travel_time: {
         type: Number,
         required: true
     },
@@ -38,31 +41,44 @@ const ServiceSchema = new mongoose.Schema({
         type: Number,
         required: true
     },
-    available_seats:{
+    available_seats: {
         type: Number,
         required: true
     },
-    total_seats:{
+    total_seats: {
         type: Number,
         required: true
     },
-    trip_type:{
+    trip_type: {
+        type: String,
+        required: true,
+        index: true
+    },
+    agency_id: {
+        //ref from Agency table
         type: String,
         required: true
     },
-    agency_id:{
-        type: String,
-        required: true
-    },
-    comments:[
+    comments: [
         {
-            user_id: String,
+            user_id: {
+                type: mongoose.SchemaTypes.ObjectId,
+                ref: 'User',
+                required: true,
+            },
             content: String,
             given_rating: Number,
-            created_date: Date,
+            createdAt: {
+                type: Date,
+                default: () => Date.now(),
+                immutable: true,
+            },
             updated_date: Date
         }
     ]
-}, {timestamps: true});
+}, { timestamps: true });
+
+//Unique Validator for service_id field
+ServiceSchema.plugin(uniqueValidator, { message: 'is already present.' });
 
 module.exports = mongoose.model('Service', ServiceSchema);

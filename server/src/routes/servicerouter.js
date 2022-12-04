@@ -23,7 +23,7 @@ serviceroute.post('/insertService', async (req, res) => {
 serviceroute.get('/getAll', async (req, res) => {
     try {
         const data = await ServiceModel.find();
-        res.json(data);
+        res.status(200).json(savedData)       
     }
     catch (error) {
         res.status(500).json({ message: error.message })
@@ -56,7 +56,7 @@ serviceroute.get('/longTrips', async (req, res) => {
 serviceroute.get('/getService/:id', async (req, res) => {
     try {
         const data = await ServiceModel.findById(req.params.id);
-        res.json(data)
+        res.status(200).json(savedData)       
     }
     catch (error) {
         res.status(500).json({ message: error.message });
@@ -76,7 +76,7 @@ serviceroute.patch('/updateService/:id', async (req, res) => {
         const result = await ServiceModel.findByIdAndUpdate(
             id, updatedData, options
         )
-        res.send(result);
+        res.status(200).json(savedData)       
     }
     catch (error) {
         res.status(400).json({ message: error.message })
