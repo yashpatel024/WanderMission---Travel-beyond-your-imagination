@@ -23,6 +23,7 @@ function Trip(props) {
                 travelTime: props.travelTime,
                 stayTime: props.stayTime,
                 price: props.price,
+                userComments: props.userComments,
                 id: props.id
             },
         });
@@ -48,7 +49,7 @@ function Trip(props) {
                     </span>
                 </div>
                 <div className="second-container">
-                    <h3 className="trip-description">{props.description}</h3>
+                    <h3 className="trip-description">{props.comment}</h3>
                 </div>
                 <div className="third-container">
                     <div className="travel-info">
