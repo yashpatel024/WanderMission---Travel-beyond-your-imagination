@@ -7,8 +7,12 @@ const userModel = require('../models/user');
  * Service Feedback Routes
  * Comments and Rating
  */
+
+/**
+ * Insert Comment with userId and contentMessage
+ */
 serviceFeedbackRoute.post("/addcomment", async (req, res) => {
-    try{
+    try {
         const serviceId = req.body.serviceId;
         const userId = req.body.userId;
         const content = req.body.content;
@@ -17,9 +21,9 @@ serviceFeedbackRoute.post("/addcomment", async (req, res) => {
         const targetServiceModel = await serviceModel.findById(serviceId);
 
         var newComment = {
-            user_id : targetUserModel._id,
-            content : content,
-            updated_date : Date.now()
+            user_id: targetUserModel._id,
+            content: content,
+            updated_date: Date.now()
         }
 
         targetServiceModel.comments.push(newComment);
@@ -32,40 +36,50 @@ serviceFeedbackRoute.post("/addcomment", async (req, res) => {
             };
             res.status(200).send(JSON.stringify(resObj));
         });
-    }catch(error){
+    } catch (error) {
         res.status(500).json({ message: error.message })
     }
 });
 
+/**
+ * Update Comment with new Message
+ */
 serviceFeedbackRoute.patch("/updatecomment", async (req, res) => {
-    try{
+    try {
         const serviceId = req.body.serviceId;
+        const userId = req.body.userId;
         const commentId = req.body.commentId;
         const content = req.body.content;
+
+        const targetServiceModel = await serviceModel.findById(serviceId);
         
-        var updateComment = {
-            $push: {
-                comments: {
-                    _id: commentId,
-                    content: content,
-                    updatedAt: Date.now()
-                }
+        targetServiceModel.comments.forEach(replaceFunction)
+
+        function replaceFunction(item, index, arr){
+            if(item._id == commentId){
+                arr[index].content = content;
+                arr[index].updatedAt = Date.now();
             }
-        };
-
-        targetServiceModel.findByIdAndUpdate(serviceId, updateComment);
-
+        }
+        
         targetServiceModel.save(function (err) {
             if (err) { return next(err); }
 
             resObj = {
-                "res": targetServiceModel._id
+                "res": targetServiceModel.comments._id
             };
             res.status(200).send(JSON.stringify(resObj));
-        });
-    }catch(error){
-        res.status(500).json({ message: error.message })
+        });        
+    } catch (error) {
+        res.status(500).json({ error : error.message})
     }
+});
+
+/**
+ * Delete Comment with specific commentId and ServiceId
+ */
+serviceFeedbackRoute.patch("/deletecomment", async (req, res) => {
+
 });
 
 module.exports = serviceFeedbackRoute;

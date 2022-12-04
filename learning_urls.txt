@@ -13,6 +13,7 @@ https://www.mongodb.com/docs/atlas/getting-started/?_ga=2.80390164.2067389131.16
 
 Auth:
 https://itnext.io/mastering-session-authentication-aa29096f6e22
+https://thinkster.io/tutorials/node-json-api/creating-the-user-model
 
 Mongoose
 https://kb.objectrocket.com/mongo-db/how-to-use-mongoose-custom-validators-923
@@ -23,4 +24,11 @@ https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/mongoo
 https://www.mongodb.com/developer/languages/javascript/getting-started-with-mongodb-and-mongoose/
 https://mongoosejs.com/docs/queries.html
 
+ModuleExport(CommonJS by Node)
 https://www.sitepoint.com/understanding-module-exports-exports-node-js/
+
+Auth0 - JWT
+https://auth0.com/learn/json-web-tokens
+
+FormatOFBackend
+https://github.com/madhums/node-express-mongoose-demo
