@@ -1,24 +1,40 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Trip from "./Trip";
-import { LongTripsObject } from "./Generic/TripConstant";
 
-const LongTrips = () => {
+const ShortTrips = () => {
+    
+    const [items, setItems] = useState([])
+    //To Fetch MetaData JSON
+
+
+    useEffect(() => {
+        fetch('http://localhost:5000/wandermission/service/longTrips')
+            .then((Response) => Response.json())
+            .then((service) => {
+                    const data = JSON.parse(JSON.stringify(service))
+                    setItems(data)
+            });
+            
+    });
+
+    
     return (
-        <ul>
+        <ul >
             {
                 //Mapping over MetaDataObject
-                LongTripsObject.map((value, key) => (
+                items.map((value) => (
                     <Trip
-                        tripimageURL={value.tripImageURL}
-                        agencyLogo={value.travelPartnerLogoURL}
-                        tripName={value.destinationName}
-                        stars={value.reviewStar}
-                        description={value.tripDescription}
-                        travelTime={value.travelTime}
-                        stayTime={value.stayTime}
-                        price={value.tripPrice}
-                        key={key}
-                        id={value.tripId}
+                        tripimageURL={value.trip_logo}
+                        key = {value.service_id}
+                        // agency_logo={value.travelPartnerLogoURL}
+                        tripName={value.trip_name}
+                        // trip_nae={value.travelPartnerName}
+                        stars={value.rating}
+                        description={value.service_description}
+                        travelTime={value.travel_time}
+                        stayTime={value.stay_time}
+                        price={value.price}
+                        service_id={value.tripId}
                     />
                 ))
             }
@@ -26,4 +42,4 @@ const LongTrips = () => {
     );
 };
 
-export default LongTrips;
+export default ShortTrips;

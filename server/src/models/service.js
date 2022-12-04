@@ -1,4 +1,3 @@
-const { Decimal128 } = require('mongodb');
 const mongoose = require('mongoose');
 const uniqueValidator = require('mongoose-unique-validator');
 
@@ -26,20 +25,20 @@ const ServiceSchema = new mongoose.Schema({
         type: Number,
         required: true
     },
-    rating: {
-        type: Decimal128,
+    rating:{
+        type: Number,
         required: true,
     },
     travel_time: {
         type: Number,
         required: true
     },
-    stay_time: {
-        type: Decimal128,
+    stay_time:{
+        type: Number,
         required: true
     },
-    price: {
-        type: Decimal128,
+    price:{
+        type: Number,
         required: true
     },
     available_seats: {
