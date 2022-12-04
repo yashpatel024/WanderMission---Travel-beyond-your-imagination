@@ -41,6 +41,17 @@ serviceroute.get('/shortTrips', async (req, res) => {
     }
 })
 
+//Get only LongTrip services
+serviceroute.get('/longTrips', async (req, res) => {
+    try {
+        const data = await ServiceModel.find({ trip_type: 'long' });
+        res.json(data);
+    }
+    catch (error) {
+        res.status(500).json({ message: error.message })
+    }
+})
+
 //Get by ID MeÍthod
 serviceroute.get('/getService/:id', async (req, res) => {
     try {
