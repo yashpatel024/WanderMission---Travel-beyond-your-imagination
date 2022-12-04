@@ -1,7 +1,7 @@
 {
-    [
+    "services":[
         {
-            "service_id": "st1",
+            "trip_id": "st1",
             "trip_name": "Mars",
             "trip_logo": "https://cal-generator.web.app/res/svgs/Mars_product.svg",
             "service_description": "Man kind’s First cursh to settle on, Thanks to a very loud person on the twitter.",
@@ -17,7 +17,7 @@
             "comments":[]
         },
         {
-            "service_id": "st2",
+            "trip_id": "st2",
             "trip_name": "Moon",
             "trip_logo": "https://cal-generator.web.app/res/svgs/moon_product.svg",
             "service_description": "Man kind’s First cursh to settle on, Thanks to a very loud person on the twitter.",
@@ -33,7 +33,7 @@
             "comments":[]
         },
         {
-            "service_id": "st3",
+            "trip_id": "st3",
             "trip_name": "Jupiter",
             "trip_logo": "https://cal-generator.web.app/res/svgs/jupiter_product.svg",
             "service_description": "Man kind’s First cursh to settle on, Thanks to a very loud person on the twitter.",
@@ -49,7 +49,7 @@
             "comments":[]
         },
         {
-            "service_id": "lt1",
+            "trip_id": "lt1",
             "trip_name": "Saturn",
             "trip_logo": "https://cal-generator.web.app/res/svgs/saturn_product.svg",
             "service_description": "Man kind’s First cursh to settle on, Thanks to a very loud person on the twitter.",
@@ -65,7 +65,7 @@
             "comments":[]
         },
         {
-            "service_id": "lt2",
+            "trip_id": "lt2",
             "trip_name": "Proxima Centuri",
             "trip_logo": "https://cal-generator.web.app/res/svgs/proxima_product.svg",
             "service_description": "Man kind’s First cursh to settle on, Thanks to a very loud person on the twitter.",
@@ -81,7 +81,7 @@
             "comments":[]
         },
         {
-            "service_id": "lt3",
+            "trip_id": "lt3",
             "trip_name": "Pluto",
             "trip_logo": "https://cal-generator.web.app/res/svgs/pluto_product.svg",
             "service_description": "Man kind’s First cursh to settle on, Thanks to a very loud person on the twitter.",

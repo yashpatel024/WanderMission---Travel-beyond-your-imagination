@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const uniqueValidator = require('mongoose-unique-validator');
 var bcrypt = require('bcryptjs');
 
-const UserSchema = new mongoose.Schema({
+const userSchema = new mongoose.Schema({
     email: {
         type: String,
         lowercase: true,
@@ -23,10 +23,10 @@ const UserSchema = new mongoose.Schema({
 }, { timestamps: true });
 
 //Unique Validator for email field
-UserSchema.plugin(uniqueValidator, { message: 'is already taken.' });
+userSchema.plugin(uniqueValidator, { message: 'is already taken.' });
 
 //Pre-hook for schema, This code will run before User instance saves
-UserSchema.pre('save', function () {
+userSchema.pre('save', function () {
     if (this.isModified('password')) {
         this.password = bcrypt.hashSync(this.password, 10);
     }
@@ -41,8 +41,8 @@ UserSchema.pre('save', function () {
 // }
 
 //Method to checked hashed password
-UserSchema.methods.comparePasswords = function (password) {
+userSchema.methods.comparePasswords = function (password) {
     return bcrypt.compareSync(password, this.password);
 }
 
-module.exports = mongoose.model('User', UserSchema);
+module.exports = mongoose.model('User', userSchema);

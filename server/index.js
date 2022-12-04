@@ -19,8 +19,9 @@ app.use(express.urlencoded({ extended:true }));
 //Routing
 const apirouter = express.Router();
 app.use('/wandermission', apirouter);
-apirouter.use('/user', routes.userroutes);
-apirouter.use('/service', routes.serviceroute);
+apirouter.use('/user', routes.userRoute);
+apirouter.use('/service', routes.serviceRoute);
+apirouter.use('/service/feedback', routes.serviceFeedbackRoute);
 
 //App runs on port:5000
 //Connect with MongoDB using Cluster url defined in env variable

@@ -1,7 +1,9 @@
-const userroutes = require('./userroutes');
-const serviceroute = require('./servicerouter');
+const userRoute = require('./userroutes');
+const serviceRoute = require('./servicerouter');
+const serviceFeedbackRoute = require('./servicefeedbacksrouter');
 
 module.exports = {
-    userroutes,
-    serviceroute
+    userRoute,
+    serviceRoute,
+    serviceFeedbackRoute
 };

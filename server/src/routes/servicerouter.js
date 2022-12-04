@@ -1,39 +1,52 @@
 const express = require('express');
-const serviceroute = express.Router();
-const ServiceModel = require('../models/service');
+const serviceRoute = express.Router();
+const serviceModel = require('../models/service');
 
 /**
  * Service Routes
  */
 
 //Post Method
-serviceroute.post('/insertService', async (req, res) => {
+serviceRoute.post('/insertService', async (req, res) => {
     try {
-        //Create new entry using Service schema
-        const newService = new ServiceModel(req.body);
+        let services = [];
+        //Iterate through received json array of services
+        req.body.services.forEach((data) => {
+            //Create new entry using Service schema
+            services.push(new serviceModel(data));
+        });
+        // console.log(services);
+        await serviceModel.create(services, function (err) {
+            if (err) { console.log(err.message) }
+        });
 
-        const dataToSave = newService.save();
-        res.status(200).json(dataToSave)
+        res.status(200).json({
+            message: "Total " + req.body.services.length + " services saved."
+        });
     } catch (error) {
-        res.status(500).send({ message: error.messages });
+        res.status(500).send({ 
+            message: error.messages 
+        });
     }
 })
 
 //Get all Method
-serviceroute.get('/getAll', async (req, res) => {
+serviceRoute.get('/getAll', async (req, res) => {
     try {
-        const data = await ServiceModel.find();
-        res.status(200).json(savedData)       
+        const savedData = await serviceModel.find();
+        res.status(200).json(savedData)
     }
     catch (error) {
-        res.status(500).json({ message: error.message })
+        res.status(500).json({ 
+            message: error.message 
+        })
     }
 })
 
 //Get only Shorttrips services
-serviceroute.get('/shortTrips', async (req, res) => {
+serviceRoute.get('/shortTrips', async (req, res) => {
     try {
-        const data = await ServiceModel.find({ trip_type: { $gte: 'short' } });
+        const data = await serviceModel.find({ trip_type: { $gte: 'short' } });
         res.json(data);
     }
     catch (error) {
@@ -42,9 +55,9 @@ serviceroute.get('/shortTrips', async (req, res) => {
 })
 
 //Get only LongTrip services
-serviceroute.get('/longTrips', async (req, res) => {
+serviceRoute.get('/longTrips', async (req, res) => {
     try {
-        const data = await ServiceModel.find({ trip_type: 'long' });
+        const data = await serviceModel.find({ trip_type: 'long' });
         res.json(data);
     }
     catch (error) {
@@ -53,10 +66,10 @@ serviceroute.get('/longTrips', async (req, res) => {
 })
 
 //Get by ID MeÍthod
-serviceroute.get('/getService/:id', async (req, res) => {
+serviceRoute.get('/getService/:id', async (req, res) => {
     try {
-        const data = await ServiceModel.findById(req.params.id);
-        res.status(200).json(savedData)       
+        const savedData = await serviceModel.findById(req.params.id);
+        res.status(200).json(savedData)
     }
     catch (error) {
         res.status(500).json({ message: error.message });
@@ -64,7 +77,7 @@ serviceroute.get('/getService/:id', async (req, res) => {
 })
 
 //Update by ID Method
-serviceroute.patch('/updateService/:id', async (req, res) => {
+serviceRoute.patch('/updateService/:id', async (req, res) => {
     try {
         //Service id
         const id = req.params.id;
@@ -73,10 +86,10 @@ serviceroute.patch('/updateService/:id', async (req, res) => {
         //Options which specifies to return the updated data back
         const options = { new: true };
 
-        const result = await ServiceModel.findByIdAndUpdate(
+        const result = await serviceModel.findByIdAndUpdate(
             id, updatedData, options
         )
-        res.status(200).json(savedData)       
+        res.status(200).json(result)
     }
     catch (error) {
         res.status(400).json({ message: error.message })
@@ -84,10 +97,10 @@ serviceroute.patch('/updateService/:id', async (req, res) => {
 })
 
 //Delete by ID Method
-serviceroute.delete('/deleteService/:id', async (req, res) => {
+serviceRoute.delete('/deleteService/:id', async (req, res) => {
     try {
         const id = req.params.id;
-        const data = await ServiceModel.findByIdAndDelete(id);
+        const data = await serviceModel.findByIdAndDelete(id);
         res.send(`Service with ${data.trip_name} has been deleted..`);
     }
     catch (error) {
@@ -95,4 +108,4 @@ serviceroute.delete('/deleteService/:id', async (req, res) => {
     }
 })
 
-module.exports = serviceroute;
+module.exports = serviceRoute;

@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 const uniqueValidator = require('mongoose-unique-validator');
 
-const ServiceSchema = new mongoose.Schema({
-    service_id: {
+const serviceSchema = new mongoose.Schema({
+    trip_id: {
         type: String,
         required: true,
         unique: true,
@@ -67,18 +67,21 @@ const ServiceSchema = new mongoose.Schema({
                 required: true,
             },
             content: String,
-            given_rating: Number,
+            // given_rating: Number,
             createdAt: {
                 type: Date,
                 default: () => Date.now(),
                 immutable: true,
             },
-            updated_date: Date
+            updatedAt: {
+                type: Date,
+                default: () => Date.now(),
+            },
         }
     ]
 }, { timestamps: true });
 
-//Unique Validator for service_id field
-ServiceSchema.plugin(uniqueValidator, { message: 'is already present.' });
+//Unique Validator for trip_id field
+serviceSchema.plugin(uniqueValidator, { message: 'is already present.' });
 
-module.exports = mongoose.model('Service', ServiceSchema);
+module.exports = mongoose.model('Service', serviceSchema);
