@@ -8,7 +8,7 @@ const ShortTrips = () => {
 
 
     useEffect(() => {
-        fetch('http://localhost:5000/wandermission/service/getAll')
+        fetch('http://localhost:5000/wandermission/service/shortTrips')
             .then((Response) => Response.json())
             .then((service) => {
                     const data = JSON.parse(JSON.stringify(service))
@@ -17,7 +17,7 @@ const ShortTrips = () => {
             
     });
 
-
+    
     return (
         <ul >
             {
