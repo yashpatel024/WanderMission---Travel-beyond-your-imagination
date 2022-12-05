@@ -7,7 +7,7 @@ const serviceModel = require('../models/service');
  */
 
 //Post Method
-serviceRoute.post('/insertService', async (req, res) => {
+serviceRoute.post('/insert', async (req, res) => {
     try {
         let services = [];
         //Iterate through received json array of services
@@ -25,7 +25,7 @@ serviceRoute.post('/insertService', async (req, res) => {
         });
     } catch (error) {
         res.status(500).send({ 
-            message: error.messages 
+            message: error.message
         });
     }
 })
@@ -66,7 +66,7 @@ serviceRoute.get('/longTrips', async (req, res) => {
 })
 
 //Get by ID MeÍthod
-serviceRoute.get('/getService/:id', async (req, res) => {
+serviceRoute.get('/get/:id', async (req, res) => {
     try {
         const savedData = await serviceModel.findById(req.params.id);
         res.status(200).json(savedData)
@@ -77,7 +77,7 @@ serviceRoute.get('/getService/:id', async (req, res) => {
 })
 
 //Update by ID Method
-serviceRoute.patch('/updateService/:id', async (req, res) => {
+serviceRoute.patch('/update/:id', async (req, res) => {
     try {
         //Service id
         const id = req.params.id;
@@ -92,19 +92,19 @@ serviceRoute.patch('/updateService/:id', async (req, res) => {
         res.status(200).json(result)
     }
     catch (error) {
-        res.status(400).json({ message: error.message })
+        res.status(500).json({ message: error.message })
     }
 })
 
 //Delete by ID Method
-serviceRoute.delete('/deleteService/:id', async (req, res) => {
+serviceRoute.delete('/delete/:id', async (req, res) => {
     try {
         const id = req.params.id;
         const data = await serviceModel.findByIdAndDelete(id);
         res.send(`Service with ${data.trip_name} has been deleted..`);
     }
     catch (error) {
-        res.status(400).json({ message: error.message })
+        res.status(500).json({ message: error.message })
     }
 })
 

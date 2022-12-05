@@ -1,0 +1,28 @@
+{
+    "agencies": [
+        {
+            "agency_id": 1,
+            "agency_name": "SpaceX",
+            "agency_logo": "https://cal-generator.web.app/res/svgs/spacex_logo.png",
+            "agency_description": "Space Exploration Technologies Corp. is an American spacecraft manufacturer, launcher, and a satellite communications corporation headquartered in Hawthorne, California. It was founded in 2002 by Elon Musk with the stated goal of reducing space transportation costs to enable the colonization of Mars."
+        },
+        {
+            "agency_id": 2,
+            "agency_name": "Blue Origin",
+            "agency_logo": "https://cal-generator.web.app/res/svgs/blueOrigin_logo.svg",
+            "agency_description": "Blue Origin, LLC is an American privately funded aerospace manufacturer and sub-orbital spaceflight services company headquartered in Kent, Washington."
+        },
+        {
+            "agency_id": 3,
+            "agency_name": "Isro",
+            "agency_logo": "https://cal-generator.web.app/res/svgs/isro_logo.png",
+            "agency_description": "The Indian Space Research Organisation is the national space agency of India, headquartered in Bengaluru. It operates under the Department of Space which is directly overseen by the Prime Minister of India, while the Chairman of ISRO acts as the executive of DOS as well."
+        },
+        {
+            "agency_id": 1,
+            "agency_name": "Saturn",
+            "agency_logo": "https://cal-generator.web.app/res/svgs/saturn_logo.svg",
+            "agency_description": "Saturn is an independent spaceflight company. The company operates lightweight Electron orbital rockets, called Ariane I flights, designed to fly with satellites in the United States."
+        }
+    ]
+}

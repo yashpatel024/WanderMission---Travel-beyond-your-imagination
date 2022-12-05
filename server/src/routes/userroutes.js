@@ -17,7 +17,7 @@ userRoute.post("/signup", async (req, res) => {
         const savedData = await newUser.save();
         res.status(200).json(savedData)       
     }catch(error){
-        res.status(400).send({
+        res.status(500).send({
             message: error.message
         });
     }
