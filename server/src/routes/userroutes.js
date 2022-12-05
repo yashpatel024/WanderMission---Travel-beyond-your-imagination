@@ -23,5 +23,13 @@ userRoute.post("/signup", async (req, res) => {
     }
 });
 
-
+userRoute.get('/get/:id', async (req, res) => {
+    try {
+        const savedData = await userModel.findById(req.params.id);
+        res.status(200).json(savedData)
+    }
+    catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+})
 module.exports = userRoute;

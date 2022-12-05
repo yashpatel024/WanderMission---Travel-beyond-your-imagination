@@ -25,7 +25,8 @@ function Trip(props) {
                 stayTime: props.stayTime,
                 price: props.price,
                 userComments: props.userComments,
-                id: props.id
+                id: props.id,
+                service_id: props.service_id
             },
         });
     };

@@ -34,7 +34,7 @@ const ShortTrips = () => {
                         travelTime={value.travel_time}
                         stayTime={value.stay_time}
                         price={value.price}
-                        service_id={value.tripId}
+                        service_id={value._id}
                     />
                 ))
             }

@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 
-export function GetAgencyURL(agency_id) {
+export function GetUserName(user_id) {
 
     const [items, setItems] = useState([])
-    const link = 'http://localhost:5000/wandermission/agency/a-id/' + agency_id;
+    const link = 'http://localhost:5000/wandermission/user/get/'+user_id;
 
     useEffect(() => {
         fetch(link)
@@ -16,11 +16,13 @@ export function GetAgencyURL(agency_id) {
 
     return (
         items.map((value) => (
-            <img
-                key={value._id} className="travelPartner-logo" src={value.agency_logo} />
+            <div><h1>{value.firstname}</h1></div>
         ))
 
     );
 
 }
+
+
+
 

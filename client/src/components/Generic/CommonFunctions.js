@@ -9,6 +9,20 @@ class CommonFunctions {
         }
         return hash;
     }
+
+    static Getcomments(userComments) {
+        userComments.map(
+            comments => {
+                return (
+                    <div className="comment" key={comments._id}>
+                        <h3 className="Person-name"> {comments.firstname}{comments.lastname}</h3>
+                        <h3 className="comment-text">{comments.content}</h3>
+                    </div>
+                )
+            }
+        )
+    }
+    
 }
 
 export default CommonFunctions;

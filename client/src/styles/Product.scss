@@ -307,44 +307,55 @@
 
                     }
                 }
+                ::-webkit-scrollbar {
+                    width: 12px;
+                    background: rgb(46, 46, 46);
+                    border-radius: 1ex;
+                }
+                
+                ::-webkit-scrollbar-thumb {
+                    background: #474747;
+                    border-radius: 1ex;
+                    box-shadow: 0px 1px 2px rgba(0, 0, 0.5, 0.75);
+                }
+                .comment-container {
+                    overflow: overlay;
+                    height: 19vh;
+                    scrollbar-color: rebeccapurple green;
+                    scrollbar-width: thin;
+                    .comment {
+                        margin-top: 2vh;
 
-                .comment-1 {
-                    margin-top: 2vh;
-                    .Person-name {
-                        @include wanderText(300, 1.2vw, #b4b4b4);
-                    }
+                        .Person-name {
+                            @include wanderText(600, 0.8vw, #6d6d6d);
+                        }
 
-                    .comment-text {
-                        @include wanderText(300, 1.2vw, white);
+                        .comment-text {
+                            @include wanderText(300, 1vw, white);
+                        }
                     }
                 }
-                .comment-2 {
-                    margin-top: 2vh;
-                    .Person-name {
-                        @include wanderText(300, 1.2vw, #b4b4b4);
-                    }
 
-                    .comment-text {
-                        @include wanderText(300, 1.2vw, white);
-                    }
-                }
-                .divider{
+                .divider {
                     background-color: white;
                     padding-top: 1px;
                     margin-top: 1vh;
                     margin-bottom: 1vh;
                 }
-                .comment-input{
+
+                .comment-input {
                     display: flex;
                     justify-content: space-between;
-                    .input-field-comment{
+
+                    .input-field-comment {
                         background-color: #333333;
-                            height: 7vh;
-                            width: 20vw;
-                            border-radius: 0.5vw;
+                        height: 7vh;
+                        width: 20vw;
+                        border-radius: 0.5vw;
 
                     }
-                    .comment{
+
+                    .comment {
                         background-color: white;
                         color: black;
                         border-radius: 50px;
@@ -357,7 +368,7 @@
                     }
                 }
 
-            
+
             }
 
         }
