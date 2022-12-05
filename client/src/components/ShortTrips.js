@@ -31,8 +31,8 @@ const ShortTrips = () => {
                         tripName={value.trip_name}
                         // trip_nae={value.travelPartnerName}
                         stars={value.rating}
-                        userComments={value.comments}
                         description={value.service_description}
+                        userComments={value.comments}
                         travelTime={value.travel_time}
                         stayTime={value.stay_time}
                         price={value.price}
