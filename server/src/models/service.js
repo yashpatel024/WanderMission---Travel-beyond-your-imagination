@@ -25,7 +25,7 @@ const serviceSchema = new mongoose.Schema({
         type: Number,
         required: true
     },
-    rating:{
+    rating: {
         type: Number,
         required: true,
     },
@@ -33,11 +33,11 @@ const serviceSchema = new mongoose.Schema({
         type: Number,
         required: true
     },
-    stay_time:{
+    stay_time: {
         type: Number,
         required: true
     },
-    price:{
+    price: {
         type: Number,
         required: true
     },
@@ -65,6 +65,10 @@ const serviceSchema = new mongoose.Schema({
                 type: mongoose.SchemaTypes.ObjectId,
                 ref: 'User',
                 required: true,
+            },
+            user_name: {
+                type: String,
+                required: true
             },
             content: String,
             // given_rating: Number,
