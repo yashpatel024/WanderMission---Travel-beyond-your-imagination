@@ -13,10 +13,8 @@ const userModel = require('../models/user');
  * Insert Comment with userId and contentMessage
  */
 serviceFeedbackRoute.post("/addcomment", async (req, res) => {
-    const serviceId = req.body.serviceId;
-    const userId = req.body.userId;
-    const content = req.body.content;
-    
+    const { serviceId, userId, content } = req.body;
+
     try {
         //fetch target User and Service Model
         const targetUserModel = await userModel.findById(userId);
@@ -58,10 +56,7 @@ serviceFeedbackRoute.post("/addcomment", async (req, res) => {
  * Update Comment with new Message
  */
 serviceFeedbackRoute.patch("/updatecomment", async (req, res) => {
-    const serviceId = req.body.serviceId;
-    const commentId = req.body.commentId;
-    const content = req.body.content;
-    const userId = req.body.userId;
+    const { serviceId, commentId, userId, content } = req.body;
 
     try {
         const targetServiceModel = await serviceModel.findById(serviceId);
@@ -102,9 +97,7 @@ serviceFeedbackRoute.patch("/updatecomment", async (req, res) => {
  * Delete Comment with specific commentId and ServiceId
  */
 serviceFeedbackRoute.delete("/deletecomment", async (req, res) => {
-    const commentId = req.body.commentId;
-    const serviceId = req.body.serviceId;
-    const userId = req.body.userId;
+    const { serviceId, commentId, userId } = req.body;
 
     try {
         const targetServiceModel = await serviceModel.findById(serviceId);

@@ -32,14 +32,6 @@ userSchema.pre('save', function () {
     }
 });
 
-// //Custom validator for username and password field
-// //This is async step so we use asyncs/await to check if field exists or not
-// //Database level validations
-// UserSchema.statics.doesNotExist = async function (field) {
-//     console.log(this.where(field).countDocuments === 0);
-//     return await this.where(field).countDocuments === 0;
-// }
-
 //Method to checked hashed password
 userSchema.methods.comparePasswords = function (password) {
     return bcrypt.compareSync(password, this.password);

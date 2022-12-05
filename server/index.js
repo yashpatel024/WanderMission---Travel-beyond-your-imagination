@@ -20,6 +20,7 @@ app.use(express.urlencoded({ extended:true }));
 const apirouter = express.Router();
 app.use('/wandermission', apirouter);
 apirouter.use('/user', routes.userRoute);
+apirouter.use('/user/cart', routes.userCartRoute);
 apirouter.use('/service', routes.serviceRoute);
 apirouter.use('/service/feedback', routes.serviceFeedbackRoute);
 apirouter.use('/agency', routes.agencyRoute);
