@@ -16,8 +16,7 @@ export function GetAgencyURL(agency_id) {
 
     return (
         items.map((value) => (
-            <img
-                key={value._id} className="travelPartner-logo" src={value.agency_logo} />
+            <img key={value._id} className="travelPartner-logo" src={value.agency_logo} />
         ))
 
     );

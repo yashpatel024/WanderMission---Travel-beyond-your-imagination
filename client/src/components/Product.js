@@ -4,13 +4,14 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { gold_star, arrow_cart, eth_logo, star_url } from "../links";
 import TextField from "@mui/material/Input";
 import Button from "@mui/material/Button";
+import CounterBtn from "./Generic/CounterBtn";
 import { convertToYear } from "./Generic/convertToYear";
-import CommonFunctions from "./Generic/CommonFunctions";
-import { GetUserName } from "./Generic/GetUserName";
 
 export function Product() {
     const location = useLocation();
     const navigation = useNavigate();
+
+
 
     const moveToCart = (e) => {
         e.preventDefault();
@@ -89,7 +90,16 @@ export function Product() {
                                         {convertToYear(location.state.stayTime)}
                                     </h4>
                                 </div>
+                                <div>
+                                    <div className="personNumber">
+                                    <h4 className="quantity">Quantity</h4>
+                                    </div>
+                                    <div class="dropdown">
+                                        <CounterBtn />
+                                    </div>
+                                </div>
                             </div>
+
                         </div>
                         <div className="fifth-row">
                             <div className="price" onClick={moveToCart}>
@@ -157,17 +167,17 @@ export function Product() {
                             <h3 className="heading-text"> Reviews</h3>
                         </div>
                         <div className="comment-container">
-                        {location.state.userComments.map(
-                            comments => {
-                                return (
-                                    <div className="comment" key={comments._id}>
-                                        <h3 className="Person-name">{comments.user_name}</h3>
-                                        <h3 className="comment-text">{comments.content} </h3>
-                                    </div>
+                            {location.state.userComments.map(
+                                comments => {
+                                    return (
+                                        <div className="comment" key={comments._id}>
+                                            <h3 className="Person-name">{comments.user_name}</h3>
+                                            <h3 className="comment-text">{comments.content} </h3>
+                                        </div>
 
-                                )
-                            }
-                        )}
+                                    )
+                                }
+                            )}
                         </div>
                         <div className="divider"></div>
                         <div className="comment-input">
