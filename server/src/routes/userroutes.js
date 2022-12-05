@@ -40,10 +40,20 @@ userRoute.post("/signin", async (req, res) => {
         if (!targetUserModel) {
             res.status(400).json({ "response": "User not found" });
         }
-        
+
         //Comparing password with hash of saved password
         if (targetUserModel.comparePasswords(password)) {
-            res.status(200).json({ "response": "You have logged in successfully" });
+            //userSession object
+            const userSession = {
+                email: targetUserModel.email,
+                username: targetUserModel.firstname + " " + targetUserModel.lastname
+            }
+
+            //we save session object in req.session so it passes with every request
+            req.session.user = userSession;
+
+            //session object is sent in response so it'll store in cookie
+            res.status(200).json({ "response": "You have logged in successfully ", userSession });
         } else {
             res.status(400).json({ "response": "Incorrect credential" });
         }
@@ -51,6 +61,14 @@ userRoute.post("/signin", async (req, res) => {
         res.status(500).json({
             message: error.message
         });
+    }
+});
+
+userRoute.post("/isAuth", async (req, res) => {
+    if (req.session.user) {
+        res.status(200).json(req.session.user);
+    } else {
+        res.status(401).json(message: "unauthorized");
     }
 });
 

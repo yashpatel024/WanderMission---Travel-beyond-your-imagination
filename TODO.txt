@@ -35,5 +35,13 @@ Comment(feedback) - JSON,
 #MONGO_ATLAS
 Remember to go to Network Access and give your current IP or better 0.0.0.0 . This will allow ANY IP address to connect to your cluster so this is just for the demo.
 
+#PROXY on Client side 
+"proxy": "http://localhost:5000"
+- SO we can simply call using endpoints like: /wandermission/user/signin
+- So we will not get violation of CORS policy
+- but mainly to store cookie on http://localhost:3000
+
+
+
 
 
