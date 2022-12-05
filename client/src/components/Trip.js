@@ -6,6 +6,7 @@ import { gold_star } from "../links";
 import Button from "@mui/material/Button";
 import { useNavigate } from "react-router-dom";
 import { convertToYear } from "./Generic/convertToYear";
+import { GetAgencyURL } from "./Generic/getAgencyURL";
 
 function Trip(props) {
     const navigate = useNavigate();
@@ -37,10 +38,7 @@ function Trip(props) {
                 <img className="trip-image" src={props.tripimageURL} />
                 <div className="first-container">
                     <span className="trip-name-container">
-                        <img
-                            className="travelPartner-logo"
-                            src={props.agencyLogo}
-                        />
+                        {GetAgencyURL(props.agency_id)}
                         <h2 className="destination-name">{props.tripName}</h2>
                     </span>
                     <span className="star-container">

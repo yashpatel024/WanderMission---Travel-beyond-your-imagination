@@ -7,7 +7,6 @@ const ShortTrips = () => {
     const [items, setItems] = useState([])
     //To Fetch MetaData JSON
 
-
     useEffect(() => {
         fetch(longlink)
             .then((Response) => Response.json())
@@ -27,9 +26,8 @@ const ShortTrips = () => {
                     <Trip
                         tripimageURL={value.trip_logo}
                         key = {value.service_id}
-                        // agency_logo={value.travelPartnerLogoURL}
+                        agency_id={value.agency_id}
                         tripName={value.trip_name}
-                        // trip_nae={value.travelPartnerName}
                         stars={value.rating}
                         description={value.service_description}
                         travelTime={value.travel_time}

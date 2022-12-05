@@ -53,6 +53,19 @@ agencyRoute.get('/get/:id', async (req, res) => {
     }
 })
 
+//Get by Custom ID Method
+agencyRoute.get('/a-id/:aid', async (req, res) => {
+    try {
+        const data = await agencyModel.find({ agency_id: req.params.aid });
+        res.json(data);
+    }
+    catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+})
+
+
+
 //Update by ID Method
 agencyRoute.patch('/update/:id', async (req, res) => {
     try {
