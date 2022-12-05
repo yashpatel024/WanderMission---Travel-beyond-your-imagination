@@ -22,6 +22,7 @@ app.use('/wandermission', apirouter);
 apirouter.use('/user', routes.userRoute);
 apirouter.use('/service', routes.serviceRoute);
 apirouter.use('/service/feedback', routes.serviceFeedbackRoute);
+apirouter.use('/agency', routes.agencyRoute);
 
 //App runs on port:5000
 //Connect with MongoDB using Cluster url defined in env variable
