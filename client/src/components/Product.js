@@ -4,6 +4,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { gold_star, arrow_cart, eth_logo, star_url } from "../links";
 import TextField from "@mui/material/Input";
 import Button from "@mui/material/Button";
+import { convertToYear } from "./Generic/convertToYear";
 
 export function Product() {
     const location = useLocation();
@@ -25,6 +26,7 @@ export function Product() {
                     stars: location.state.stars,
                     travelTime: location.state.travelTime,
                     stayTime: location.state.stayTime,
+                    userComments: location.state.userComments,
                     price: location.state.price,
                 }
             }
@@ -75,13 +77,13 @@ export function Product() {
                                 <div className="travel-time">
                                     <h4 className="travel-text">Travel</h4>
                                     <h4 className="travel-time-main">
-                                        {location.state.travelTime}
+                                    {convertToYear(location.state.travelTime)}
                                     </h4>
                                 </div>
                                 <div className="stay-time">
                                     <h4 className="stay-text">Stay</h4>
                                     <h4 className="stay-time-main">
-                                        {location.state.stayTime}
+                                    {convertToYear(location.state.stayTime)}
                                     </h4>
                                 </div>
                             </div>
@@ -153,7 +155,7 @@ export function Product() {
                         </div>
                         <div className="comment-1">
                             <h3 className="Person-name"> Markus</h3>
-                            <h3 className="comment-text"> Best adventure ive ever had and made new friends and family on the way</h3>
+                            <h3 className="comment-text"> {location.state.userComments.map( comments => {return (<div key={comments._id}>{comments.content} </div>)}) }</h3>
                         </div>
                         <div className="comment-2">
                             <h3 className="Person-name"> Markus</h3>
