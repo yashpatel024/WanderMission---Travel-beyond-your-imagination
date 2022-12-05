@@ -92,7 +92,7 @@ serviceRoute.patch('/updateService/:id', async (req, res) => {
         res.status(200).json(result)
     }
     catch (error) {
-        res.status(400).json({ message: error.message })
+        res.status(500).json({ message: error.message })
     }
 })
 
@@ -104,7 +104,7 @@ serviceRoute.delete('/deleteService/:id', async (req, res) => {
         res.send(`Service with ${data.trip_name} has been deleted..`);
     }
     catch (error) {
-        res.status(400).json({ message: error.message })
+        res.status(500).json({ message: error.message })
     }
 })
 
