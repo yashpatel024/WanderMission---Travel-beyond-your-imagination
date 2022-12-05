@@ -5,10 +5,10 @@ export const userSlice = createSlice({
     initialState: {
         //set initial state from localstorage if its already logged in
         user: 
-        (localStorage.getItem("username"))
+        (localStorage.getItem("email"))
         ? 
             {
-                username: localStorage.getItem("username")
+                username: localStorage.getItem("email")
             }
         :null
     },
@@ -16,11 +16,11 @@ export const userSlice = createSlice({
         //Login and logout reducers
         login: (state, action) => {
             state.user = action.payload;
-            localStorage.setItem('username',action.payload.username);
+            localStorage.setItem('email',action.payload.email);
         },
         logout: (state) => {
             state.user = null;
-            localStorage.removeItem('username');
+            localStorage.removeItem('email');
         },
     },
 });

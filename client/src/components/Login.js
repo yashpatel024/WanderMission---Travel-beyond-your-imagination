@@ -33,14 +33,16 @@ function LoginForm() {
 
     //Initial data for state
     const initialFormData = {
-        username: "",
+        email: "",
         password: "",
         showPassword: false,
     };
 
     const initialErrorText = {
-        usernameError: "",
+        emailError: "",
         passwordError: "",
+        fetchError: false,
+        fetchErrorMessage: ""
     };
 
     //State initialization for form data and error messages
@@ -70,88 +72,123 @@ function LoginForm() {
 
     //To access userCredentials at mounting
     useEffect(() => {
-        if(user != null){
-            navigate("/home");
-        }
-        fetch(user_details_json)
-            .then((Response) => Response.json())
-            .then((data) => {
-                userJsonObj = data;
-            });
+        // if(user != null){
+        //     navigate("/home");
+        // }
+        // fetch(user_details_json)
+        //     .then((Response) => Response.json())
+        //     .then((data) => {
+        //         userJsonObj = data;
+        //     });
     });
 
     //On Click of Sign In
-    const sendLoginRequest = (e) => {
+    const sendLoginRequest = async (e) => {
         e.preventDefault();
-        let usernameError = "",
+        let emailError = "",
             passwordError = "";
 
         //Check for blank values
-        usernameError = !formData.username ? "Please enter username" : "";
+        emailError = !formData.email ? "Please enter email" : "";
         passwordError = !formData.password ? "Please enter password" : "";
 
         setErrorText({
-            usernameError: usernameError,
+            emailError: emailError,
             passwordError: passwordError,
         });
 
-        if (!formData.username || !formData.password) {
+        if (!formData.email || !formData.password) {
             return;
         }
 
-        //User search
-        let userFound = false;
-        userJsonObj.users.forEach((element) => {
-            if (formData.username == element.username) {
-                //Check if both hase of password are same or not
-                if (
-                    CommonFunctions.hashCode(formData.password) ==
-                    element.hash_password
-                ) {
-                    //use login reducer to add username in Redux session store
-                    dispatch(
-                        login({
-                            username: formData.username,
-                        })
-                    );
-                    //Navigate to home once successfully submitted
-                    navigate("/home");
-                } else {
-                    //If both hashcode doesn't match
-                    setErrorText({
-                        usernameError: "",
-                        passwordError: "User credential is incorrect",
-                    });
-                }
-                userFound = true;
-            }
-        });
+        try {
+            const res = await fetch('http://localhost:5000/wandermission/user/signin', {
+                method: 'POST',
+                headers: {
+                    'Content-type': 'application/json'
+                },
+                body: JSON.stringify({
+                    email: formData.email,
+                    password: formData.password
+                }),
+            })
 
-        if (!userFound) {
-            //If no user found with entered username
+            const resp = await res.json();
+
+            console.log(resp)
+            if (!res.ok) {
+                const error = resp;
+                setErrorText({
+                    emailError: emailError,
+                    passwordError: passwordError,
+                    fetchError: true,
+                    fetchErrorMessage: error.message
+                });
+
+                return;
+            }
+        } catch (error) {
             setErrorText({
-                usernameError: "User not found",
-                passwordError: "",
+                emailError: emailError,
+                passwordError: passwordError,
+                fetchError: true,
+                fetchErrorMessage: "Problem with server, Please try again!"
             });
+            return console.log(error);
         }
+        //User search
+        // let userFound = false;
+        // userJsonObj.users.forEach((element) => {
+        //     if (formData.email == element.email) {
+        //         //Check if both hase of password are same or not
+        //         if (
+        //             CommonFunctions.hashCode(formData.password) ==
+        //             element.hash_password
+        //         ) {
+        //             //use login reducer to add email in Redux session store
+        //             dispatch(
+        //                 login({
+        //                     email: formData.email,
+        //                 })
+        //             );
+        //             //Navigate to home once successfully submitted
+        //             navigate("/home");
+        //         } else {
+        //             //If both hashcode doesn't match
+        //             setErrorText({
+        //                 emailError: "",
+        //                 passwordError: "User credential is incorrect",
+        //             });
+        //         }
+        //         userFound = true;
+        //     }
+        // });
+
+        // if (!userFound) {
+        //     //If no user found with entered email
+        //     setErrorText({
+        //         emailError: "User not found",
+        //         passwordError: "",
+        //     });
+        // }
     };
 
     return (
         <div className="login-area">
             <form className="form" method="POST" onSubmit={sendLoginRequest}>
-                {/* UserName field */}
+                {/* email field */}
                 <FormControl
-                    error={!!errorText.usernameError}
+                    error={!!errorText.emailError}
                     className="formcontrol_field"
                     variant="filled"
                 >
-                    <InputLabel htmlFor="login-form-email">Username</InputLabel>
+                    <InputLabel htmlFor="login-form-email">Email</InputLabel>
                     <FilledInput
                         id="login-form-email"
                         type="text"
                         label="emailId"
-                        value={formData.username}
-                        onChange={changeFormData("username")}
+                        value={formData.email}
+                        onChange={changeFormData("email")}
                         endAdornment={
                             <IconButton
                                 aria-label="email icon"
@@ -162,9 +199,9 @@ function LoginForm() {
                             </IconButton>
                         }
                     />
-                    {/* Username error text */}
+                    {/* email error text */}
                     <FormHelperText className="helper-text">
-                        {errorText.usernameError}
+                        {errorText.emailError}
                     </FormHelperText>
                 </FormControl>
 
@@ -205,7 +242,9 @@ function LoginForm() {
                         {errorText.passwordError}
                     </FormHelperText>
                 </FormControl>
-
+                {errorText.fetchError && (
+                    <FormHelperText className="helper-text">{errorText.fetchErrorMessage}</FormHelperText>
+                )}
                 <Button
                     className="sign-in-button"
                     variant="contained"

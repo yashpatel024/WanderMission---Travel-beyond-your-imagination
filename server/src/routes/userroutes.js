@@ -38,7 +38,7 @@ userRoute.post("/signin", async (req, res) => {
         //finding user in Database
         const targetUserModel = await userModel.findOne({ email });
         if (!targetUserModel) {
-            res.status(400).json({ "response": "User not found" });
+            res.status(400).json({ message: "User not found" });
         }
 
         //Comparing password with hash of saved password
@@ -55,21 +55,35 @@ userRoute.post("/signin", async (req, res) => {
             //session object is sent in response so it'll store in cookie
             res.status(200).json({ "response": "You have logged in successfully ", userSession });
         } else {
-            res.status(400).json({ "response": "Incorrect credential" });
+            res.status(400).json({ message: "Incorrect credential" });
         }
     } catch (error) {
-        res.status(500).json({
+        res.status(500).send({
             message: error.message
         });
     }
 });
 
-userRoute.post("/isAuth", async (req, res) => {
+userRoute.get("/isAuth", async (req, res) => {
+    console.log(req);
     if (req.session.user) {
         res.status(200).json(req.session.user);
     } else {
-        res.status(401).json(message: "unauthorized");
+        res.status(401).json({ message: "unauthorized" });
     }
+});
+
+/**
+ * TODO: Logout - delete cookie and sessionObject
+ */
+userRoute.delete("/logout", async (req, res) => {
+    req.session.destroy((error) => {
+        if(error) throw error;
+
+        //clear cookie using sessionID in cookie
+        res.clearCookie(process.env.SESSION_KEY);
+        res.status(200).send("Logged out successfully");
+    })
 });
 
 module.exports = userRoute;

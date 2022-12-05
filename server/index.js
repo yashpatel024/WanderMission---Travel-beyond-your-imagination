@@ -41,7 +41,10 @@ app.use(
         cookie: {
             maxAge: MAX_AGE_COOKIE,
             sameSite: false,
-            secure: false //true IN production
+            //true IN production
+            secure: false, 
+            //to prevent XSS attacks, HttpOnly cookies are inaccessible to document.cookie js Api, they are only sent to server.
+            httpOnly: true
         },
         resave: true,
         saveUninitialized: false
