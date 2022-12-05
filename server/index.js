@@ -1,5 +1,4 @@
 const express = require('express');
-const app = express();
 const cors = require('cors');
 const databaseConn = require('./src/database/conn');
 const routes = require('./src/routes/index');
@@ -8,12 +7,21 @@ require("dotenv").config({
     path: "./config.env"
 });
 
+//express object
+const app = express();
+//Server port
 const port = process.env.PORT || 5000;
+
+//To allow only to specified origin
+const corsOptions = {
+    origin: 'http://localhost:3000',
+    optionsSuccessStatus:200, //for legacy browser; default is 204
+};
 
 //disabling "x-powered-by", so requester doesn't know we are using express
 app.disable('x-powered-by');
 app.use(express.json());
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(express.urlencoded({ extended:true }));
 
 //Routing

@@ -27,6 +27,7 @@ serviceFeedbackRoute.post("/addcomment", async (req, res) => {
         var newComment = {
             _id: newCommentId,
             user_id: targetUserModel._id,
+            user_name: targetUserModel.firstname,
             content: content,
             updated_date: Date.now()
         }

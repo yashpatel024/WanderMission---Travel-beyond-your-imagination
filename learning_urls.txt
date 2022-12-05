@@ -23,12 +23,14 @@ https://www.freecodecamp.org/news/build-a-restful-api-using-node-express-and-mon
 https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/mongoose
 https://www.mongodb.com/developer/languages/javascript/getting-started-with-mongodb-and-mongoose/
 https://mongoosejs.com/docs/queries.html
+https://www.freecodecamp.org/news/introduction-to-mongoose-for-mongodb-d2a7aa593c57/
 
 ModuleExport(CommonJS by Node)
 https://www.sitepoint.com/understanding-module-exports-exports-node-js/
 
 Auth0 - JWT
 https://auth0.com/learn/json-web-tokens
+https://blog.devgenius.io/mern-auth-with-session-part-1-express-login-api-922cd29336a8
 
 FormatOFBackend
 https://github.com/madhums/node-express-mongoose-demo

@@ -32,4 +32,8 @@ Json,
 Props passing in Add to cart(Pass only Id),
 Comment(feedback) - JSON,
 
+#MONGO_ATLAS
+Remember to go to Network Access and give your current IP or better 0.0.0.0 . This will allow ANY IP address to connect to your cluster so this is just for the demo.
+
+
 
