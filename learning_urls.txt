@@ -43,3 +43,7 @@ https://www.sohamkamani.com/nodejs/session-cookie-authentication/signin.drawio.s
 https://www.sohamkamani.com/nodejs/session-cookie-authentication/welcome.drawio.svg
 https://dev.to/guillerbr/authentication-cookies-http-http-only-jwt-reactjs-context-api-and-node-on-backend-industry-structure-3f8e
 https://www.taniarascia.com/full-stack-cookies-localstorage-react-express/
+
+Redux Persist
+https://blog.logrocket.com/persist-state-redux-persist-redux-toolkit-react/
+https://www.positronx.io/react-redux-save-data-in-local-storage-with-persist-tutorial/

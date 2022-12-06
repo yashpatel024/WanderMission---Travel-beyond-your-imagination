@@ -49,11 +49,16 @@ serviceFeedbackRoute.post("/addcomment", async (req, res) => {
 
         //Save model to reflect changes
         targetServiceModel.save(function (err) {
-            if (err) { return next(err); }
+            if (err) {
+                return res.status(500).json({ message: error.message })
+            }
 
             //return successfully created comment
             resObj = {
-                "response": newComment
+                "response": {
+                    "rating": newRating[0],
+                    "new_comment": newComment
+                }
             };
 
             res.status(200).send(
@@ -75,17 +80,20 @@ serviceFeedbackRoute.post("/addcomment", async (req, res) => {
 function getUpdatedRating(newRating, currentRating, currentNoOfRating) {
     //If no reviews before, return current one
     if (currentNoOfRating <= 0 || currentRating == 0) {
-        return [ newRating, 1 ];
+        return [newRating, 1];
     }
 
     //If no new review, then return previous
     if (newRating == null) {
-        return [ currentRating, currentNoOfRating ];
+        return [currentRating, currentNoOfRating];
     }
+
+    let denomenator = parseFloat(newRating) + (currentRating * currentNoOfRating);
+    let numerator = currentNoOfRating + 1;
 
     //calculated new average
     return [
-        ((currentRating * currentNoOfRating + newRating) / (currentNoOfRating + 1)).toFixed(2)
+        (denomenator / numerator).toFixed(2)
         , (currentNoOfRating + 1)
     ];
 }
