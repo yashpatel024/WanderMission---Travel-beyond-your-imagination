@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 export function GetAgencyURL(agency_id) {
 
     const [items, setItems] = useState([])
-    const link = '/wandermission/agency/a-id/' + agency_id;
+    const link = '/wandermission/agency/a-id/'+agency_id;
 
     useEffect(() => {
         fetch(link)

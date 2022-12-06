@@ -3,6 +3,7 @@ import Trip from "./Trip";
 import {shortlink} from "./Trip";
 
 const ShortTrips = () => {
+
     
     const [items, setItems] = useState([])
     //To Fetch MetaData JSON

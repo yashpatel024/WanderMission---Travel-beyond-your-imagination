@@ -9,6 +9,7 @@ import { convertToYear } from "./Generic/convertToYear";
 import { GetAgencyURL } from "./Generic/getAgencyURL";
 
 function Trip(props) {
+
     const navigate = useNavigate();
 
     const handleAddToCart = () => {
@@ -31,6 +32,7 @@ function Trip(props) {
         });
     };
 
+    
     
     return (
 

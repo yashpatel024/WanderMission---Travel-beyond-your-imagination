@@ -7,9 +7,14 @@ import { star_url } from "../links";
 import { hero_grad_url } from "../links";
 import { hero_ellipse_url } from "../links";
 import LongTrips from "./LongTrips";
+import Button from "@mui/material/Button";
+import Trip from "./Trip";
 
 
-export function Home() {
+function Home() {
+
+    
+
     return (
         // main container
         <div className="container">
@@ -51,33 +56,46 @@ export function Home() {
             <div className="wrapper-short_trips">
                 <div className="background">
                     <div className="heading-container">
-                        <img
-                            className="heading-decoration"
-                            src={star_url}
-                            alt="star"
-                        ></img>
-                        <h4 className="section-heading">Short trips</h4>
+                        <div className="heading">
+                            <img
+                                className="heading-decoration"
+                                src={star_url}
+                                alt="star"
+                            ></img>
+                            <h4 className="section-heading">Trips</h4>
+                        </div>
+                        <div className="short-filter">
+                            <Button
+                                // variant="contained"
+                                // onClick={() => {
+                                //     HandleShortTrip();
+                                // }}
+                                className="addToCart"
+                            >
+                                Short Trips
+                            </Button>
+                            <Button
+                                // variant="contained"
+                                // onClick={() => {
+                                //     handleAddToCart();
+                                // }}
+                                className="addToCart"
+                            >
+                                Long Trips
+                            </Button>
+                        </div>
+                    </div>
+
+                    <div className="services">
+                        <ShortTrips />
                     </div>
                     <div className="services">
-                        <ShortTrips/>
-                    </div>
-                </div>
-            </div>
-            <div className="wrapper-short_trips">
-                <div className="background">
-                    <div className="heading-container">
-                        <img
-                            className="heading-decoration"
-                            src={star_url}
-                            alt="star"
-                        ></img>
-                        <h4 className="section-heading">Long trips</h4>
-                    </div>
-                    <div className="services">
-                        <LongTrips/>
+                        <LongTrips />
                     </div>
                 </div>
             </div>
         </div>
     );
 }
+
+export default Home;
