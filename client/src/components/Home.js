@@ -1,6 +1,6 @@
 import "../styles/_commonFiles.scss";
 import "../styles/Home.scss";
-import React from "react";
+import React, { useState } from "react";
 import ShortTrips from "./ShortTrips";
 import { spaceman_url } from "../links";
 import { star_url } from "../links";
@@ -11,9 +11,19 @@ import Button from "@mui/material/Button";
 import Trip from "./Trip";
 
 
-function Home() {
+const Home = () => {
+    const [tripLengthFilterValue, setTripLengthFilterValue] = useState('all');
 
-    
+    const handleTripLengthFilter = (e) => {
+        console.log(e);
+        if (e == 'short') {
+            setTripLengthFilterValue('short');
+        } else if (e == 'long') {
+            setTripLengthFilterValue('long');
+        } else {
+            setTripLengthFilterValue('all');
+        }
+    }
 
     return (
         // main container
@@ -66,19 +76,31 @@ function Home() {
                         </div>
                         <div className="short-filter">
                             <Button
-                                // variant="contained"
-                                // onClick={() => {
-                                //     HandleShortTrip();
-                                // }}
+                                variant="contained"
+                                value="all"
+                                onClick={() => {
+                                    handleTripLengthFilter('all');
+                                }}
+                                className="addToCart"
+                            >
+                                All
+                            </Button>
+                            <Button
+                                variant="contained"
+                                value="short"
+                                onClick={() => {
+                                    handleTripLengthFilter('short');
+                                }}
                                 className="addToCart"
                             >
                                 Short Trips
                             </Button>
                             <Button
-                                // variant="contained"
-                                // onClick={() => {
-                                //     handleAddToCart();
-                                // }}
+                                value="long"
+                                variant="contained"
+                                onClick={() => {
+                                    handleTripLengthFilter('long');
+                                }}
                                 className="addToCart"
                             >
                                 Long Trips
@@ -86,15 +108,30 @@ function Home() {
                         </div>
                     </div>
 
-                    <div className="services">
-                        <ShortTrips />
-                    </div>
-                    <div className="services">
-                        <LongTrips />
-                    </div>
+                    {
+                        tripLengthFilterValue != "all"
+                            ?
+                            <div className="services">
+                                {
+                                    tripLengthFilterValue == "short"
+                                        ?
+                                        <ShortTrips />
+                                        :
+                                        <LongTrips />
+                                }
+                            </div>
+                            : <>
+                                <div className="services">
+                                    <ShortTrips />
+                                </div>
+                                <div className="services">
+                                    <LongTrips />
+                                </div>
+                            </>
+                    }
                 </div>
             </div>
-        </div>
+        </div >
     );
 }
 
