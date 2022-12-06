@@ -1,5 +1,7 @@
 import "../styles/_commonFiles.scss";
 import "../styles/cart.scss";
+import { GetCartData } from "./Generic/getCartData";
+import { GetImageURLbyID } from "./Generic/getImageURLbyID";
 import {
     star_url,
     eth_logo
@@ -42,7 +44,7 @@ export function Cart() {
     //Redux session varaible
     const user = useSelector((state) => state.user);
     const isLoggedIn = useSelector((state) => state.isLoggedIn);
-    
+
     let navigate = useNavigate();
 
     const location = useLocation();
@@ -72,7 +74,7 @@ export function Cart() {
     });
 
     //On Click of Pay
-    const sendPurchaseRequest = (e) => {};
+    const sendPurchaseRequest = (e) => { };
 
     return (
         <div className="container">
@@ -260,7 +262,33 @@ export function Cart() {
                             <img className="heading-star" src={star_url}></img>
                             <h3 className="heading-text">Checkout</h3>
                         </div>
-                        <div className="row-1">
+                        {GetImageURLbyID("638cea1f1ea886626b971be8")}
+                        {/* {GetCartData()(
+                            cart => {
+                                return (
+                                    <div className="row-1">
+                                        <div className="chekout-image">
+
+                                        </div>
+                                        <div className="product-name">
+                                            <div className="agency-logo">
+                                                {GetImageURLbyID("638cea1f1ea886626b971be8")}
+                                            </div>
+                                            <div className="product-name">
+                                                <h4 className="product-name-main">
+                                                    {cart.service_name}
+                                                </h4>
+                                            </div>
+                                        </div>
+                                        <div className="quantitty">
+                                            <h4 className="product-name-main">1 Person</h4>
+                                        </div>
+                                    </div>
+
+                                )
+                            }
+                        )} */}
+                        {/* <div className="row-1">
                             <div className="chekout-image">
                                 <img
                                     className="product-image"
@@ -293,7 +321,7 @@ export function Cart() {
                             <div className="quantitty">
                                 <h4 className="product-name-main">1 Person</h4>
                             </div>
-                        </div>
+                        </div> */}
                         <div className="row-2">
                             <div className="heading">
                                 <h3 className="heading-text"> Select date</h3>
@@ -328,9 +356,9 @@ export function Cart() {
                                 {" "}
                                 {location.state
                                     ? location.state.agencyName +
-                                      " " +
-                                      location.state.tripName +
-                                      " | 1 Person"
+                                    " " +
+                                    location.state.tripName +
+                                    " | 1 Person"
                                     : "Destination not selected"}
                                 {""}
                             </h3>
@@ -366,7 +394,7 @@ export function Cart() {
                                 {" "}
                                 {location.state
                                     ? location.state.price +
-                                      location.state.price * taxPercentage
+                                    location.state.price * taxPercentage
                                     : "***"}
                                 {" ETH"}
                             </h3>

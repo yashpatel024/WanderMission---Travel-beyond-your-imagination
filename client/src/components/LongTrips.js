@@ -21,8 +21,8 @@ const ShortTrips = () => {
             fetchTrip();
         }
     });
-
-
+    
+    
     return (
         <ul >
             {

@@ -25,6 +25,7 @@ function Trip(props) {
                 travelTime: props.travelTime,
                 stayTime: props.stayTime,
                 price: props.price,
+                agency_id: props.agency_id,
                 userComments: props.userComments,
                 id: props.id,
                 service_id: props.service_id
