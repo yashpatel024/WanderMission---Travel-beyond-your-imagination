@@ -55,6 +55,9 @@ $tablet-bp: 768px;
     }
 }
 
+.hidden{
+    visibility: hidden;
+}
 .noselect {
     -webkit-touch-callout: none;
     /* iOS Safari */
