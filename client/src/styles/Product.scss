@@ -377,7 +377,19 @@
                 background-color: white;
                 padding-top: 1px;
                 margin-top: 1vh;
-                margin-bottom: 1vh;
+                margin-bottom: 1.5vh;
+            }
+            .rating-text{
+                display: flex;
+                float: left;
+                margin-right: 1vw;
+                .rating-text-main{
+                    @include wanderText(500, 1vw, white);
+                }
+            }
+            .rating{
+                margin-top: 1.2vh;
+                margin-bottom: 1.2vh;
             }
 
             .comment-input {

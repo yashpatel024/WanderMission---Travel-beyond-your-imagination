@@ -90,7 +90,7 @@ export function Product() {
                 const resp = await response.json();
 
                 resp.services.forEach(element => {
-                    if(element.service_id == service_id){
+                    if (element.service_id == service_id) {
                         setCounter(element.quantity);
                     }
                 });
@@ -110,7 +110,7 @@ export function Product() {
     const addToCart = async (e) => {
         e.preventDefault();
 
-        if(counter == 0)
+        if (counter == 0)
             return;
         try {
             const res = await fetch('/wandermission/user/cart/update', {
@@ -381,16 +381,21 @@ export function Product() {
                                     </div>
                                     <div className={isLoggedIn ? "" : "hidden"}>
                                         <div className="divider"></div>
-                                        <StyledRating
-                                            name="size-large"
-                                            defaultValue={0}
-                                            value={feedback.rating}
-                                            size="large"
-                                            precision={0.5}
-                                            onChange={changeFeedback("rating")}
-                                            icon={<StarIcon />}
-                                            emptyIcon={<StarIcon />}
-                                        />
+                                        <div className="rating-text">
+                                        <h4 className="rating-text-main">Give a Rating</h4>   
+                                        </div>
+                                        <div className="rating">
+                                            <StyledRating
+                                                name="size-large"
+                                                defaultValue={0}
+                                                value={feedback.rating}
+                                                size="large"
+                                                precision={0.5}
+                                                onChange={changeFeedback("rating")}
+                                                icon={<StarIcon />}
+                                                emptyIcon={<StarIcon />}
+                                            />
+                                        </div>
                                         <div className="comment-input">
                                             <TextField
                                                 id="filled-basic"
