@@ -1,4 +1,8 @@
+import { longlink } from "../Trip";
+
 class CommonFunctions {
+
+
     /*TO Generate HashCode */
     static hashCode(str) {
         let hash = 0;
@@ -22,7 +26,8 @@ class CommonFunctions {
             }
         )
     }
-    
+
+
 }
 
 export default CommonFunctions;

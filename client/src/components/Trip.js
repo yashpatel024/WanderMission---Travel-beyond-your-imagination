@@ -9,6 +9,7 @@ import { convertToYear } from "./Generic/convertToYear";
 import { GetAgencyURL } from "./Generic/getAgencyURL";
 
 function Trip(props) {
+
     const navigate = useNavigate();
 
     const handleAddToCart = () => {
@@ -31,6 +32,7 @@ function Trip(props) {
         });
     };
 
+    
     
     return (
 
@@ -86,8 +88,8 @@ function Trip(props) {
         </div>
     );
 }
-export const shortlink ='/wandermission/service/shortTrips';
-export const longlink ='/wandermission/service/longTrips';
+export const shortlink ='http://localhost:5000/wandermission/service/shortTrips';
+export const longlink ='http://localhost:5000/wandermission/service/longTrips';
 export default Trip;
 
 
