@@ -4,16 +4,65 @@ import { Navigate, useLocation, useNavigate } from "react-router-dom";
 import { gold_star, arrow_cart, eth_logo, star_url } from "../links";
 import TextField from "@mui/material/Input";
 import { convertToYear } from "./Generic/convertToYear";
+import { useSelector } from 'react-redux';
+import { Button, ButtonGroup, Hidden, Rating } from "@mui/material";
+import { useCallback, useEffect, useRef, useState } from "react";
+import StarIcon from "./Generic/StarIcon";
+import { styled } from '@mui/material/styles';
 
 export function Product() {
     const location = useLocation();
     const navigation = useNavigate();
-    var quantityNumber = document.getElementsByClassName('MuiButtonGroup-root MuiButtonGroup-contained css-zqcytf-MuiButtonGroup-root');
-    // var quantityNumber = 'MuiButtonGroup-root MuiButtonGroup-contained css-zqcytf-MuiButtonGroup-root'.getAttribute('value');
-    // var counter = document.getElementById("counter");
-    // var quantityNumber = counter.value;
-    const moveToCart = (e) => {
-        
+
+    //Redux session varaible
+    const user = useSelector((state) => state.user);
+    const isLoggedIn = useSelector((state) => state.isLoggedIn);
+
+    //State Declaration
+    const [isLoading, setLoading] = useState(false);
+    const [serviceData, setServiceData] = useState({
+        rating: '',
+        comments: []
+    });
+    const [feedback, setFeedback] = useState({
+        rating: '',
+        comment: ''
+    })
+    const [counter, setCounter] = useState(0);
+
+    const handleIncrement = () => {
+        setCounter(counter + 1)
+    };
+
+    const handleDecrement = () => {
+        setCounter(counter - 1)
+    };
+
+    const changeFeedback = (prop) => (e) => {
+        setFeedback({ ...feedback, [prop]: e.target.value });
+    };
+
+    const StyledRating = styled(Rating)({
+        '& .MuiRating-iconFilled': {
+            color: '#ffc32b',
+        },
+        '& .MuiRating-iconHover': {
+            color: '#ffc32b',
+        },
+    });
+
+    useEffect(() => {
+        const fetchServiceDetails = async () => {
+            let service_id = location.state.service_id;
+
+            try {
+                setLoading(true);
+                const response = await fetch("wandermission/service/get/" + service_id);
+
+                if (!response.ok) {
+                    return setLoading(false);
+                }
+                const resp = await response.json();
 
                 setServiceData({
                     ...serviceData,
@@ -69,7 +118,6 @@ export function Product() {
                 headers: {
                     'Content-type': 'application/json'
                 },
-                    agency_id: location.state.agency_id,
                 body: JSON.stringify({
                     service_id: location.state.service_id,
                     quantity: counter,
@@ -169,64 +217,82 @@ export function Product() {
     };
 
     return (
-        <div className="container">
-            <div className="section-1">
-                <div className="content-container">
-                    <div className="column-left">
-                        <div className="trip-image">
-                            <img
-                                className="trip-image-main"
-                                src={location.state.tripimageURL}
-                            ></img>
-                        </div>
-                    </div>
-                    <div className="column-right">
-                        <div className="first-row">
-                            <div className="partner-logo">
-                                <img
-                                    className="partner-logo-main"
-                                    src={location.state.agencyLogo}
-                                ></img>
-                            </div>
-                            <div className="trip-name">
-                                <h1 className="trip-name-main">
-                                    {location.state.tripName}
-                                </h1>
-                            </div>
-                            <div className="stars">
-                                <img className="gold-star" src={gold_star} />
-                                <h4 className="stars-main">
-                                    {location.state.stars}
-                                </h4>
-                            </div>
-                        </div>
-                        <div className="second-row">
-                            <div className="description">
-                                <h3 className="description-main">
-                                    {location.state.description}
-                                </h3>
-                            </div>
-                        </div>
-                        <div className="third-row">
-                            <div className="time-info">
-                                <div className="travel-time">
-                                    <h4 className="travel-text">Travel</h4>
-                                    <h4 className="travel-time-main">
-                                        {convertToYear(location.state.travelTime)}
-                                    </h4>
-                                </div>
-                                <div className="stay-time">
-                                    <h4 className="stay-text">Stay</h4>
-                                    <h4 className="stay-time-main">
-                                        {convertToYear(location.state.stayTime)}
-                                    </h4>
-                                </div>
-                                <div>
-                                    <div className="personNumber">
-                                        <h4 className="quantity">Quantity</h4>
+        <>
+            {
+                isLoading ? ''
+                    :
+                    <div className="container">
+                        <div className="section-1">
+                            <div className="content-container">
+                                <div className="column-left">
+                                    <div className="trip-image">
+                                        <img
+                                            className="trip-image-main"
+                                            src={location.state.tripimageURL}
+                                        ></img>
                                     </div>
-                                    <div class="dropdown">
-                                        <CounterBtn />
+                                </div>
+                                <div className="column-right">
+                                    <div className="first-row">
+                                        <div className="partner-logo">
+                                            <img
+                                                className="partner-logo-main"
+                                                src={location.state.agencyLogo}
+                                            ></img>
+                                        </div>
+                                        <div className="trip-name">
+                                            <h1 className="trip-name-main">
+                                                {location.state.tripName}
+                                            </h1>
+                                        </div>
+                                        <div className="stars">
+                                            <img className="gold-star" src={gold_star} />
+                                            <h4 className="stars-main">
+                                                {serviceData.rating}
+                                            </h4>
+                                        </div>
+                                    </div>
+                                    <div className="second-row">
+                                        <div className="description">
+                                            <h3 className="description-main">
+                                                {location.state.description}
+                                            </h3>
+                                        </div>
+                                    </div>
+                                    <div className="third-row">
+                                        <div className="time-info">
+                                            <div className="travel-time">
+                                                <h4 className="travel-text">Travel</h4>
+                                                <h4 className="travel-time-main">
+                                                    {convertToYear(location.state.travelTime)}
+                                                </h4>
+                                            </div>
+                                            <div className="stay-time">
+                                                <h4 className="stay-text">Stay</h4>
+                                                <h4 className="stay-time-main">
+                                                    {convertToYear(location.state.stayTime)}
+                                                </h4>
+                                            </div>
+                                            <div>
+                                                <div className="personNumber">
+                                                    <h4 className="quantity">Quantity</h4>
+                                                </div>
+                                                <div className="dropdown">
+                                                    <ButtonGroup
+                                                        size="small"
+                                                        variant="contained"
+                                                        id='counter'
+                                                        value={counter}
+                                                        aria-label="outlined primary button group">
+
+                                                        <Button onClick={handleIncrement} >+</Button>
+                                                        {counter > 0 && <Button disabled>{counter}</Button>}
+                                                        {counter > 0 && <Button onClick={handleDecrement}>-</Button>}
+                                                    </ButtonGroup>
+                                                </div>
+                                            </div>
+                                        </div>
+
                                     </div>
                                     <div className="fifth-row" onClick={addToCart}>
                                         <div className="price"> {/*onClick={moveToCart}*/}
