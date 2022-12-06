@@ -2,36 +2,15 @@
 
 
 .container {
-    height: 100vh;
-    padding-left: 20vw;
-    padding-right: 20vw;
-    padding-top: 10vh;
-
     .logout {
         display: flex;
 
         .welcome {
-            @include wanderText(700, 3vw, white);
-
+            @include wanderText(300, 3vw, #B4B4B4);
             .loggedin_username {
-                @include wanderText(300, 3vw, #FFC32B);
-
+                @include wanderText(300, 3vw, #B4B4B4);
+                
             }
         }
-
-        .button-main {
-            width: 200px;
-
-            .logout_username {
-                background-color: #FFC32B;
-                border: none;
-                padding: 20px;
-                margin-left: 50px;
-                border-radius: 10px;
-                @include wanderText(800, 1vw, #000000);
-            }
-        }
-
-
     }
 }
