@@ -17,9 +17,9 @@ class CounterBtn extends React.Component {
     const displayCounter = this.state.counter > 0;
 
     return (
-      <ButtonGroup  size="small" variant="contained" aria-label="outlined primary button group">
+      <ButtonGroup  size="small" variant="contained" id='counter' value={this.state.counter} aria-label="outlined primary button group">
         <Button onClick={this.handleIncrement} >+</Button>
-        {displayCounter && <Button disabled>{this.state.counter}</Button>}
+        {displayCounter &&  <Button disabled>{this.state.counter}</Button>}
         {displayCounter && <Button onClick={this.handleDecrement}>-</Button>}
       </ButtonGroup>
     );

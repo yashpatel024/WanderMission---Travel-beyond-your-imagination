@@ -10,10 +10,27 @@ import { convertToYear } from "./Generic/convertToYear";
 export function Product() {
     const location = useLocation();
     const navigation = useNavigate();
-
-
-
+    var quantityNumber = document.getElementsByClassName('MuiButtonGroup-root MuiButtonGroup-contained css-zqcytf-MuiButtonGroup-root');
+    // var quantityNumber = 'MuiButtonGroup-root MuiButtonGroup-contained css-zqcytf-MuiButtonGroup-root'.getAttribute('value');
+    // var counter = document.getElementById("counter");
+    // var quantityNumber = counter.value;
     const moveToCart = (e) => {
+        
+
+            var serviceData = {
+                "service_id": location.state.service_id,
+                "quantity" : quantityNumber,
+                "service_name" : location.state.tripName,
+                "price": location.state.price
+            }
+
+         console.log(quantityNumber);
+
+        fetch('http://localhost:5000/wandermission/user/cart/update',{
+            method: 'POST',
+            body: serviceData
+        })
+
         e.preventDefault();
 
         localStorage.setItem("cart_product", location.state.id);
