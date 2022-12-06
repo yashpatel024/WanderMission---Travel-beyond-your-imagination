@@ -122,7 +122,8 @@ export function Product() {
                     service_id: location.state.service_id,
                     quantity: counter,
                     service_name: location.state.tripName,
-                    price: counter * location.state.price
+                    price: counter * location.state.price,
+                    service_image: location.state.tripimageURL
                 }),
             })
 

@@ -12,8 +12,6 @@ const ShortTrips = () => {
             const response = await fetch(longlink);
 
             const resp = await response.json();
-            console.log(resp.length);
-            console.log(resp)
             setItems(resp);
         }
 

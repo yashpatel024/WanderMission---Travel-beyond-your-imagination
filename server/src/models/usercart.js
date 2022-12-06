@@ -14,6 +14,7 @@ const userCartSchema = new mongoose.Schema({
             },
             quantity: Number,
             service_name: String,
+            service_image: String,
             price: Number
         }
     ],

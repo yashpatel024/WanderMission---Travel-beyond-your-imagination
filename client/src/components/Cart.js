@@ -15,7 +15,7 @@ import {
 } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-// import { selectUser } from "../Features/userSlice";
+import CartServices from "./CartServices";
 
 //Initial data for state
 const initialFormData = {
@@ -53,6 +53,11 @@ export function Cart() {
     const [formData, setFormData] = useState({ ...initialFormData });
     const [errorText, setErrorText] = useState({ ...initialErrorText });
 
+    const [services, setServices] = useState([]);
+    const [isLoading, setLoading] = useState(false);
+
+    const [totalAmount, setTotalAmount ] = useState(0);
+
     //On change of inputfield
     const changeFormData = (prop) => (e) => {
         setFormData({ ...formData, [prop]: e.target.value });
@@ -68,9 +73,35 @@ export function Cart() {
         if (!isLoggedIn) {
             navigate("/login");
         }
-        // if (localStorage.getItem("cart_product") == null) {
-        //     navigate("/home");
-        // }
+
+        const fetchServiceDetails = async () => {
+            try {
+                setLoading(true);
+                const response = await fetch("wandermission/user/cart/get");
+
+                const resp = await response.json();
+
+                setServices(resp.services);
+                
+                setLoading(false);
+            } catch (error) {
+                setLoading(true);
+                console.log('Error while fetching fetchServiceDetails ', error);
+                return;
+            }
+        }
+
+        const calculateCount = () => {
+            services.forEach(element => {
+                setTotalAmount(totalAmount + (element.quantity * element.price));
+            });
+        }
+
+        fetchServiceDetails();
+
+        if(totalAmount == 0){
+            calculateCount();
+        }
     });
 
     //On Click of Pay
@@ -262,66 +293,40 @@ export function Cart() {
                             <img className="heading-star" src={star_url}></img>
                             <h3 className="heading-text">Checkout</h3>
                         </div>
-                        {GetImageURLbyID("638cea1f1ea886626b971be8")}
-                        {/* {GetCartData()(
-                            cart => {
-                                return (
-                                    <div className="row-1">
-                                        <div className="chekout-image">
-
-                                        </div>
-                                        <div className="product-name">
-                                            <div className="agency-logo">
-                                                {GetImageURLbyID("638cea1f1ea886626b971be8")}
+                        <>
+                            {
+                                services.map(element => {
+                                    return (
+                                        <div className="row-1">
+                                            <div className="chekout-image">
+                                                <img
+                                                    className="product-image"
+                                                    src={element.service_image}
+                                                ></img>
                                             </div>
                                             <div className="product-name">
-                                                <h4 className="product-name-main">
-                                                    {cart.service_name}
-                                                </h4>
+                                                <div className="agency-logo">
+                                                    <img
+                                                        className="agency-logo-main"
+                                                        src=""
+                                                    ></img>
+                                                </div>
+                                                <div className="product-name">
+                                                    <h4 className="product-name-main">
+                                                        {element.service_name
+                                                            ? element.service_name
+                                                            : "Destination not found"}
+                                                    </h4>
+                                                </div>
+                                            </div>
+                                            <div className="quantitty">
+                                                <h4 className="product-name-main">{element.quantity} Person</h4>
                                             </div>
                                         </div>
-                                        <div className="quantitty">
-                                            <h4 className="product-name-main">1 Person</h4>
-                                        </div>
-                                    </div>
-
-                                )
+                                    );
+                                })
                             }
-                        )} */}
-                        {/* <div className="row-1">
-                            <div className="chekout-image">
-                                <img
-                                    className="product-image"
-                                    src={
-                                        location.state
-                                            ? location.state.tripimageURL
-                                            : ""
-                                    }
-                                ></img>
-                            </div>
-                            <div className="product-name">
-                                <div className="agency-logo">
-                                    <img
-                                        className="agency-logo-main"
-                                        src={
-                                            location.state
-                                                ? location.state.agencyLogo
-                                                : ""
-                                        }
-                                    ></img>
-                                </div>
-                                <div className="product-name">
-                                    <h4 className="product-name-main">
-                                        {location.state
-                                            ? location.state.tripName
-                                            : "Destination not found"}
-                                    </h4>
-                                </div>
-                            </div>
-                            <div className="quantitty">
-                                <h4 className="product-name-main">1 Person</h4>
-                            </div>
-                        </div> */}
+                        </>
                         <div className="row-2">
                             <div className="heading">
                                 <h3 className="heading-text"> Select date</h3>
@@ -353,17 +358,10 @@ export function Cart() {
                         </div>
                         <div className="row-1">
                             <h3 className="trip-name">
-                                {" "}
-                                {location.state
-                                    ? location.state.agencyName +
-                                    " " +
-                                    location.state.tripName +
-                                    " | 1 Person"
-                                    : "Destination not selected"}
-                                {""}
+                                Total charge
                             </h3>
                             <h3 className="actual-price">
-                                {location.state ? location.state.price : "***"}
+                                {totalAmount != 0 ? totalAmount : "***"}
                                 {" ETH"}
                             </h3>
                         </div>
@@ -372,12 +370,10 @@ export function Cart() {
                                 {" "}
                                 International Tax 5%{" "}
                             </h3>
-                            <h3 className="tax-number">
+                            <h3>
                                 {" "}
                                 {"+"}
-                                {location.state
-                                    ? location.state.price * taxPercentage
-                                    : "***"}{" "}
+                                {totalAmount != 0 ? (totalAmount*taxPercentage)/100 : "***"}{" "}
                                 {" ETH"}
                             </h3>
                         </div>
@@ -392,10 +388,7 @@ export function Cart() {
                             <h3 className="grand-total"> Grand Total </h3>
                             <h3 className="final-price-number">
                                 {" "}
-                                {location.state
-                                    ? location.state.price +
-                                    location.state.price * taxPercentage
-                                    : "***"}
+                                {totalAmount != 0 ? totalAmount + (totalAmount*taxPercentage)/100 : "***"}{" "}
                                 {" ETH"}
                             </h3>
                         </div>

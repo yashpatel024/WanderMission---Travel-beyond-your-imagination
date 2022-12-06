@@ -3,8 +3,6 @@ import Trip from "./Trip";
 import {shortlink} from "./Trip";
 
 const ShortTrips = () => {
-
-    
     const [items, setItems] = useState([])
     //To Fetch MetaData JSON
 
@@ -13,8 +11,6 @@ const ShortTrips = () => {
             const response = await fetch(shortlink);
 
             const resp = await response.json();
-            console.log(resp.length);
-            console.log(resp)
             setItems(resp)
         }
 
@@ -31,7 +27,7 @@ const ShortTrips = () => {
                 items.map((value) => (
                     <Trip
                         tripimageURL={value.trip_logo}
-                        key = {value.service_id}
+                        key = {value._id}
                         agency_id={value.agency_id}
                         tripName={value.trip_name}
                         stars={value.rating}
