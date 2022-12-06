@@ -10,10 +10,17 @@ const userModel = require('../models/user');
  */
 
 /**
- * Insert Comment with userId and contentMessage
+ * Route - Insert Comment with userId and contentMessage, and rating
  */
 serviceFeedbackRoute.post("/addcomment", async (req, res) => {
-    const { serviceId, userId, content } = req.body;
+    let userId;
+    if (req.session.user) {
+        userId = req.session.user.userid;
+    } else {
+        userId = req.body.userId;
+    }
+
+    const { serviceId, content, rating } = req.body;
 
     try {
         //fetch target User and Service Model
@@ -27,13 +34,18 @@ serviceFeedbackRoute.post("/addcomment", async (req, res) => {
         var newComment = {
             _id: newCommentId,
             user_id: targetUserModel._id,
-            user_name: targetUserModel.firstname+" "+targetUserModel.lastname,
+            user_name: targetUserModel.firstname + " " + targetUserModel.lastname,
             content: content,
+            given_rating: rating,
             updated_date: Date.now()
         }
 
         //Push new comment into array of comments
         targetServiceModel.comments.push(newComment);
+        //Update new rating
+        let newRating = getUpdatedRating(rating, targetServiceModel.rating, targetServiceModel.no_of_reviews);
+        targetServiceModel.rating = newRating[0]
+        targetServiceModel.no_of_reviews = newRating[1];
 
         //Save model to reflect changes
         targetServiceModel.save(function (err) {
@@ -54,7 +66,32 @@ serviceFeedbackRoute.post("/addcomment", async (req, res) => {
 });
 
 /**
- * Update Comment with new Message
+ * Calculate Updated Rating
+ * @param {*} newRating 
+ * @param {*} currentRating 
+ * @param {*} currentNoOfRating 
+ * @returns 
+ */
+function getUpdatedRating(newRating, currentRating, currentNoOfRating) {
+    //If no reviews before, return current one
+    if (currentNoOfRating <= 0 || currentRating == 0) {
+        return [ newRating, 1 ];
+    }
+
+    //If no new review, then return previous
+    if (newRating == null) {
+        return [ currentRating, currentNoOfRating ];
+    }
+
+    //calculated new average
+    return [
+        ((currentRating * currentNoOfRating + newRating) / (currentNoOfRating + 1)).toFixed(2)
+        , (currentNoOfRating + 1)
+    ];
+}
+
+/**
+ * Route - Update Comment with new Message
  */
 serviceFeedbackRoute.patch("/updatecomment", async (req, res) => {
     const { serviceId, commentId, userId, content } = req.body;

@@ -8,7 +8,6 @@ import "../styles/logout.scss";
 const Logout = () => {
     const isLoggedIn = useSelector((state) => state.isLoggedIn);
 
-    console.log(isLoggedIn);
     const dispatch = useDispatch();
 
     //Redux session varaible
@@ -29,7 +28,7 @@ const Logout = () => {
             })
 
             const resp = await res.json();
-            
+
             if (!res.ok) {
                 const error = resp;
                 return;

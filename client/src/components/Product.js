@@ -92,7 +92,7 @@ export function Product() {
                                 </div>
                                 <div>
                                     <div className="personNumber">
-                                    <h4 className="quantity">Quantity</h4>
+                                        <h4 className="quantity">Quantity</h4>
                                     </div>
                                     <div class="dropdown">
                                         <CounterBtn />
@@ -112,11 +112,13 @@ export function Product() {
                                         src={eth_logo}
                                     ></img>
                                 </div>
-                                <img
-                                    className="arrow-cart"
-                                    src={arrow_cart}
-                                ></img>
-                                <h4 className="cart-text">Cart</h4>
+                                <div className="cart-container">
+                                    <img
+                                        className="arrow-cart"
+                                        src={arrow_cart}
+                                    ></img>
+                                    <h4 className="cart-text">Cart</h4>
+                                </div>
                             </div>
                         </div>
                         <div className="sixth-row">

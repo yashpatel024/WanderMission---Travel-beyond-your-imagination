@@ -23,11 +23,13 @@ const serviceSchema = new mongoose.Schema({
     },
     no_of_reviews: {
         type: Number,
-        required: true
+        required: true,
+        default: 0,
     },
     rating: {
         type: Number,
         required: true,
+        default: 0,
     },
     travel_time: {
         type: Number,
@@ -71,7 +73,11 @@ const serviceSchema = new mongoose.Schema({
                 required: true
             },
             content: String,
-            // given_rating: Number,
+            given_rating: {
+                type: Number,
+                min: 1,
+                max: 5
+            },
             createdAt: {
                 type: Date,
                 default: () => Date.now(),

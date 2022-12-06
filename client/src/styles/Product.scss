@@ -120,24 +120,27 @@
                                 font-size: 16px;
                             }
                         }
-                        .personNumber{
+
+                        .personNumber {
                             margin-top: 20px;
                             font-family: "Montserrat";
-                                color: #9b9b9b;
-                                font-weight: 200;
-                                font-size: 13px;
+                            color: #9b9b9b;
+                            font-weight: 200;
+                            font-size: 13px;
                         }
+
                         .dropdown {
                             margin-top: 5px;
                             background-color: white;
                             display: inline-table;
                             border-radius: 4px;
-                            .css-zqcytf-MuiButtonGroup-root .MuiButtonGroup-grouped:not(:last-of-type).Mui-disabled{
+
+                            .css-zqcytf-MuiButtonGroup-root .MuiButtonGroup-grouped:not(:last-of-type).Mui-disabled {
                                 color: black;
                             }
                         }
                     }
-                    
+
                 }
             }
 
@@ -147,30 +150,36 @@
                 .price {
                     display: inline-flex;
                     align-items: center;
+                    flex-direction: row;
                     border-color: white;
                     border-width: 1px;
                     border-style: solid;
                     border-radius: 200px;
-                    transition: 1100ms;
+                    transition: flex-direction 2s;
+                    transition-timing-function: ease-in-out;
 
                     &:hover {
                         cursor: pointer;
-                        background-color: #ffc32b;
-                        border-color: black;
+                        // border-color: black;
+                        display: inline-flex;
+                        flex-direction: row-reverse;
 
                         .price-container {
                             background-color: #ffc32b;
                         }
 
-                        .cart-text {
-                            color: black;
-                            font-weight: 800;
-                            margin-left: 0vw;
-                        }
+                        .cart-container {
+                            background-color: transparent;
+                            display: flex;
+                            flex-direction: row-reverse;
 
-                        .arrow-cart {
-                            width: 0px;
-                            margin-left: 0vw;
+                            .cart-text {
+                                margin-left: 0vw;
+                            }
+
+                            .arrow-cart {
+                                margin-left: 2vw;
+                            }
                         }
                     }
 
@@ -196,20 +205,29 @@
                         }
                     }
 
-                    .arrow-cart {
-                        margin-left: 2vw;
-                        width: 1.2vw;
+                    .cart-container {
+                        display: flex;
+                        flex-direction: row;
+                        background-color: transparent;
+                        padding: 1.2vw 2vw 1.3vw 2vw;
+                        border-radius: 200px;
+                        align-items: center;
+
+                        .arrow-cart {
+                            width: 1.2vw;
+                            display: block;
+                        }
+
+                        .cart-text {
+                            margin-left: 2vw;
+                            display: block;
+                            font-family: "Montserrat";
+                            color: white;
+                            font-weight: 500;
+                            font-size: 1.7vw;
+                        }
                     }
 
-                    .cart-text {
-                        margin-left: 2vw;
-                        margin-right: 2vw;
-                        display: block;
-                        font-family: "Montserrat";
-                        color: white;
-                        font-weight: 500;
-                        font-size: 1.7vw;
-                    }
                 }
             }
 
