@@ -33,7 +33,7 @@ const Logout = () => {
                 const error = resp;
                 return;
             }
-        }catch(error){
+        } catch (error) {
             console.log(error.message);
         }
         dispatch(signOut());
@@ -47,9 +47,12 @@ const Logout = () => {
                     Welcome{" "}
                     <span className="loggedin_username">{user.username}</span>!
                 </h1>
-                <button className="logout_username" onClick={logout}>
-                    Log out
-                </button>
+                <br />
+                <div className="button-main">
+                    <button className="logout_username" onClick={logout}>
+                        Log out
+                    </button>
+                </div>
             </form>
         </div>
     );
