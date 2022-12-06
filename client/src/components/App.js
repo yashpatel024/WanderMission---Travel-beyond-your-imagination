@@ -7,8 +7,9 @@ import Footer from "./Footer";
 import "../styles/_commonFiles.scss";
 import Header from "./Header";
 import Logout from "./Logout";
-import { useSelector } from "react-redux";
-import { selectUser } from "../Features/userSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { signIn } from "../Features/userSlice";
+import { useEffect, useState } from "react";
 
 //All routes are declared here
 const AppRoutes = () => {
@@ -24,13 +25,54 @@ const AppRoutes = () => {
     );
 };
 const App = () => {
-    const user = useSelector(selectUser);
+    //Redux session varaible
+    const isLoggedIn = useSelector((state) => state.isLoggedIn);
+
+    //dispatch to access dispatch function from Redux store
+    const dispatch = useDispatch();
+
+    const [isLoading, setLoading] = useState(false);
+
+    useEffect(() => {
+        // const fetchUserAuth = async () => {
+        //     try {
+        //         setLoading(true);
+        //         const response = await fetch("wandermission/user/isAuth");
+
+        //         if (!response.ok) {
+        //             return setLoading(false);
+        //         }
+        //         const resp = await response.json();
+
+        //         console.log(resp);
+        //         dispatch(
+        //             signIn({
+        //                 userid: resp.userid,
+        //                 username: resp.username
+        //             })
+        //         );
+        //         setLoading(false);
+        //     } catch (error) {
+        //         setLoading(true);
+        //         console.log('Error while fetching use auth ', error);
+        //         return;
+        //     }
+        // };
+
+        // if (!isLoggedIn) {
+        //     fetchUserAuth();
+        // }
+    }, []);
 
     return (
         <>
-            <Header userLoggedIn={user} />
-            <AppRoutes />
-            <Footer userLoggedIn={user} />
+            {isLoading ? "...loading" :
+                <>
+                    <Header />
+                    <AppRoutes />
+                    <Footer />
+                </>
+            }
         </>
     );
 };

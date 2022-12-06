@@ -1,17 +1,44 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { selectUser } from "../Features/userSlice";
+import { signOut } from "../Features/userSlice";
+// import { selectUser } from "../Features/userSlice";
 import "../styles/logout.scss";
 
 const Logout = () => {
+    const isLoggedIn = useSelector((state) => state.isLoggedIn);
+
+    console.log(isLoggedIn);
     const dispatch = useDispatch();
-    const user = useSelector(selectUser);
+
+    //Redux session varaible
+    const user = useSelector((state) => state.user);
+
+    // const user = useSelector(selectUser);
     let navigate = useNavigate();
 
-    const logout = () => {
-        dispatch(logout());
-        navigate("/");
+    const logout = async (e) => {
+        e.preventDefault();
+
+        try {
+            const res = await fetch('/wandermission/user/logout', {
+                method: 'DELETE',
+                headers: {
+                    'Content-type': 'application/json'
+                },
+            })
+
+            const resp = await res.json();
+            
+            if (!res.ok) {
+                const error = resp;
+                return;
+            }
+        }catch(error){
+            console.log(error.message);
+        }
+        dispatch(signOut());
+        navigate("/login");
     };
 
     return (

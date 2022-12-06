@@ -13,7 +13,7 @@ import {
 } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { selectUser } from "../Features/userSlice";
+// import { selectUser } from "../Features/userSlice";
 
 //Initial data for state
 const initialFormData = {
@@ -40,8 +40,9 @@ const gasFees = 0.005;
 
 export function Cart() {
     //Redux session varaible
-    const user = useSelector(selectUser);
-
+    const user = useSelector((state) => state.user);
+    const isLoggedIn = useSelector((state) => state.isLoggedIn);
+    
     let navigate = useNavigate();
 
     const location = useLocation();
@@ -62,12 +63,12 @@ export function Cart() {
 
     //To check whether user is logged in or not
     useEffect(() => {
-        if (user == null) {
+        if (!isLoggedIn) {
             navigate("/login");
         }
-        if (localStorage.getItem("cart_product") == null) {
-            navigate("/home");
-        }
+        // if (localStorage.getItem("cart_product") == null) {
+        //     navigate("/home");
+        // }
     });
 
     //On Click of Pay

@@ -2,8 +2,13 @@ import "../styles/_commonFiles.scss";
 import "../styles/Footer.scss";
 import { Link } from "react-router-dom";
 import { company_logo_url } from "../links";
+import { useSelector } from "react-redux";
 
-const Footer = ({ userLoggedIn }) => {
+const Footer = () => {
+    //Redux session varaible
+    const user = useSelector((state) => state.user);
+    const isLoggedIn = useSelector((state) => state.isLoggedIn);
+
     return (
         <div className="footer">
             <div className="footer-container">
@@ -28,11 +33,11 @@ const Footer = ({ userLoggedIn }) => {
                     <div className="login-btn">
                         {
                             //If logged in, Set Username in profile badge
-                            userLoggedIn == null ? (
+                            !isLoggedIn ? (
                                 <Link to="/login">Login</Link>
                             ) : (
                                 <Link to="/logout">
-                                    {userLoggedIn.username}
+                                    {user.username}
                                 </Link>
                             )
                         }

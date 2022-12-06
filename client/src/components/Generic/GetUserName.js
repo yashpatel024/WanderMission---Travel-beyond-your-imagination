@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 export function GetUserName(user_id) {
 
     const [items, setItems] = useState([])
-    const link = 'http://localhost:5000/wandermission/user/get/'+user_id;
+    const link = '/wandermission/user/get/'+user_id;
 
     useEffect(() => {
         fetch(link)
@@ -22,7 +22,3 @@ export function GetUserName(user_id) {
     );
 
 }
-
-
-
-

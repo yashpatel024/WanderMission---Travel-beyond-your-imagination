@@ -12,6 +12,7 @@ userRoute.post("/signup", async (req, res) => {
 
     if (!email || !firstname || !password) {
         res.status(400).json({ message: "Please provide mandatory information" });
+        return;
     }
 
     try {
@@ -32,6 +33,7 @@ userRoute.post("/signin", async (req, res) => {
 
     if (!email || !password) {
         res.status(400).json({ message: "Please provide mandatory information" });
+        return;
     }
 
     try {
@@ -39,13 +41,14 @@ userRoute.post("/signin", async (req, res) => {
         const targetUserModel = await userModel.findOne({ email });
         if (!targetUserModel) {
             res.status(400).json({ message: "User not found" });
+            return;
         }
 
         //Comparing password with hash of saved password
         if (targetUserModel.comparePasswords(password)) {
             //userSession object
             const userSession = {
-                email: targetUserModel.email,
+                userid: targetUserModel._id,
                 username: targetUserModel.firstname + " " + targetUserModel.lastname
             }
 
@@ -56,16 +59,16 @@ userRoute.post("/signin", async (req, res) => {
             res.status(200).json({ "response": "You have logged in successfully ", userSession });
         } else {
             res.status(400).json({ message: "Incorrect credential" });
+            return;
         }
     } catch (error) {
-        res.status(500).send({
+        res.status(500).json({
             message: error.message
         });
     }
 });
 
 userRoute.get("/isAuth", async (req, res) => {
-    console.log(req);
     if (req.session.user) {
         res.status(200).json(req.session.user);
     } else {

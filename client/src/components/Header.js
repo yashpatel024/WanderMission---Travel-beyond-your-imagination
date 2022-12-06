@@ -3,8 +3,13 @@ import "../styles/Header.scss";
 import "../styles/_commonFiles.scss";
 import { Link, NavLink } from "react-router-dom";
 import { company_logo_url } from "../links";
+import { useSelector } from "react-redux";
 
-const Header = ({ userLoggedIn }) => {
+const Header = () => {
+    //Redux session varaible
+    const user = useSelector((state) => state.user);
+    const isLoggedIn = useSelector((state) => state.isLoggedIn);
+
     //State of Scroll, to track scroll position for header
     const [isScrolled, setIsScrolled] = useState(false);
     let parent = document.getElementById("root");
@@ -57,7 +62,7 @@ const Header = ({ userLoggedIn }) => {
                     {/* <div className="font-primary">
                         <Link to="/">Explore</Link>
                     </div> */}
-                    {userLoggedIn == null ? (
+                    {!isLoggedIn ? (
                         ""
                     ) : (
                         <div>
@@ -67,11 +72,11 @@ const Header = ({ userLoggedIn }) => {
                     <div>
                         {
                             //If logged in, Set Username in profile badge
-                            userLoggedIn == null ? (
+                            !isLoggedIn? (
                                 <Link to="/login">Login</Link>
                             ) : (
                                 <Link to="/logout">
-                                    {userLoggedIn.username}
+                                    {user.username}
                                 </Link>
                             )
                         }

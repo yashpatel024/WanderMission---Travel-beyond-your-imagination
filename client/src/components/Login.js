@@ -18,12 +18,32 @@ import {
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { login, selectUser } from "../Features/userSlice";
+import { signIn } from "../Features/userSlice";
 import CommonFunctions from "./Generic/CommonFunctions";
+
+
+const fetchUserAuth = async () => {
+    try {
+        const response = await fetch("wandermission/user/isAuth");
+
+        if (!response.ok) {
+            return;
+        }
+        const resp = await response.json();
+        return resp;
+    } catch (error) {
+        console.log('Error while fetching use auth ', error);
+        return;
+    }
+};
 
 function LoginForm() {
     //Redux session varaible
-    const user = useSelector(selectUser);
+    const user = useSelector((state) => state.user);
+    const isLoggedIn = useSelector((state) => state.isLoggedIn);
+
+    //dispatch to access dispatch function from Redux store
+    const dispatch = useDispatch();
 
     //Variable declaration
     let userJsonObj;
@@ -49,9 +69,6 @@ function LoginForm() {
     const [formData, setFormData] = useState({ ...initialFormData });
     const [errorText, setErrorText] = useState({ ...initialErrorText });
 
-    //dispatch to access dispatch fun. from Redux store
-    const dispatch = useDispatch();
-
     //On change of inputfield
     const changeFormData = (prop) => (e) => {
         setFormData({ ...formData, [prop]: e.target.value });
@@ -72,9 +89,9 @@ function LoginForm() {
 
     //To access userCredentials at mounting
     useEffect(() => {
-        // if(user != null){
-        //     navigate("/home");
-        // }
+        if (isLoggedIn) {
+            navigate("/home");
+        }
         // fetch(user_details_json)
         //     .then((Response) => Response.json())
         //     .then((data) => {
@@ -102,7 +119,7 @@ function LoginForm() {
         }
 
         try {
-            const res = await fetch('http://localhost:5000/wandermission/user/signin', {
+            const res = await fetch('/wandermission/user/signin', {
                 method: 'POST',
                 headers: {
                     'Content-type': 'application/json'
@@ -115,7 +132,6 @@ function LoginForm() {
 
             const resp = await res.json();
 
-            console.log(resp)
             if (!res.ok) {
                 const error = resp;
                 setErrorText({
@@ -127,6 +143,29 @@ function LoginForm() {
 
                 return;
             }
+
+            const userData = await fetchUserAuth();
+
+            if (!userData) {
+                setErrorText({
+                    emailError: emailError,
+                    passwordError: passwordError,
+                    fetchError: true,
+                    fetchErrorMessage: "Authentication error, Please try again"
+                });
+            }
+
+            //use login reducer to add email in Redux session store
+            dispatch(
+                signIn({
+                    userid: userData.userid,
+                    username: userData.username
+                })
+            );
+
+            //TODO - navigate to history page, where we came from
+            //Navigate to home page
+            navigate("/home");
         } catch (error) {
             setErrorText({
                 emailError: emailError,
@@ -136,41 +175,6 @@ function LoginForm() {
             });
             return console.log(error);
         }
-        //User search
-        // let userFound = false;
-        // userJsonObj.users.forEach((element) => {
-        //     if (formData.email == element.email) {
-        //         //Check if both hase of password are same or not
-        //         if (
-        //             CommonFunctions.hashCode(formData.password) ==
-        //             element.hash_password
-        //         ) {
-        //             //use login reducer to add email in Redux session store
-        //             dispatch(
-        //                 login({
-        //                     email: formData.email,
-        //                 })
-        //             );
-        //             //Navigate to home once successfully submitted
-        //             navigate("/home");
-        //         } else {
-        //             //If both hashcode doesn't match
-        //             setErrorText({
-        //                 emailError: "",
-        //                 passwordError: "User credential is incorrect",
-        //             });
-        //         }
-        //         userFound = true;
-        //     }
-        // });
-
-        // if (!userFound) {
-        //     //If no user found with entered email
-        //     setErrorText({
-        //         emailError: "User not found",
-        //         passwordError: "",
-        //     });
-        // }
     };
 
     return (
@@ -241,10 +245,11 @@ function LoginForm() {
                     <FormHelperText className="helper-text">
                         {errorText.passwordError}
                     </FormHelperText>
+                    {errorText.fetchError && (
+                        <FormHelperText className="helper-text">{errorText.fetchErrorMessage}</FormHelperText>
+                    )}
                 </FormControl>
-                {errorText.fetchError && (
-                    <FormHelperText className="helper-text">{errorText.fetchErrorMessage}</FormHelperText>
-                )}
+
                 <Button
                     className="sign-in-button"
                     variant="contained"
