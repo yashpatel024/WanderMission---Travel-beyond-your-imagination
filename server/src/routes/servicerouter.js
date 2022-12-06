@@ -24,7 +24,7 @@ serviceRoute.post('/insert', async (req, res) => {
             message: "Total " + req.body.services.length + " services saved."
         });
     } catch (error) {
-        res.status(500).send({ 
+        res.status(500).send({
             message: error.message
         });
     }
@@ -37,8 +37,8 @@ serviceRoute.get('/getAll', async (req, res) => {
         res.status(200).json(savedData)
     }
     catch (error) {
-        res.status(500).json({ 
-            message: error.message 
+        res.status(500).json({
+            message: error.message
         })
     }
 })
@@ -46,8 +46,8 @@ serviceRoute.get('/getAll', async (req, res) => {
 //Get only Shorttrips services
 serviceRoute.get('/shortTrips', async (req, res) => {
     try {
-        const data = await serviceModel.find({ trip_type: { $gte: 'short' } });
-        res.json(data);
+        const data = await serviceModel.find({ trip_type: 'short' });
+        res.status(200).json(data);
     }
     catch (error) {
         res.status(500).json({ message: error.message })
@@ -58,7 +58,7 @@ serviceRoute.get('/shortTrips', async (req, res) => {
 serviceRoute.get('/longTrips', async (req, res) => {
     try {
         const data = await serviceModel.find({ trip_type: 'long' });
-        res.json(data);
+        res.status(200).json(data);
     }
     catch (error) {
         res.status(500).json({ message: error.message })

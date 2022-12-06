@@ -9,13 +9,18 @@ const ShortTrips = () => {
     //To Fetch MetaData JSON
 
     useEffect(() => {
-        fetch(shortlink)
-            .then((Response) => Response.json())
-            .then((service) => {
-                    const data = JSON.parse(JSON.stringify(service))
-                    setItems(data)
-            });
-            
+        const fetchTrip = async () => {
+            const response = await fetch(shortlink);
+
+            const resp = await response.json();
+            console.log(resp.length);
+            console.log(resp)
+            setItems(resp)
+        }
+
+        if(items.length <=0 ){
+            fetchTrip();
+        }            
     });
 
     
