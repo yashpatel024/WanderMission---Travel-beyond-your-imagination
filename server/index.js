@@ -16,7 +16,7 @@ const app = express();
 //Server port
 const port = process.env.PORT || 5000;
 //Max age of cookie = 1 hour is default
-const MAX_AGE_COOKIE = 1000*60*60*1;
+const MAX_AGE_COOKIE = 1000*60*60*24;
 
 //To allow only to specified origin
 const corsOptions = {

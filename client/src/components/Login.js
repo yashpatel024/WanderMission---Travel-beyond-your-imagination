@@ -92,11 +92,6 @@ function LoginForm() {
         if (isLoggedIn) {
             navigate("/home");
         }
-        // fetch(user_details_json)
-        //     .then((Response) => Response.json())
-        //     .then((data) => {
-        //         userJsonObj = data;
-        //     });
     });
 
     //On Click of Sign In

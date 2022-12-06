@@ -1,14 +1,12 @@
 import "../styles/_commonFiles.scss";
 import "../styles/Product.scss";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Navigate, useLocation, useNavigate } from "react-router-dom";
 import { gold_star, arrow_cart, eth_logo, star_url } from "../links";
 import TextField from "@mui/material/Input";
-import Button from "@mui/material/Button";
-import CounterBtn from "./Generic/CounterBtn";
 import { convertToYear } from "./Generic/convertToYear";
 import { useSelector } from 'react-redux';
-import { Hidden, Rating } from "@mui/material";
-import { useEffect, useState } from "react";
+import { Button, ButtonGroup, Hidden, Rating } from "@mui/material";
+import { useCallback, useEffect, useRef, useState } from "react";
 import StarIcon from "./Generic/StarIcon";
 import { styled } from '@mui/material/styles';
 
@@ -20,6 +18,7 @@ export function Product() {
     const user = useSelector((state) => state.user);
     const isLoggedIn = useSelector((state) => state.isLoggedIn);
 
+    //State Declaration
     const [isLoading, setLoading] = useState(false);
     const [serviceData, setServiceData] = useState({
         rating: '',
@@ -29,6 +28,15 @@ export function Product() {
         rating: '',
         comment: ''
     })
+    const [counter, setCounter] = useState(0);
+
+    const handleIncrement = () => {
+        setCounter(counter + 1)
+    };
+
+    const handleDecrement = () => {
+        setCounter(counter - 1)
+    };
 
     const changeFeedback = (prop) => (e) => {
         setFeedback({ ...feedback, [prop]: e.target.value });
@@ -69,52 +77,104 @@ export function Product() {
             }
         }
 
+        const fetchCartDetails = async () => {
+            let service_id = location.state.service_id;
+
+            try {
+                setLoading(true);
+                const response = await fetch("wandermission/user/cart/get");
+
+                if (!response.ok) {
+                    return setLoading(false);
+                }
+                const resp = await response.json();
+
+                resp.services.forEach(element => {
+                    if(element.service_id == service_id){
+                        setCounter(element.quantity);
+                    }
+                });
+                console.log(resp);
+                setLoading(false);
+            } catch (error) {
+                setLoading(true);
+                console.log('Error while fetching use auth ', error);
+                return;
+            }
+        }
+
         fetchServiceDetails();
+        fetchCartDetails();
     }, []);
 
-    var quantityNumber = document.getElementsByClassName('MuiButtonGroup-root MuiButtonGroup-contained css-zqcytf-MuiButtonGroup-root');
-    // var quantityNumber = 'MuiButtonGroup-root MuiButtonGroup-contained css-zqcytf-MuiButtonGroup-root'.getAttribute('value');
-    // var counter = document.getElementById("counter");
-    // var quantityNumber = counter.value;
-    const moveToCart = (e) => {
-        
-
-            var serviceData = {
-                "service_id": location.state.service_id,
-                "quantity" : quantityNumber,
-                "service_name" : location.state.tripName,
-                "price": location.state.price
-            }
-
-         console.log(quantityNumber);
-
-        fetch('http://localhost:5000/wandermission/user/cart/update',{
-            method: 'POST',
-            body: serviceData
-        })
-
+    const addToCart = async (e) => {
         e.preventDefault();
 
-        localStorage.setItem("cart_product", location.state.id);
-        navigation(
-            "/cart"
-            , {
-                state: {
-                    tripimageURL: location.state.tripimageURL,
-                    agencyLogo: location.state.agencyLogo,
-                    tripName: location.state.tripName,
-                    agencyName: location.state.agencyName,
-                    description: location.state.description,
-                    stars: location.state.stars,
-                    travelTime: location.state.travelTime,
-                    stayTime: location.state.stayTime,
-                    userComments: location.state.userComments,
-                    price: location.state.price,
+        if(counter == 0)
+            return;
+        try {
+            const res = await fetch('/wandermission/user/cart/update', {
+                method: 'POST',
+                headers: {
+                    'Content-type': 'application/json'
+                },
+                body: JSON.stringify({
                     service_id: location.state.service_id,
-                }
+                    quantity: counter,
+                    service_name: location.state.tripName,
+                    price: counter * location.state.price
+                }),
+            })
+
+            const resp = await res.json();
+
+            if (res.ok) {
+                navigation("/cart");
             }
-        );
-    };
+        } catch (error) {
+            setLoading(true);
+            console.log('Error while fetching use auth ', error);
+            return;
+        }
+
+    }
+
+    // const moveToCart = (e) => {
+    //     e.preventDefault();
+
+    //     var serviceData = {
+    //         "service_id": location.state.service_id,
+    //         "quantity": quantityNumber,
+    //         "service_name": location.state.tripName,
+    //         "price": location.state.price
+    //     }
+
+    //     fetch('http://localhost:5000/wandermission/user/cart/update', {
+    //         method: 'POST',
+    //         body: serviceData
+    //     })
+
+
+    //     localStorage.setItem("cart_product", location.state.id);
+    //     navigation(
+    //         "/cart"
+    //         , {
+    //             state: {
+    //                 tripimageURL: location.state.tripimageURL,
+    //                 agencyLogo: location.state.agencyLogo,
+    //                 tripName: location.state.tripName,
+    //                 agencyName: location.state.agencyName,
+    //                 description: location.state.description,
+    //                 stars: location.state.stars,
+    //                 travelTime: location.state.travelTime,
+    //                 stayTime: location.state.stayTime,
+    //                 userComments: location.state.userComments,
+    //                 price: location.state.price,
+    //                 service_id: location.state.service_id,
+    //             }
+    //         }
+    //     );
+    // };
 
     const addComment = async (e) => {
         e.preventDefault();
@@ -135,14 +195,13 @@ export function Product() {
             const resp = await res.json();
 
             if (res.ok) {
-                console.log(resp);
 
                 setFeedback({
                     ...feedback,
                     rating: '',
                     comment: ''
                 })
-                
+
                 setServiceData({
                     ...serviceData,
                     rating: resp.response.rating,
@@ -219,17 +278,31 @@ export function Product() {
                                                     <h4 className="quantity">Quantity</h4>
                                                 </div>
                                                 <div className="dropdown">
-                                                    <CounterBtn />
+                                                    <ButtonGroup
+                                                        size="small"
+                                                        variant="contained"
+                                                        id='counter'
+                                                        value={counter}
+                                                        aria-label="outlined primary button group">
+
+                                                        <Button onClick={handleIncrement} >+</Button>
+                                                        {counter > 0 && <Button disabled>{counter}</Button>}
+                                                        {counter > 0 && <Button onClick={handleDecrement}>-</Button>}
+                                                    </ButtonGroup>
                                                 </div>
                                             </div>
                                         </div>
 
                                     </div>
-                                    <div className="fifth-row">
-                                        <div className="price" onClick={moveToCart}>
+                                    <div className="fifth-row" onClick={addToCart}>
+                                        <div className="price"> {/*onClick={moveToCart}*/}
                                             <div className="price-container">
                                                 <h4 className="price-main">
-                                                    {location.state.price}
+                                                    {
+                                                        counter != 0 ?
+                                                            location.state.price * counter
+                                                            : location.state.price
+                                                    }
                                                 </h4>
                                                 <img
                                                     className="eth-logo"
