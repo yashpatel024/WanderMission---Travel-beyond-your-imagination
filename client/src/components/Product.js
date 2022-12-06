@@ -6,13 +6,14 @@ import TextField from "@mui/material/Input";
 import Button from "@mui/material/Button";
 import CounterBtn from "./Generic/CounterBtn";
 import { convertToYear } from "./Generic/convertToYear";
+import { GetAgencyURL } from "./Generic/getAgencyURL";
 
 export function Product() {
     const location = useLocation();
     const navigation = useNavigate();
-    var quantityNumber = document.getElementsByClassName('MuiButtonGroup-root MuiButtonGroup-contained css-zqcytf-MuiButtonGroup-root');
+    var quantityNumber
+    // var quantityNumber = document.getElementByClassName('counter');
     // var quantityNumber = 'MuiButtonGroup-root MuiButtonGroup-contained css-zqcytf-MuiButtonGroup-root'.getAttribute('value');
-    // var counter = document.getElementById("counter");
     // var quantityNumber = counter.value;
     const moveToCart = (e) => {
         
@@ -47,6 +48,7 @@ export function Product() {
                     travelTime: location.state.travelTime,
                     stayTime: location.state.stayTime,
                     userComments: location.state.userComments,
+                    agency_id: location.state.agency_id,
                     price: location.state.price,
                     service_id: location.state.service_id,
                 }
@@ -69,10 +71,7 @@ export function Product() {
                     <div className="column-right">
                         <div className="first-row">
                             <div className="partner-logo">
-                                <img
-                                    className="partner-logo-main"
-                                    src={location.state.agencyLogo}
-                                ></img>
+                                {GetAgencyURL(location.state.agency_id)}
                             </div>
                             <div className="trip-name">
                                 <h1 className="trip-name-main">

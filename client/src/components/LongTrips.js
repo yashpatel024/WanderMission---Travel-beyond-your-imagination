@@ -16,7 +16,7 @@ const ShortTrips = () => {
             });
             
     });
-
+    
     
     return (
         <ul >
