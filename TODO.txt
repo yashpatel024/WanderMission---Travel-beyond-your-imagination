@@ -21,6 +21,7 @@ Presentation (3 marks)
 Email OTP
 After buying Email notification
 Deploy on Firebase or AWS
+Cart changes persist - without session to with session
 
 #InBetween:
 Fake payment Flow
