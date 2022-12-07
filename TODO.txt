@@ -1,21 +1,84 @@
+##Final Project Requirements:
+#Authentication (10)
+Sign up flow (3)
+Log in flow (3) - DONE
+Demonstration of how passwords are stored/retrieved (make sure the passwords are hashed!) (3) - DONE
+Demonstration of error handling (1)
+
+#Front-end (25)
+Mobile-compatible (2)
+At least 5 different static (dummy) components (5)
+At least 5 different dynamic (requiring info from back-end/db) components (5)
+Light mode and Dark mode (should persist even after sign-out or refresh) (2)
+Fluid animations (1)
+Parallax effect (1)
+Favicon and Logo (1) - DONE
+Tutorial/Walkthrough for first-time login (1)
+Demonstration of error handling (2)
+A custom 404 page (2)
+Some sort of (fake) payment flow (3)
+Marks will be taken off for poor code (DRY violations, formatting, leftover comments, etc)
+
+#Back-end (20)
+Demonstration of GET/PUT/POST/DELETE APIs (8) - DONE
+Some sort of security for the API calls (3)
+Unit tests (3)
+Demonstration of Error handling from back end
+Some sort of try/catch (3) - DONE
+Usage of HTTP response codes (3) - DONE
+Marks will be taken off for poor code (DRY violations, formatting, leftover comments, etc)
+
+#Database (15)
+Must use at least one SQL database (8)
+Must use at least one NoSQL database (7) - DONE
+Marks will be taken off for spelling mistakes in the tables or inconsistencies in naming conventions
+
+#Version Control (10)
+Demonstration of using git branches to organize your team's work/commits (5)
+Demonstration of using other GitHub features (5)
+
+#Documentation (10)
+#In a README.md, include:
+An architecture diagram of your application (2)
+An overview of all the requirements for the front-end (2)
+An overview of all the requirements for the back-end (2)
+API routes
+Security
+etc...
+Your schema/table design for the databases (3)
+As well as an explanation of why you chose SQL for one aspect and NoSQL for the other aspect
+Any technical challenges you encountered (1)
+Marks will be taken off for bad formatting / spelling / grammar
+
+#Presentation (10)
+An architecture diagram displaying all technologies/tools used (2)
+A diagram showing an overview of the various APIs and routes used (2)
+A diagram showing an overview of the database design (2)
+A walkthrough of your web application (2)
+A brief discussion on your git/collaboration strategy (1)
+A brief discussion on technical challenges and interesting findings/learnings (1)
+
+#BONUS
+I'll be awarding the best project an extra 3% on top of their final mark. (The maximum mark for this project is still 100%)
+
+
 #Assignment 4 Requirements:
 For this assignment, you will be enhancing your Assignment 2 by implementing additional features and retrieving content from a database of your choice.
-
-Products Database (3 marks)--
-Comments Database (3 marks)--
-Users Database (3 marks)--
-Add Filters to product listing (3 marks)
+Products Database (3 marks)-- DONE
+Comments Database (3 marks)-- DONE
+Users Database (3 marks)-- DONE
+Add Filters to product listing (3 marks) - DONE
 Add Sorting to product listing (3 marks)
-Demonstrate ability to add/remove/modify items to cart (9 marks)
-The changes must persist!--
-Demonstrate ability to add/remove/modify comments/reviews (10 marks)
-The changes must persist!--
-The average reviews must be dynamic--
-Code Style and Organization (3 marks)--
-How much refactoring was required to connect your code to a DB?--
-Presentation (3 marks)
+Demonstrate ability to add/remove/modify items to cart (9 marks) - REMOVE/ADD/MODIFY FROM CART
+The changes must persist!-- DONE
+Demonstrate ability to add/remove/modify comments/reviews (10 marks) - MODIFY/REMOVE COMMENTS
+The changes must persist!-- DONE
+The average reviews must be dynamic-- DONE
+Code Style and Organization (3 marks)-- DONE - Add controllers, Organize Frontend code better
+How much refactoring was required to connect your code to a DB?-- DONE
+Presentation (3 marks) - DONE
 
-
+------------------------------------------
 #Ambitious:
 404 Page
 Email OTP
@@ -27,20 +90,35 @@ Cart changes persist - without session to with session
 Fake payment Flow
 
 #Mandatory:
-Session--
-Animation - Loadup,
-Json,--
-Props passing in Add to cart(Pass only Id),--
-Comment(feedback) - JSON,--
+BRANCHES IN GIT - EVERYONE FOLLOWS
+ANIMATION - Parallax / LOADER - Yash
+Add Caching in BackEND - Yash
+Home Page call fixes - Yash
+SORTING - Needed to add - Yash
+CART Fixes: Product Modification, Comments Modify, delete (If you purchase then and then you can comments) - Yash
+save all the details in Cart - Yash
+SIGN UP flow
+SQL DATABASE
+ERROR HANDLING - USE of RESPONSE CODE - FRONEND-BACKEND CONNECT - Yash will give format
+DECIDE 5 STATIC/DYNAMIC Components
+LIGHT/DARK mode - useReduxPersist to hold at Client side/Add to UserDatabase as well 
+MOBILE COMPATIBLE
+UNIT TESTING
+Walkthrough for firstime user - Store in database or hold in persistReduxSession
 
+-INCLUDE EVERY features with DIAGRAM / EXAMPLES
+Documentation - ON README 
+Presentation - MAYANK
+---------------------------------------------
+#INFO
 #MONGO_ATLAS
 Remember to go to Network Access and give your current IP or better 0.0.0.0 . This will allow ANY IP address to connect to your cluster so this is just for the demo.
 
 #PROXY on Client side 
-"proxy": "http://localhost:5000"
-- SO we can simply call using endpoints like: /wandermission/user/signin
-- So we will not get violation of CORS policy
-- but mainly to store cookie on http://localhost:3000
+"proxy": "http://localhost:5000" - DONE
+- SO we can simply call using endpoints like: /wandermission/user/signin - DONE
+- So we will not get violation of CORS policy - DONE
+- but mainly to store cookie on http://localhost:3000 - DONE
 
 
 

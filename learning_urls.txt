@@ -47,3 +47,9 @@ https://www.taniarascia.com/full-stack-cookies-localstorage-react-express/
 Redux Persist
 https://blog.logrocket.com/persist-state-redux-persist-redux-toolkit-react/
 https://www.positronx.io/react-redux-save-data-in-local-storage-with-persist-tutorial/
+
+DARK MODE:
+https://dev.to/ayc0/light-dark-mode-react-implementation-3aoa (Learning only - use Redux Persist to store data)
+
+MONGO/MYSQL:
+https://studio3t.com/knowledge-base/articles/rest-mongodb-sql-server/
