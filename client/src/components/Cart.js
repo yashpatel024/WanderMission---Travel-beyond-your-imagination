@@ -105,7 +105,16 @@ export function Cart() {
     });
 
     //On Click of Pay
-    const sendPurchaseRequest = (e) => { };
+    const sendPurchaseRequest = () => { 
+        navigate("/pay", {
+            state: {
+                totalAmount: totalAmount
+            },
+        });
+    };
+
+
+   
 
     //for selecting date
     const [style1, setStyle1] = useState("date1");
