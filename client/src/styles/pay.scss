@@ -1,0 +1,141 @@
+@import "./commonFiles";
+
+
+.container-pay{
+    margin: 5vw 11vw 5vw 11vw;
+    display: inline-flex;
+    flex-direction: row-reverse;
+    .right-side-container{
+        .payment-status{
+            margin-top: 15vh;
+            .waiting{
+                display: inline-flex;
+                .waiting-icon{
+                    margin-right: 2vw;
+                    
+                    .icon{
+                        width: 25px
+                    }
+
+                }
+                .waiting-text{
+                    @include wanderText(600, 1.2vw, #ffffff);
+                }
+            }
+            .spacer1{
+                height: 8vh;
+                border: solid #ffffff;
+                border-width: 0px 0px 0px 1px;
+                margin-left: 0.6vw;
+                
+            }
+            .confirm{
+                display: inline-flex;
+                margin-top: 2vh;
+                .confirm-icon{
+                    margin-right: 2vw;
+                    .icon{
+                        width: 25px
+                    }
+
+                }
+                .confirm-text{
+                    @include wanderText(600, 1.2vw, #ffffff);
+                }
+            }
+            .spacer2{
+                height: 8vh;
+                border: solid #ffffff;
+                border-width: 0px 0px 0px 1px;
+                margin-left: 0.6vw;
+                
+            }
+            .verify{
+                display: inline-flex;
+                margin-top: 2vh;
+                .verify-icon{
+                    margin-right: 2vw;
+                    .icon{
+                        width: 25px
+                    }
+
+                }
+                .verify-text{
+                    @include wanderText(600, 1.2vw, #ffffff);
+                }
+            }
+
+        }
+
+    }
+    .left-side-container{
+        .row1-payment{
+            .payment-number{
+                .number-eth{
+                    @include wanderText(800, 7vw, #FFC32B);
+                }
+            }
+            .usd-prie{
+                .usd-price-main{
+                    @include wanderText(600, 1.2vw, #ffffff);
+                }
+            }
+            .rate-counter{
+                display: inline-flex;
+                .update-text{
+                    @include wanderText(400, 1vw, #ffffff);
+                    
+                }
+                .update-counter{
+                    @include wanderText(400, 1vw, #FFC32B);
+                    margin-left: 0.2vw;
+                    
+                }
+            }
+        }
+    }
+    .row2-hash{
+        margin-top: 5vh;
+        .warning-sign{
+            .warning-text{
+                @include wanderText(400, 1vw, #ffffff);
+            }
+        }
+        .hash-address{
+            display: inline-flex;
+            .wallet-address{
+                @include wanderText(600, 2vw, #ffffff);
+            }
+            .copyicon{
+                margin-left: 0.1vw;
+                padding: 10px;
+                border-radius: 10px;
+                &:hover{
+                    cursor: pointer;
+                    background-color: #0f0f0f;
+                }
+            }
+        }
+        .qrandid{
+            margin-top: 1.5vh;
+            display: inline-flex;
+            .col1{
+                .hashqr{
+
+                }
+            }
+            .col2{
+                margin-left: 2vw;
+                .paymentid{
+                    .paymentid-text{
+                        @include wanderText(400, 1vw, #ffffff);
+                    }
+                    .paymentid-id{
+                        @include wanderText(400, 1vw, #FFC32B);
+                    }
+                }
+
+            }
+        }
+    }
+}

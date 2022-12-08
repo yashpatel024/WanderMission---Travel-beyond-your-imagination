@@ -7,6 +7,7 @@ import Footer from "./Footer";
 import "../styles/_commonFiles.scss";
 import Header from "./Header";
 import Logout from "./Logout";
+import { Pay } from "./pay";
 import { useDispatch, useSelector } from "react-redux";
 import { signIn } from "../Features/userSlice";
 import { useEffect, useState } from "react";
@@ -21,6 +22,7 @@ const AppRoutes = () => {
             <Route path="/cart" element={<Cart />} />
             <Route path="/product" element={<Product />} />
             <Route path="/logout" element={<Logout />} />
+            <Route path="/pay" element={<Pay />} />
         </Routes>
     );
 };

@@ -19,7 +19,10 @@ export const proxima_product = PUBLIC_URL +"resources/svgs/proxima_product.svg"
 export const pluto_product = PUBLIC_URL +"resources/svgs/pluto_product.svg"
 export const saturn_logo = PUBLIC_URL +"resources/svgs/saturn_logo.svg"
 export const arrow_cart = PUBLIC_URL +"resources/svgs/arrow-product.svg"
-
+export const copyicon = PUBLIC_URL +"resources/svgs/copyicon.svg"
+export const hashqr = PUBLIC_URL +"resources/svgs/hashqr.svg"
+export const finished = PUBLIC_URL +"resources/svgs/finished.svg"
+export const loading = PUBLIC_URL +"resources/svgs/loading.svg"
 //JSONs
 export const user_details_json = PUBLIC_URL +"resources/Jsons/user_details.json"
 export const trip_metadata_json = PUBLIC_URL +"resources/Jsons/trips_metadata.json"

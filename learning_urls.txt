@@ -53,3 +53,7 @@ https://dev.to/ayc0/light-dark-mode-react-implementation-3aoa (Learning only - u
 
 MONGO/MYSQL:
 https://studio3t.com/knowledge-base/articles/rest-mongodb-sql-server/
+
+
+LOADER:
+https://codepen.io/chrisgannon/full/OwQyag/

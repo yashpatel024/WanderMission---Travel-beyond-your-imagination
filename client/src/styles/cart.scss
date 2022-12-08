@@ -40,23 +40,27 @@
                     display: inline-flex;
                     height: 7vh;
                     margin-top: 1vh;
+                    align-items: center;
 
                     .input-hash {
 
 
                         .input-eth {
                             background-color: #333333;
-                            height: 7vh;
+                            height: 5.7vh;
                             width: 25vw;
-                            border-radius: 0.5vw;
+                            border-radius: 0.8vw;
+                        }
+                        .css-19mk8g1-MuiInputBase-root-MuiFilledInput-root:hover:not{
+                            border-bottom: 1px solid rgba(53, 53, 53, 0);
                         }
                     }
 
                     .eth-btn {
                         background-color: white;
-                        padding: 16px;
+                        padding: 20px;
                         border-radius: 0.5vw;
-                        margin-left: 0.5vw;
+                        margin-left: 0.9vw;
 
                         .eth-logo {
                             width: 12px;
@@ -103,7 +107,7 @@
 
                                 .input-field-fname {
                                     background-color: #333333;
-                                    height: 7vh;
+                                    height: 5.7vh;
                                     width: 13vw;
                                     border-radius: 0.5vw;
 
@@ -127,7 +131,7 @@
 
                                 .input-field-lname {
                                     background-color: #333333;
-                                    height: 7vh;
+                                    height: 5.7vh;
                                     width: 13vw;
                                     border-radius: 0.5vw;
 
@@ -151,7 +155,7 @@
 
                                 .input-field-passport {
                                     background-color: #333333;
-                                    height: 7vh;
+                                    height: 5.7vh;
                                     width: 28vw;
                                     border-radius: 0.5vw;
 
@@ -178,7 +182,7 @@
 
                                 .input-field-citizen {
                                     background-color: #333333;
-                                    height: 7vh;
+                                    height: 5.7vh;
                                     width: 13vw;
                                     border-radius: 0.5vw;
 
@@ -202,7 +206,7 @@
 
                                 .input-field-date {
                                     background-color: #333333;
-                                    height: 7vh;
+                                    height: 5.7vh;
                                     width: 13vw;
                                     border-radius: 0.5vw;
 
@@ -298,33 +302,127 @@
                                 border-radius: 100px;
                                 margin-right: 10px;
                                 margin-bottom: 10px;
+                                border-width: 10px;
                                 @include wanderText(300, 1vw, white);
+
+                                &:hover{
+                                    cursor: pointer;
+                                    background-color: #e0e0e0;
+                                    @include wanderText(300, 1vw, rgb(24, 24, 24));
+                                }
                             }
+                            .date1Active {
+                                padding: 4vh 5vh 4vh 5vh;
+                                background-color: #e0e0e0;
+                                border-radius: 100px;
+                                margin-right: 10px;
+                                margin-bottom: 10px;
+                                border-width: 10px;
+                                @include wanderText(300, 1vw, rgb(24, 24, 24));
+
+                                &:hover{
+                                    cursor: pointer;
+                                    background-color: #111111;
+                                    @include wanderText(300, 1vw, rgb(206, 206, 206));
+                                }
+                            }
+                           
 
                             .date2 {
                                 padding: 4vh 5vh 4vh 5vh;
                                 background-color: #333333;
-                                margin-right: 10px;
                                 border-radius: 100px;
+                                margin-right: 10px;
+                                margin-bottom: 10px;
+                                border-width: 10px;
                                 @include wanderText(300, 1vw, white);
+
+                                &:hover{
+                                    cursor: pointer;
+                                    background-color: #e0e0e0;
+                                    @include wanderText(300, 1vw, rgb(24, 24, 24));
+                                }
+                            }
+                            .date2Active {
+                                padding: 4vh 5vh 4vh 5vh;
+                                background-color: #e0e0e0;
+                                border-radius: 100px;
+                                margin-right: 10px;
+                                margin-bottom: 10px;
+                                border-width: 10px;
+                                @include wanderText(300, 1vw, rgb(24, 24, 24));
+
+                                &:hover{
+                                    cursor: pointer;
+                                    background-color: #111111;
+                                    @include wanderText(300, 1vw, rgb(206, 206, 206));
+                                }
                             }
                         }
 
                         .date-col-2 {
+
                             .date3 {
                                 padding: 4vh 5vh 4vh 5vh;
                                 background-color: #333333;
                                 border-radius: 100px;
-                                @include wanderText(300, 1vw, white);
+                                margin-right: 10px;
                                 margin-bottom: 10px;
-                            }
+                                border-width: 10px;
+                                @include wanderText(300, 1vw, white);
 
+                                &:hover{
+                                    cursor: pointer;
+                                    background-color: #e0e0e0;
+                                    @include wanderText(300, 1vw, rgb(24, 24, 24));
+                                }
+                            }
+                            .date3Active {
+                                padding: 4vh 5vh 4vh 5vh;
+                                background-color: #e0e0e0;
+                                border-radius: 100px;
+                                margin-right: 10px;
+                                margin-bottom: 10px;
+                                border-width: 10px;
+                                @include wanderText(300, 1vw, rgb(24, 24, 24));
+
+                                &:hover{
+                                    cursor: pointer;
+                                    background-color: #111111;
+                                    @include wanderText(300, 1vw, rgb(206, 206, 206));
+                                }
+                            }
                             .date4 {
                                 padding: 4vh 5vh 4vh 5vh;
                                 background-color: #333333;
                                 border-radius: 100px;
+                                margin-right: 10px;
+                                margin-bottom: 10px;
+                                border-width: 10px;
                                 @include wanderText(300, 1vw, white);
+
+                                &:hover{
+                                    cursor: pointer;
+                                    background-color: #e0e0e0;
+                                    @include wanderText(300, 1vw, rgb(24, 24, 24));
+                                }
                             }
+                            .date4Active {
+                                padding: 4vh 5vh 4vh 5vh;
+                                background-color: #e0e0e0;
+                                border-radius: 100px;
+                                margin-right: 10px;
+                                margin-bottom: 10px;
+                                border-width: 10px;
+                                @include wanderText(300, 1vw, rgb(24, 24, 24));
+
+                                &:hover{
+                                    cursor: pointer;
+                                    background-color: #111111;
+                                    @include wanderText(300, 1vw, rgb(206, 206, 206));
+                                }
+                            }
+                            
                         }
                     }
                 }

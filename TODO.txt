@@ -8,7 +8,7 @@ Demonstration of error handling (1)
 #Front-end (25)
 Mobile-compatible (2)
 At least 5 different static (dummy) components (5)
-At least 5 different dynamic (requiring info from back-end/db) components (5)
+At least 5 different dynamic (requiring info from back-end/db) components (5) DONE
 Light mode and Dark mode (should persist even after sign-out or refresh) (2)
 Fluid animations (1)
 Parallax effect (1)
@@ -21,7 +21,7 @@ Marks will be taken off for poor code (DRY violations, formatting, leftover comm
 
 #Back-end (20)
 Demonstration of GET/PUT/POST/DELETE APIs (8) - DONE
-Some sort of security for the API calls (3)
+Some sort of security for the API calls (3) - DONE
 Unit tests (3)
 Demonstration of Error handling from back end
 Some sort of try/catch (3) - DONE
@@ -80,7 +80,6 @@ Presentation (3 marks) - DONE
 
 ------------------------------------------
 #Ambitious:
-404 Page
 Email OTP
 After buying Email notification
 Deploy on Firebase or AWS
@@ -105,6 +104,7 @@ LIGHT/DARK mode - useReduxPersist to hold at Client side/Add to UserDatabase as 
 MOBILE COMPATIBLE
 UNIT TESTING
 Walkthrough for firstime user - Store in database or hold in persistReduxSession
+
 
 -INCLUDE EVERY features with DIAGRAM / EXAMPLES
 Documentation - ON README 

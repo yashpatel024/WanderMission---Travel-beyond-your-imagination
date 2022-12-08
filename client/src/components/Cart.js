@@ -56,7 +56,7 @@ export function Cart() {
     const [services, setServices] = useState([]);
     const [isLoading, setLoading] = useState(false);
 
-    const [totalAmount, setTotalAmount ] = useState(0);
+    const [totalAmount, setTotalAmount] = useState(0);
 
     //On change of inputfield
     const changeFormData = (prop) => (e) => {
@@ -82,7 +82,7 @@ export function Cart() {
                 const resp = await response.json();
 
                 setServices(resp.services);
-                
+
                 setLoading(false);
             } catch (error) {
                 setLoading(true);
@@ -99,13 +99,47 @@ export function Cart() {
 
         fetchServiceDetails();
 
-        if(totalAmount == 0){
+        if (totalAmount == 0) {
             calculateCount();
         }
     });
 
     //On Click of Pay
     const sendPurchaseRequest = (e) => { };
+
+    //for selecting date
+    const [style1, setStyle1] = useState("date1");
+    const [style2, setStyle2] = useState("date2");
+    const [style3, setStyle3] = useState("date3");
+    const [style4, setStyle4] = useState("date4");
+    const changeStyle1 = () => {
+        if (style1 == "date1") {
+            setStyle1("date1Active");
+        } else {
+            setStyle1("date1");
+        }
+    };
+    const changeStyle2 = () => {
+        if (style2 == "date2") {
+            setStyle2("date2Active");
+        } else {
+            setStyle2("date2");
+        }
+    };
+    const changeStyle3 = () => {
+        if (style3 == "date3") {
+            setStyle3("date3Active");
+        } else {
+            setStyle3("date3");
+        }
+    };
+    const changeStyle4 = () => {
+        if (style4 == "date4") {
+            setStyle4("date4Active");
+        } else {
+            setStyle4("date4");
+        }
+    };
 
     return (
         <div className="container">
@@ -333,18 +367,18 @@ export function Cart() {
                             </div>
                             <div className="dates">
                                 <div className="date-col-1">
-                                    <div className="date1">
+                                    <div className={style1} onClick={changeStyle1}>
                                         <h4>15th july 2023</h4>
                                     </div>
-                                    <div className="date2">
+                                    <div className={style2} onClick={changeStyle2}>
                                         <h4>15th Nov 2023</h4>
                                     </div>
                                 </div>
                                 <div className="date-col-2">
-                                    <div className="date3">
+                                    <div className={style3} onClick={changeStyle3}>
                                         <h4>1st Aug 2023</h4>
                                     </div>
-                                    <div className="date4">
+                                    <div className={style4} onClick={changeStyle4}>
                                         <h4>1st Jan 2023</h4>
                                     </div>
                                 </div>
@@ -370,10 +404,10 @@ export function Cart() {
                                 {" "}
                                 International Tax 5%{" "}
                             </h3>
-                            <h3>
+                            <h3 className="tax-number">
                                 {" "}
                                 {"+"}
-                                {totalAmount != 0 ? (totalAmount*taxPercentage)/100 : "***"}{" "}
+                                {totalAmount != 0 ? (totalAmount * taxPercentage) / 100 : "***"}{" "}
                                 {" ETH"}
                             </h3>
                         </div>
@@ -388,7 +422,7 @@ export function Cart() {
                             <h3 className="grand-total"> Grand Total </h3>
                             <h3 className="final-price-number">
                                 {" "}
-                                {totalAmount != 0 ? totalAmount + (totalAmount*taxPercentage)/100 : "***"}{" "}
+                                {totalAmount != 0 ? totalAmount + (totalAmount * taxPercentage) / 100 : "***"}{" "}
                                 {" ETH"}
                             </h3>
                         </div>
