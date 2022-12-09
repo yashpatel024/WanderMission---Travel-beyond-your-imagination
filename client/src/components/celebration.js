@@ -2,6 +2,7 @@ import "../styles/Celebration.scss";
 import React, { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+import mainlogo from "./Generic/mainlogo";
 import Button from "@mui/material/Button";
 
 export function Celebration() {
@@ -100,18 +101,7 @@ export function Celebration() {
                 </>
             </div>
             <div className="row4">
-                <div className="home-btn">
-                    <Button
-                        variant="contained"
-                        value="all"
-                        onClick={() => {
-                            navigate("/");
-                        }}
-                        className="addToCart"
-                    >
-                        Home
-                    </Button>
-                </div>
+
                 <div className="email">
                     <h3 className="email-text">
                         You will  be receiving an email with information for your next step

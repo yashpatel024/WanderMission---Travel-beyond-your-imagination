@@ -12,6 +12,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { signIn } from "../Features/userSlice";
 import { useEffect, useState } from "react";
 import { Celebration } from "./celebration";
+import { NotFoundPage } from "./NotFoundPage";
 
 //All routes are declared here
 const AppRoutes = () => {
