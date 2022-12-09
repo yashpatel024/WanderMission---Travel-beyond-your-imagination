@@ -1,11 +1,13 @@
 import "../styles/pay.scss";
 import React, { useEffect, useState } from "react";
 import { copyicon, hashqr, finished, loading } from "../links";
-import { Navigate, useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+
 
 export function Pay() {
 
     const location = useLocation();
+    let navigate = useNavigate();
 
     const [counter, setCounter] = React.useState(300);
     React.useEffect(() => {
@@ -22,6 +24,8 @@ export function Pay() {
         setTimeout(() => setSpinner1(finished), 10000);
         setTimeout(() => setSpinner2(finished), 20000);
         setTimeout(() => setSpinner3(finished), 30000);
+        setTimeout(() => navigate("/celebration"), 35000);
+        
     });
 
 

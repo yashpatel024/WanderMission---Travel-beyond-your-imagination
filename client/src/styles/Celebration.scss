@@ -1,0 +1,117 @@
+@import "./commonFiles";
+
+.container-celebration {
+    margin: 10vw 11vw 5vw 11vw;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+    .row1 {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .congratulations {
+            .congratulations-text {
+                @include wanderText(700, 3vw, #FFC32B);
+            }
+        }
+
+        .username {
+            .username-text {
+                @include wanderText(800, 3vw, #FFC32B);
+            }
+        }
+    }
+
+    .row2 {
+        margin-top: 3vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .top {
+            .top-text {
+                @include wanderText(400, 1vw, #ffffff);
+            }
+        }
+
+        .bottum {
+            margin-top: 7vh;
+
+            .bottum-text {
+                @include wanderText(600, 1vw, #ffffff);
+            }
+        }
+    }
+
+    .row3 {
+        .row-1 {
+            display: inline-flex;
+            margin-top: 5vh;
+
+            .chekout-image {
+                .product-image {
+                    width: 8vw;
+                    margin-right: 3vh;
+                }
+            }
+
+            .product-name {
+
+
+                .agency-logo {
+                    .agency-logo-main {
+                        width: 5vw;
+                    }
+                }
+
+                .product-name {
+
+                    .product-name-main {
+                        @include wanderText(700, 2.5vw, white);
+                    }
+                }
+            }
+
+            .quantitty {
+                vertical-align: middle;
+                padding: 20px;
+
+                .product-name-main {
+                    @include wanderText(700, 1vw, white);
+                }
+            }
+        }
+    }
+
+    .row4 {
+        margin-top: 18vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        .home-btn{
+            .addToCart {
+                background-color: #ffc32b;
+                color: black;
+                border-radius: 50px;
+                padding: 0.3vw 1vw 0.3vw 1vw;
+                font-family: "Montserrat";
+                font-weight: 600;
+                font-size: 14px;
+                text-transform: none;
+                margin-right: 1.2vw;
+
+                &:hover {
+                    background-color: #9e7201;
+                }
+            }
+        }
+        .email {
+            margin-top: 4vh;
+            .email-text {
+                @include wanderText(400, 0.8vw, white);
+            }
+        }
+    }
+}

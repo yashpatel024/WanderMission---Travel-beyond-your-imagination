@@ -11,6 +11,7 @@ import { Pay } from "./pay";
 import { useDispatch, useSelector } from "react-redux";
 import { signIn } from "../Features/userSlice";
 import { useEffect, useState } from "react";
+import { Celebration } from "./celebration";
 
 //All routes are declared here
 const AppRoutes = () => {
@@ -23,6 +24,7 @@ const AppRoutes = () => {
             <Route path="/product" element={<Product />} />
             <Route path="/logout" element={<Logout />} />
             <Route path="/pay" element={<Pay />} />
+            <Route path="/celebration" element={<Celebration />} />
         </Routes>
     );
 };
