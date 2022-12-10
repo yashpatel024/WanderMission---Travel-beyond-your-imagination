@@ -1,0 +1,9 @@
+@import "./commonFiles";
+
+.container-notfound {
+    height: 100vh;
+
+    .congratulations-text {
+        @include wanderText(800, 3vw, #FFC32B);
+    }
+}
