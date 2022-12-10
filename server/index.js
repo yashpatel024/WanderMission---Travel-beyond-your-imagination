@@ -3,7 +3,8 @@ const cors = require('cors');
 const session = require('express-session');
 const MongoDBStore = require('connect-mongodb-session')(session); //To store session automatically on Mongo
 
-const databaseConn = require('./src/database/conn');
+const mongoDatabaseConn = require('./src/database/mongo_conn');
+const mysqlDatabaseConn = require('./src/database/mysql_conn');
 const routes = require('./src/routes/index');
 
 //Environment variables configuration
@@ -24,8 +25,10 @@ const corsOptions = {
     optionsSuccessStatus:200, //for legacy browser; default is 204
 };
 
+//Connect MYSQL
+mysqlDatabaseConn.connectDb();
 //Connect with MongoDB using Cluster url defined in env variable
-databaseConn.connectDb(process.env.ATLAS_URI);
+mongoDatabaseConn.connectDb(process.env.ATLAS_URI);
 
 //Setup connect-mongodb-session store
 const mongoDBStore = new MongoDBStore({
