@@ -27,7 +27,7 @@ const Home = () => {
 
     return (
         // main container
-        <div className="container">
+        <div className="container" >
             {/* wrapper/start for hero section */}
             <div className="hero-wrapper">
                 {/* background shape */}

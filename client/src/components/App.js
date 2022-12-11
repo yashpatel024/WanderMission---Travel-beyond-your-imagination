@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import { Login } from "./Login";
-import  Home  from "./Home";
+import Home from "./Home";
 import { Cart } from "./Cart";
 import { Product } from "./Product";
 import Footer from "./Footer";
@@ -10,9 +10,10 @@ import Logout from "./Logout";
 import { Pay } from "./pay";
 import { useDispatch, useSelector } from "react-redux";
 import { signIn } from "../Features/userSlice";
-import { useEffect, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { Celebration } from "./celebration";
 import { NotFoundPage } from "./NotFoundPage";
+
 
 //All routes are declared here
 const AppRoutes = () => {
@@ -29,7 +30,22 @@ const AppRoutes = () => {
         </Routes>
     );
 };
+
+export const ThemeContext = createContext(null);
+
 const App = () => {
+
+    const [theme, setTheme] = useState('light');
+    const toggleTheme = (e) => {
+        e.preventDefault();
+        // if the theme is not light, then set it to dark
+        if (theme === 'light') {
+            setTheme('dark');
+            // otherwise, it should be light
+        } else {
+            setTheme('light');
+        }
+    }
     //Redux session varaible
     const isLoggedIn = useSelector((state) => state.isLoggedIn);
 
@@ -70,15 +86,27 @@ const App = () => {
     }, []);
 
     return (
-        <>
-            {isLoading ? "...loading" :
+        <ThemeContext.Provider value={{theme, toggleTheme}}>
+            <div className="App" id={theme}>
                 <>
-                    <Header />
-                    <AppRoutes />
-                    <Footer />
+
+                    {isLoading ? "...loading" :
+
+                        <>
+                        <div className="toggle-darkmode-switch">
+                            <button onClick={toggleTheme}>
+                                Change to {theme === "light" ? "Dark Mode" : "Light Mode"}
+                            </button>
+                        </div>
+                            <Header />
+                            <AppRoutes />
+                            <Footer />
+                        </>
+                    }
                 </>
-            }
-        </>
+            </div>
+        </ThemeContext.Provider>
+
     );
 };
 

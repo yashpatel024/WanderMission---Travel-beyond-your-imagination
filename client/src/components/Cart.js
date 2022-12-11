@@ -1,7 +1,6 @@
 import "../styles/_commonFiles.scss";
 import "../styles/cart.scss";
-import { GetCartData } from "./Generic/getCartData";
-import { GetImageURLbyID } from "./Generic/getImageURLbyID";
+
 import {
     star_url,
     eth_logo
@@ -15,7 +14,6 @@ import {
 } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import CartServices from "./CartServices";
 
 //Initial data for state
 const initialFormData = {

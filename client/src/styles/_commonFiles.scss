@@ -1,7 +1,6 @@
 @use "sass:color";
-//@import url('https://fonts.cdnfonts.com/css/montserrat');
+@import url('https://fonts.cdnfonts.com/css/montserrat');
 
-                
 
 // Colors
 $page-back-color: rgba(0, 0, 0, 1);
@@ -10,6 +9,15 @@ $gray-text: #b4b4b4;
 $mobile-bp: 480px;
 $scroll-bar-width: 14px;
 $tablet-bp: 768px;
+
+#light{
+    background-color:  #dddddd;
+    --secondcolour: #bebebe;
+}
+#dark{
+    background-color:  #1b1a1d;
+    --secondcolour: #222222;
+}
 
 @mixin cartContainer() {
     background-color: #222222;
@@ -76,4 +84,11 @@ $tablet-bp: 768px;
 
 .disable-blur {
     backdrop-filter: none !important;
+}
+
+.toggle-darkmode-switch{
+    z-index: 10000;
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
 }
