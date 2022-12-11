@@ -2,7 +2,7 @@
 @import url('https://fonts.cdnfonts.com/css/montserrat');
 
 
-// Colors
+
 $page-back-color: rgba(0, 0, 0, 1);
 $corner-strip-color: #daa520;
 $gray-text: #b4b4b4;
@@ -11,16 +11,24 @@ $scroll-bar-width: 14px;
 $tablet-bp: 768px;
 
 #light{
-    background-color:  #dddddd;
-    --secondcolour: #bebebe;
+    background-color:  #ffffff;
+    --gray1: #ddc7a6;
+    --Text1: #000000;
+    --Text2: #1a1a1a;
+
 }
 #dark{
     background-color:  #1b1a1d;
-    --secondcolour: #222222;
+    --gray1: #222222;
+    --Text1: #ffffff;
+    --Text2: #b4b4b4;
+
 }
 
+
+
 @mixin cartContainer() {
-    background-color: #222222;
+    background-color: var(--gray1);
     padding: 10vh 10vw 10vh 10vw;
     margin: 14px 0px 14px 14px ;
     border-radius: 2vw;
@@ -87,8 +95,48 @@ $tablet-bp: 768px;
 }
 
 .toggle-darkmode-switch{
+    top: 0;
+    right: 0;
+    padding-top: 2.5vh;
+    margin-right: 5vw;
     z-index: 10000;
-    position: relative;
+    position: absolute;
     display: flex;
     justify-content: flex-end;
 }
+
+.toggle {
+    --size: 2rem;
+    
+    appearance: none;
+    outline: none;
+    cursor: pointer;
+    
+    width: var(--size);
+    height: var(--size);
+    box-shadow: inset calc(var(--size) * 0.33) calc(var(--size) * -0.25) 0;
+    border-radius: 999px;
+    color: hsl(0, 0%, 0%);
+    
+    transition: all 500ms;
+    
+    &:checked {
+      --ray-size: calc(var(--size) * -0.4);
+      --offset-orthogonal: calc(var(--size) * 0.65);
+      --offset-diagonal: calc(var(--size) * 0.45);
+  
+      transform: scale(0.75);
+      color: hsl(0, 0%, 100%);
+      box-shadow: 
+        inset 0 0 0 var(--size),
+        calc(var(--offset-orthogonal) * -1) 0 0 var(--ray-size),
+        var(--offset-orthogonal) 0 0 var(--ray-size),
+        0 calc(var(--offset-orthogonal) * -1) 0 var(--ray-size),
+        0 var(--offset-orthogonal) 0 var(--ray-size),
+        calc(var(--offset-diagonal) * -1) calc(var(--offset-diagonal) * -1) 0 var(--ray-size),
+        var(--offset-diagonal) var(--offset-diagonal) 0 var(--ray-size),
+        calc(var(--offset-diagonal) * -1) var(--offset-diagonal) 0 var(--ray-size),
+        var(--offset-diagonal) calc(var(--offset-diagonal) * -1) 0 var(--ray-size),
+      ;
+    }
+  }

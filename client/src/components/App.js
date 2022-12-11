@@ -35,9 +35,9 @@ export const ThemeContext = createContext(null);
 
 const App = () => {
 
-    const [theme, setTheme] = useState('light');
-    const toggleTheme = (e) => {
-        e.preventDefault();
+    const [theme, setTheme] = useState('dark');
+    const toggleTheme = () => {
+
         // if the theme is not light, then set it to dark
         if (theme === 'light') {
             setTheme('dark');
@@ -94,9 +94,10 @@ const App = () => {
 
                         <>
                         <div className="toggle-darkmode-switch">
-                            <button onClick={toggleTheme}>
+                            {/* <button onClick={toggleTheme}>
                                 Change to {theme === "light" ? "Dark Mode" : "Light Mode"}
-                            </button>
+                            </button> */}
+                            <input id="toggle" class="toggle" type="checkbox" checked={theme === "light" ? false : true} onChange={toggleTheme}></input>
                         </div>
                             <Header />
                             <AppRoutes />
