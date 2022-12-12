@@ -25,8 +25,8 @@ const corsOptions = {
     optionsSuccessStatus:200, //for legacy browser; default is 204
 };
 
-//Connect MYSQL
-mysqlDatabaseConn.connectDb();
+//Connect MYSQL - Connect in case of any request
+// mysqlDatabaseConn.connectDb();
 //Connect with MongoDB using Cluster url defined in env variable
 mongoDatabaseConn.connectDb(process.env.ATLAS_URI);
 
@@ -65,6 +65,7 @@ const apirouter = express.Router();
 app.use('/wandermission', apirouter);
 apirouter.use('/user', routes.userRoute);
 apirouter.use('/user/cart', routes.userCartRoute);
+apirouter.use('/user/order', routes.userOrderRoute);
 apirouter.use('/service', routes.serviceRoute);
 apirouter.use('/service/feedback', routes.serviceFeedbackRoute);
 apirouter.use('/agency', routes.agencyRoute);
