@@ -11,18 +11,25 @@ $scroll-bar-width: 14px;
 $tablet-bp: 768px;
 
 #light{
-    background-color:  #ffffff;
-    --gray1: #ddc7a6;
-    --Text1: #000000;
-    --Text2: #1a1a1a;
-
+    background-color:  #ffffff;  
+    --gray1: #D2D2D2;   
+    --Text1: #000000;   
+    --Text2: #1a1a1a; 
+    --Text3: #333333; 
+    --accent: #e2a91a;  
 }
+//gray1 = For card backgrounds
+//Text1 = For Heading Texts
+//Text2 = For Heading Assist Text
+//Text3 = If you need you need one more gray then use this
+//accent = For golden Colour accent
 #dark{
     background-color:  #1b1a1d;
     --gray1: #222222;
     --Text1: #ffffff;
     --Text2: #b4b4b4;
-
+    --Text3: #979797;
+    --accent: #FFC32B;
 }
 
 
