@@ -282,12 +282,7 @@ function SignupForm() {
                 <p className="login-here">If you already registered login here</p>
 
                 <Link to="/login">
-                    <Button className="sign-in-button-inverse"
-                    variant="contained"
-                    component="label"
-                    >
-                        Login
-                    </Button>
+                    <p className="sign-in-text">Login</p>
                 </Link>
             </form>
         </div>

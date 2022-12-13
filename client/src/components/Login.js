@@ -1,5 +1,7 @@
 import "../styles/_commonFiles.scss";
 import "../styles/Login.scss";
+import { Link } from "react-router-dom";
+
 import {
     hero_grad_url,
     spaceman_url,
@@ -253,6 +255,11 @@ function LoginForm() {
                     SIGN IN
                     <input hidden type="submit" />
                 </Button>
+                <p className="login-here">New user signup here</p>
+
+                <Link to="/signup">
+                    <p className="sign-in-text">Signup</p>
+                </Link>
             </form>
         </div>
     );
