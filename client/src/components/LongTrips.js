@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import Trip from "./Trip";
 import { longlink } from "./Trip";
 
@@ -13,7 +13,7 @@ const ShortTrips = () => {
 
             const resp = await response.json();
             setItems(resp);
-        }
+        };
 
         if(items.length <=0 ){
             fetchTrip();
