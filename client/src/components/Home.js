@@ -11,6 +11,7 @@ import Button from "@mui/material/Button";
 import Trip from "./Trip";
 
 
+
 const Home = () => {
     const [tripLengthFilterValue, setTripLengthFilterValue] = useState('all');
 
@@ -27,7 +28,7 @@ const Home = () => {
 
     return (
         // main container
-        <div className="container">
+        <div className="container" >
             {/* wrapper/start for hero section */}
             <div className="hero-wrapper">
                 {/* background shape */}

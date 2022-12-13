@@ -1,9 +1,8 @@
 @use "sass:color";
-//@import url('https://fonts.cdnfonts.com/css/montserrat');
+@import url('https://fonts.cdnfonts.com/css/montserrat');
 
-                
 
-// Colors
+
 $page-back-color: rgba(0, 0, 0, 1);
 $corner-strip-color: #daa520;
 $gray-text: #b4b4b4;
@@ -11,8 +10,34 @@ $mobile-bp: 480px;
 $scroll-bar-width: 14px;
 $tablet-bp: 768px;
 
+#light{
+    background-color:  #ffffff;  
+    --gray1: #D2D2D2;
+    --gray2: #c6c6c6;     
+    --Text1: #000000;   
+    --Text2: #1a1a1a; 
+    --Text3: #333333; 
+    --accent: #e2a91a;  
+}
+//gray1 = For card backgrounds
+//Text1 = For Heading Texts
+//Text2 = For Heading Assist Text
+//Text3 = If you need you need one more gray then use this
+//accent = For golden Colour accent
+#dark{
+    background-color:  #1b1a1d;
+    --gray1: #222222;
+    --gray2: #333333;
+    --Text1: #ffffff;
+    --Text2: #b4b4b4;
+    --Text3: #979797;
+    --accent: #FFC32B;
+}
+
+
+
 @mixin cartContainer() {
-    background-color: #222222;
+    background-color: var(--gray1);
     padding: 10vh 10vw 10vh 10vw;
     margin: 14px 0px 14px 14px ;
     border-radius: 2vw;
@@ -77,3 +102,50 @@ $tablet-bp: 768px;
 .disable-blur {
     backdrop-filter: none !important;
 }
+
+.toggle-darkmode-switch{
+    top: 0;
+    right: 0;
+    padding-top: 2.5vh;
+    margin-right: 5vw;
+    z-index: 10000;
+    position: absolute;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.toggle {
+    --size: 2rem;
+    
+    appearance: none;
+    outline: none;
+    cursor: pointer;
+    
+    width: var(--size);
+    height: var(--size);
+    box-shadow: inset calc(var(--size) * 0.33) calc(var(--size) * -0.25) 0;
+    border-radius: 999px;
+    color: hsl(0, 0%, 0%);
+    
+    transition: all 500ms;
+    
+    &:checked {
+      --ray-size: calc(var(--size) * -0.4);
+      --offset-orthogonal: calc(var(--size) * 0.65);
+      --offset-diagonal: calc(var(--size) * 0.45);
+  
+      transform: scale(0.75);
+      color: hsl(0, 0%, 100%);
+      box-shadow: 
+        inset 0 0 0 var(--size),
+        calc(var(--offset-orthogonal) * -1) 0 0 var(--ray-size),
+        var(--offset-orthogonal) 0 0 var(--ray-size),
+        0 calc(var(--offset-orthogonal) * -1) 0 var(--ray-size),
+        0 var(--offset-orthogonal) 0 var(--ray-size),
+        calc(var(--offset-diagonal) * -1) calc(var(--offset-diagonal) * -1) 0 var(--ray-size),
+        var(--offset-diagonal) var(--offset-diagonal) 0 var(--ray-size),
+        calc(var(--offset-diagonal) * -1) var(--offset-diagonal) 0 var(--ray-size),
+        var(--offset-diagonal) calc(var(--offset-diagonal) * -1) 0 var(--ray-size),
+      ;
+    }
+  }

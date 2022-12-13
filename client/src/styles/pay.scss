@@ -19,12 +19,12 @@
 
                 }
                 .waiting-text{
-                    @include wanderText(600, 1.2vw, #ffffff);
+                    @include wanderText(600, 1.2vw,var(--Text1));
                 }
             }
             .spacer1{
                 height: 8vh;
-                border: solid #ffffff;
+                border: solidvar(--Text1);
                 border-width: 0px 0px 0px 1px;
                 margin-left: 0.6vw;
                 
@@ -40,12 +40,12 @@
 
                 }
                 .confirm-text{
-                    @include wanderText(600, 1.2vw, #ffffff);
+                    @include wanderText(600, 1.2vw,var(--Text1));
                 }
             }
             .spacer2{
                 height: 8vh;
-                border: solid #ffffff;
+                border: solidvar(--Text1);
                 border-width: 0px 0px 0px 1px;
                 margin-left: 0.6vw;
                 
@@ -61,7 +61,7 @@
 
                 }
                 .verify-text{
-                    @include wanderText(600, 1.2vw, #ffffff);
+                    @include wanderText(600, 1.2vw,var(--Text1));
                 }
             }
 
@@ -72,22 +72,22 @@
         .row1-payment{
             .payment-number{
                 .number-eth{
-                    @include wanderText(800, 7vw, #FFC32B);
+                    @include wanderText(800, 7vw,var(--accent));
                 }
             }
             .usd-prie{
                 .usd-price-main{
-                    @include wanderText(600, 1.2vw, #ffffff);
+                    @include wanderText(600, 1.2vw,var(--Text1));
                 }
             }
             .rate-counter{
                 display: inline-flex;
                 .update-text{
-                    @include wanderText(400, 1vw, #ffffff);
+                    @include wanderText(400, 1vw,var(--Text1));
                     
                 }
                 .update-counter{
-                    @include wanderText(400, 1vw, #FFC32B);
+                    @include wanderText(400, 1vw,var(--accent));
                     margin-left: 0.2vw;
                     
                 }
@@ -98,13 +98,13 @@
         margin-top: 5vh;
         .warning-sign{
             .warning-text{
-                @include wanderText(400, 1vw, #ffffff);
+                @include wanderText(400, 1vw,var(--Text1));
             }
         }
         .hash-address{
             display: inline-flex;
             .wallet-address{
-                @include wanderText(600, 2vw, #ffffff);
+                @include wanderText(600, 2vw,var(--Text1));
             }
             .copyicon{
                 margin-left: 0.1vw;
@@ -112,7 +112,7 @@
                 border-radius: 10px;
                 &:hover{
                     cursor: pointer;
-                    background-color: #0f0f0f;
+                    background-color:var(--gray1);
                 }
             }
         }
@@ -128,10 +128,10 @@
                 margin-left: 2vw;
                 .paymentid{
                     .paymentid-text{
-                        @include wanderText(400, 1vw, #ffffff);
+                        @include wanderText(400, 1vw,var(--Text1));
                     }
                     .paymentid-id{
-                        @include wanderText(400, 1vw, #FFC32B);
+                        @include wanderText(400, 1vw,var(--accent));
                     }
                 }
 
