@@ -13,6 +13,7 @@ import { signIn } from "../Features/userSlice";
 import { createContext, useEffect, useState } from "react";
 import { Celebration } from "./celebration";
 import { NotFoundPage } from "./NotFoundPage";
+import { ParallaxProvider } from 'react-scroll-parallax';
 
 
 //All routes are declared here
@@ -86,21 +87,23 @@ const App = () => {
     }, []);
 
     return (
-        <ThemeContext.Provider value={{theme, toggleTheme}}>
+        <ThemeContext.Provider value={{ theme, toggleTheme }}>
             <div className="App" id={theme}>
                 <>
 
                     {isLoading ? "...loading" :
 
                         <>
-                        <div className="toggle-darkmode-switch">
-                            {/* <button onClick={toggleTheme}>
+                            <div className="toggle-darkmode-switch">
+                                {/* <button onClick={toggleTheme}>
                                 Change to {theme === "light" ? "Dark Mode" : "Light Mode"}
                             </button> */}
-                            <input id="toggle" class="toggle" type="checkbox" checked={theme === "light" ? false : true} onChange={toggleTheme}></input>
-                        </div>
+                                <input id="toggle" class="toggle" type="checkbox" checked={theme === "light" ? false : true} onChange={toggleTheme}></input>
+                            </div>
                             <Header />
-                            <AppRoutes />
+
+                                <AppRoutes />
+
                             <Footer />
                         </>
                     }

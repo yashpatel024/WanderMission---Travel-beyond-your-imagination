@@ -11,6 +11,7 @@ import Button from "@mui/material/Button";
 import Trip from "./Trip";
 
 
+
 const Home = () => {
     const [tripLengthFilterValue, setTripLengthFilterValue] = useState('all');
 
