@@ -39,10 +39,10 @@ Demonstration of using other GitHub features (5)
 
 #Documentation (10)
 #In a README.md, include:
-An architecture diagram of your application (2)
-An overview of all the requirements for the front-end (2)
-An overview of all the requirements for the back-end (2)
-API routes
+An architecture diagram of your application (2)- DONE
+An overview of all the requirements for the front-end (2) - DONE
+An overview of all the requirements for the back-end (2) - DONE
+API routes - DONE
 Security
 etc...
 Your schema/table design for the databases (3)
@@ -101,7 +101,7 @@ SQL DATABASE
 ERROR HANDLING - USE of RESPONSE CODE - FRONEND-BACKEND CONNECT - Yash will give format
 DECIDE 5 STATIC/DYNAMIC Components
 LIGHT/DARK mode - useReduxPersist to hold at Client side/Add to UserDatabase as well 
-MOBILE COMPATIBLErsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewgrjsewuhyrsewersewdfrsewvgrsew mrsewrsew,rsewmfrrsewdersewrsewfghrsewm,rsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsewrsew
+MOBILE COMPATIBLE
 UNIT TESTING
 Walkthrough for firstime user - Store in database or hold in persistReduxSession
 
