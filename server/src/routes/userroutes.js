@@ -1,7 +1,6 @@
 const express = require('express');
 const userRoute = express.Router();
 const userModel = require('../models/user');
-const databaseConn = require("../database/conn");
 
 /**
  * User Routes
@@ -10,7 +9,7 @@ const databaseConn = require("../database/conn");
 userRoute.post("/signup", async (req, res) => {
     const { email, firstname, lastname, password } = req.body;
 
-    if (!email || !firstname || !password) {
+    if (!email || !firstname || !lastname || !password) {
         res.status(400).json({ message: "Please provide mandatory information" });
         return;
     }

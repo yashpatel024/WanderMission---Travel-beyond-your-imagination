@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 import {
     hero_grad_url,
     spaceman_url,
-    user_details_json,
 } from "../links";
 import { useEffect, useState } from "react";
 import {
@@ -19,48 +18,27 @@ import {
 } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { signIn } from "../Features/userSlice";
-import CommonFunctions from "./Generic/CommonFunctions";
+import { useSelector } from "react-redux";
 
 
-const fetchUserAuth = async () => {
-    try {
-        const response = await fetch("wandermission/user/isAuth");
-
-        if (!response.ok) {
-            return;
-        }
-        const resp = await response.json();
-        return resp;
-    } catch (error) {
-        console.log('Error while fetching use auth ', error);
-        return;
-    }
-};
-
-function LoginForm() {
+function SignupForm() {
     //Redux session varaible
-    const user = useSelector((state) => state.user);
     const isLoggedIn = useSelector((state) => state.isLoggedIn);
-
-    //dispatch to access dispatch function from Redux store
-    const dispatch = useDispatch();
-
-    //Variable declaration
-    let userJsonObj;
 
     //navigate obj for navigation between predefined routes
     let navigate = useNavigate();
 
     //Initial data for state
     const initialFormData = {
+        firstname: "",
+        lastname: "",
         email: "",
         password: "",
         showPassword: false,
     };
 
     const initialErrorText = {
+        nameError: "",
         emailError: "",
         passwordError: "",
         fetchError: false,
@@ -96,32 +74,37 @@ function LoginForm() {
         }
     });
 
-    //On Click of Sign In
+    //On Click of Sign Up
     const sendLoginRequest = async (e) => {
         e.preventDefault();
         let emailError = "",
-            passwordError = "";
+            passwordError = "",
+            nameError = "";
 
         //Check for blank values
+        nameError = !formData.password ? "Please enter name" : "";
         emailError = !formData.email ? "Please enter email" : "";
         passwordError = !formData.password ? "Please enter password" : "";
 
         setErrorText({
             emailError: emailError,
             passwordError: passwordError,
+            nameError: nameError,
         });
 
-        if (!formData.email || !formData.password) {
+        if (!formData.firstname || !formData.lastname || !formData.email || !formData.password) {
             return;
         }
 
         try {
-            const res = await fetch('/wandermission/user/signin', {
+            const res = await fetch('/wandermission/user/signup', {
                 method: 'POST',
                 headers: {
                     'Content-type': 'application/json'
                 },
                 body: JSON.stringify({
+                    firstname: formData.firstname,
+                    lastname: formData.lastname,
                     email: formData.email,
                     password: formData.password
                 }),
@@ -132,6 +115,7 @@ function LoginForm() {
             if (!res.ok) {
                 const error = resp;
                 setErrorText({
+                    nameError: nameError,
                     emailError: emailError,
                     passwordError: passwordError,
                     fetchError: true,
@@ -141,30 +125,11 @@ function LoginForm() {
                 return;
             }
 
-            const userData = await fetchUserAuth();
-
-            if (!userData) {
-                setErrorText({
-                    emailError: emailError,
-                    passwordError: passwordError,
-                    fetchError: true,
-                    fetchErrorMessage: "Authentication error, Please try again"
-                });
-            }
-
-            //use login reducer to add email in Redux session store
-            dispatch(
-                signIn({
-                    userid: userData.userid,
-                    username: userData.username
-                })
-            );
-
-            //TODO - navigate to history page, where we came from
-            //Navigate to home page
-            navigate("/home");
+            //Navigate to login page
+            navigate("/login");
         } catch (error) {
             setErrorText({
+                nameError: nameError,
                 emailError: emailError,
                 passwordError: passwordError,
                 fetchError: true,
@@ -175,8 +140,66 @@ function LoginForm() {
     };
 
     return (
-        <div className="login-area">
+        <div className="login-area signup-area">
             <form className="form" method="POST" onSubmit={sendLoginRequest}>
+                {/* First Name field */}
+                <FormControl
+                    error={!!errorText.nameError}
+                    className="formcontrol_field"
+                    variant="filled"
+                >
+                    <InputLabel htmlFor="login-form-email">First Name</InputLabel>
+                    <FilledInput
+                        id="login-form-email"
+                        type="text"
+                        label="first name"
+                        value={formData.firstname}
+                        onChange={changeFormData("firstname")}
+                        endAdornment={
+                            <IconButton
+                                aria-label="user icon"
+                                edge="end"
+                                disabled
+                            >
+                                #
+                            </IconButton>
+                        }
+                    />
+                    {/* name error text */}
+                    <FormHelperText className="helper-text">
+                        {errorText.nameError}
+                    </FormHelperText>
+                </FormControl>
+                
+                {/* Last Name field */}
+                <FormControl
+                    error={!!errorText.nameError}
+                    className="formcontrol_field"
+                    variant="filled"
+                >
+                    <InputLabel htmlFor="login-form-email">Last Name</InputLabel>
+                    <FilledInput
+                        id="login-form-email"
+                        type="text"
+                        label="last name"
+                        value={formData.lastname}
+                        onChange={changeFormData("lastname")}
+                        endAdornment={
+                            <IconButton
+                                aria-label="user icon"
+                                edge="end"
+                                disabled
+                            >
+                                #
+                            </IconButton>
+                        }
+                    />
+                    {/* name error text */}
+                    <FormHelperText className="helper-text">
+                        {errorText.nameError}
+                    </FormHelperText>
+                </FormControl>
+
                 {/* email field */}
                 <FormControl
                     error={!!errorText.emailError}
@@ -252,26 +275,27 @@ function LoginForm() {
                     variant="contained"
                     component="label"
                 >
-                    SIGN IN
+                    SIGN UP
                     <input hidden type="submit" />
                 </Button>
-                <p className="login-here">New user signup here</p>
+                
+                <p className="login-here">If you already registered login here</p>
 
-                <Link to="/signup">
-                    <p className="sign-in-text">Signup</p>
+                <Link to="/login">
+                    <p className="sign-in-text">Login</p>
                 </Link>
             </form>
         </div>
     );
 }
 
-export function Login() {
+export function Signup() {
     return (
         <div className="login">
             <div className="login-container">
                 {/* Login form on left side */}
                 <div className="login-form-container">
-                    <LoginForm />
+                    <SignupForm />
                 </div>
 
                 {/* Graphics on right side */}

@@ -3,7 +3,8 @@ const cors = require('cors');
 const session = require('express-session');
 const MongoDBStore = require('connect-mongodb-session')(session); //To store session automatically on Mongo
 
-const databaseConn = require('./src/database/conn');
+const mongoDatabaseConn = require('./src/database/mongo_conn');
+const mysqlDatabaseConn = require('./src/database/mysql_conn');
 const routes = require('./src/routes/index');
 
 //Environment variables configuration
@@ -24,8 +25,10 @@ const corsOptions = {
     optionsSuccessStatus:200, //for legacy browser; default is 204
 };
 
+//Connect MYSQL - Connect in case of any request
+// mysqlDatabaseConn.connectDb();
 //Connect with MongoDB using Cluster url defined in env variable
-databaseConn.connectDb(process.env.ATLAS_URI);
+mongoDatabaseConn.connectDb(process.env.ATLAS_URI);
 
 //Setup connect-mongodb-session store
 const mongoDBStore = new MongoDBStore({
@@ -62,6 +65,7 @@ const apirouter = express.Router();
 app.use('/wandermission', apirouter);
 apirouter.use('/user', routes.userRoute);
 apirouter.use('/user/cart', routes.userCartRoute);
+apirouter.use('/user/order', routes.userOrderRoute);
 apirouter.use('/service', routes.serviceRoute);
 apirouter.use('/service/feedback', routes.serviceFeedbackRoute);
 apirouter.use('/agency', routes.agencyRoute);
