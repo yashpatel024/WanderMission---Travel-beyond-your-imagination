@@ -34,7 +34,7 @@
                     .trip-name {
                         .trip-name-main {
                             font-family: "Montserrat";
-                            color: white;
+                            color:var(--Text1);
                             font-weight: 700;
                             font-size: 6vw;
                             margin-left: -3px;
@@ -48,7 +48,7 @@
 
                         .stars-main {
                             font-family: "Montserrat";
-                            color: white;
+                            color:var(--Text1);
                             font-weight: 600;
                             font-size: 25px;
                             margin-left: 5px;
@@ -66,7 +66,7 @@
 
                         .description-main {
                             font-family: "Montserrat";
-                            color: white;
+                            color:var(--Text1);
                             font-weight: 400;
                             font-size: 16px;
                         }
@@ -85,14 +85,14 @@
 
                             .travel-text {
                                 font-family: "Montserrat";
-                                color: #9b9b9b;
+                                color:var(--Text3);
                                 font-weight: 300;
                                 font-size: 13px;
                             }
 
                             .travel-time-main {
                                 font-family: "Montserrat";
-                                color: white;
+                                color:var(--Text1);
                                 font-weight: 600;
                                 font-size: 16px;
                             }
@@ -101,13 +101,13 @@
                         .stay-time {
                             float: right;
                             padding-left: 20px;
-                            border-color: #474747;
+                            border-color:var(--gray2);
                             border-style: solid;
                             border-width: 0px 0px 0px 2px;
 
                             .stay-text {
                                 font-family: "Montserrat";
-                                color: #9b9b9b;
+                                color:var(--Text3);
                                 font-weight: 300;
                                 font-size: 13px;
                             }
@@ -115,7 +115,7 @@
                             .stay-time-main {
                                 display: block;
                                 font-family: "Montserrat";
-                                color: white;
+                                color:var(--Text1);
                                 font-weight: 600;
                                 font-size: 16px;
                             }
@@ -124,19 +124,19 @@
                         .personNumber {
                             margin-top: 20px;
                             font-family: "Montserrat";
-                            color: #9b9b9b;
+                            color:var(--Text3);
                             font-weight: 200;
                             font-size: 13px;
                         }
 
                         .dropdown {
                             margin-top: 5px;
-                            background-color: white;
+                            background-color:var(--Text1);
                             display: inline-table;
                             border-radius: 4px;
 
                             .css-zqcytf-MuiButtonGroup-root .MuiButtonGroup-grouped:not(:last-of-type).Mui-disabled {
-                                color: black;
+                                color:var(--gray1);
                             }
                         }
                     }
@@ -151,7 +151,7 @@
                     display: inline-flex;
                     align-items: center;
                     flex-direction: row;
-                    border-color: white;
+                    border-color:var(--Text1);
                     border-width: 1px;
                     border-style: solid;
                     border-radius: 200px;
@@ -165,7 +165,7 @@
                         flex-direction: row-reverse;
 
                         .price-container {
-                            background-color: #ffc32b;
+                            background-color: var(--accent);
                         }
 
                         .cart-container {
@@ -185,7 +185,7 @@
 
                     .price-container {
                         display: inline-flex;
-                        background-color: white;
+                        background-color:var(--Text1);
                         padding: 1.2vw 2vw 1.3vw 2vw;
                         border-radius: 200px;
                         align-items: center;
@@ -193,7 +193,7 @@
                         .price-main {
                             display: block;
                             font-family: "Montserrat";
-                            color: black;
+                            color:var(--gray1);
                             font-weight: 700;
                             font-size: 1.9vw;
                         }
@@ -222,7 +222,7 @@
                             margin-left: 2vw;
                             display: block;
                             font-family: "Montserrat";
-                            color: white;
+                            color:var(--Text1);
                             font-weight: 500;
                             font-size: 1.7vw;
                         }
@@ -253,13 +253,13 @@
                 .number {
 
                     .number-main {
-                        @include wanderText(700, 3vw, white);
+                        @include wanderText(700, 3vw,var(--Text1));
                     }
                 }
 
                 .text {
                     .text-main {
-                        @include wanderText(300, 1.8vw, #B4B4B4);
+                        @include wanderText(300, 1.8vw,var(--Text2));
                     }
                 }
             }
@@ -278,7 +278,7 @@
                     margin-left: 1vw;
 
                     .rating-main {
-                        @include wanderText(700, 3vw, white);
+                        @include wanderText(700, 3vw,var(--Text1));
 
                     }
                 }
@@ -289,32 +289,32 @@
             display: inline-flex;
 
             .trip-container {
-                background-color: #222222;
+                background-color: var(--gray1);
                 padding: 5vh 5vw 5vh 10vw;
                 margin: 0px 0px 14px 14px;
                 border-radius: 2vw;
 
                 .number-of-trips {
-                    @include wanderText(700, 2vw, white);
+                    @include wanderText(700, 2vw,var(--Text1));
                 }
 
                 .frequency {
-                    @include wanderText(300, 1.8vw, #b4b4b4);
+                    @include wanderText(300, 1.8vw,var(--Text2));
                 }
             }
 
             .rocket-container {
-                background-color: #222222;
+                background-color:var(--gray1);
                 padding: 5vh 5vw 5vh 10vw;
                 margin: 0px 0px 14px 14px;
                 border-radius: 2vw;
 
                 .rocket-name {
-                    @include wanderText(700, 2vw, white);
+                    @include wanderText(700, 2vw,var(--Text1));
                 }
 
                 .rocket-name-2 {
-                    @include wanderText(300, 1.8vw, #b4b4b4);
+                    @include wanderText(300, 1.8vw,var(--Text2));
                 }
             }
 
@@ -336,7 +336,7 @@
                 }
 
                 .heading-text {
-                    @include wanderText(300, 1vw, #B4B4B4);
+                    @include wanderText(300, 1vw, var(--Text2));
                     padding-left: 10px;
 
                 }
@@ -344,14 +344,14 @@
 
             ::-webkit-scrollbar {
                 width: 12px;
-                background: rgb(46, 46, 46);
+                background:var(--gray2);
                 border-radius: 1ex;
             }
 
             ::-webkit-scrollbar-thumb {
-                background: #474747;
+                background: var(--gray2);
                 border-radius: 1ex;
-                box-shadow: 0px 1px 2px rgba(0, 0, 0.5, 0.75);
+                box-shadow: 0px 1px 2px var(--gray1);
             }
 
             .comment-container {
@@ -364,17 +364,17 @@
                     margin-top: 2vh;
 
                     .Person-name {
-                        @include wanderText(600, 0.8vw, #6d6d6d);
+                        @include wanderText(600, 0.8vw, var(--Text3));
                     }
 
                     .comment-text {
-                        @include wanderText(300, 1vw, white);
+                        @include wanderText(300, 1vw,var(--Text1));
                     }
                 }
             }
 
             .divider {
-                background-color: white;
+                background-color:var(--Text1);
                 padding-top: 1px;
                 margin-top: 1vh;
                 margin-bottom: 1.5vh;
@@ -384,7 +384,7 @@
                 float: left;
                 margin-right: 1vw;
                 .rating-text-main{
-                    @include wanderText(500, 1vw, white);
+                    @include wanderText(500, 1vw, var(--Text1));
                 }
             }
             .rating{
@@ -397,7 +397,7 @@
                 justify-content: space-between;
 
                 .input-field-comment {
-                    background-color: #333333;
+                    background-color:var(--gray2);
                     height: 7vh;
                     width: 20vw;
                     border-radius: 0.5vw;
@@ -405,8 +405,8 @@
                 }
 
                 .comment {
-                    background-color: white;
-                    color: black;
+                    background-color:var(--Text1);
+                    color:var(--gray1);
                     border-radius: 50px;
                     padding: 0.7vw 2vw 0.7vw 2vw;
                     font-family: "Montserrat";

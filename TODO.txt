@@ -39,10 +39,10 @@ Demonstration of using other GitHub features (5)
 
 #Documentation (10)
 #In a README.md, include:
-An architecture diagram of your application (2)
-An overview of all the requirements for the front-end (2)
-An overview of all the requirements for the back-end (2)
-API routes
+An architecture diagram of your application (2)- DONE
+An overview of all the requirements for the front-end (2) - DONE
+An overview of all the requirements for the back-end (2) - DONE
+API routes - DONE
 Security
 etc...
 Your schema/table design for the databases (3)

@@ -46,14 +46,14 @@
 
             .top-text {
                 font-family: "Montserrat";
-                color: #b4b4b4;
+                color: var(--Text2);
                 font-weight: 400;
                 font-size: 1.2vw;
             }
 
             .main-text {
                 font-family: "Montserrat";
-                color: white;
+                color: var(--Text1);
                 font-weight: 600;
                 font-size: 6.6vw;
                 margin: -1px;
@@ -103,7 +103,7 @@
             border-radius: 40px;
             margin: 14px;
             padding: 50px;
-            background-color: #222222;
+            background-color: var(--gray1);
             padding: 5vw 10vw 5vw 10vw;
             z-index: 1;
 
@@ -115,12 +115,13 @@
                     .heading-decoration {
                         width: 22px;
                         vertical-align: middle;
+                        color: #000;
                     }
 
                     .section-heading {
                         display: inline;
                         font-family: "Montserrat";
-                        color: #b4b4b4;
+                        color: var(--Text2);
                         font-weight: 300;
                         font-size: 1.2vw;
                         padding-left: 20px;
@@ -134,7 +135,7 @@
     
     
                     .addToCart {
-                        background-color: #ffc32b;
+                        background-color: var(--accent);
                         color: black;
                         border-radius: 50px;
                         padding: 0.3vw 1vw 0.3vw 1vw;
@@ -182,7 +183,7 @@
 
                                     .destination-name {
                                         font-family: "Montserrat";
-                                        color: white;
+                                        color: var(--Text1);
                                         font-weight: 700;
                                         font-size: 45px;
                                         margin-left: -3px;
@@ -197,7 +198,7 @@
 
                                     .review-star {
                                         font-family: "Montserrat";
-                                        color: white;
+                                        color: var(--Text1);
                                         font-weight: 600;
                                         font-size: 25px;
                                         margin-left: 5px;
@@ -214,7 +215,7 @@
 
                                 .trip-description {
                                     font-family: "Montserrat";
-                                    color: white;
+                                    color: var(--Text1);
                                     font-weight: 400;
                                     font-size: 16px;
                                 }
@@ -232,14 +233,14 @@
 
                                         .travel-text {
                                             font-family: "Montserrat";
-                                            color: #9b9b9b;
+                                            color: var(--Text2);
                                             font-weight: 300;
                                             font-size: 13px;
                                         }
 
                                         .travel-time {
                                             font-family: "Montserrat";
-                                            color: white;
+                                            color: var(--Text1);
                                             font-weight: 600;
                                             font-size: 16px;
                                         }
@@ -248,13 +249,13 @@
                                     .stay-container {
                                         float: right;
                                         padding-left: 20px;
-                                        border-color: #474747;
+                                        border-color: var(--Text2);
                                         border-style: solid;
                                         border-width: 0px 0px 0px 2px;
 
                                         .stay-text {
                                             font-family: "Montserrat";
-                                            color: #9b9b9b;
+                                            color:var(--Text2);
                                             font-weight: 300;
                                             font-size: 13px;
                                         }
@@ -262,7 +263,7 @@
                                         .stay-time {
                                             display: block;
                                             font-family: "Montserrat";
-                                            color: white;
+                                            color: var(--Text1);
                                             font-weight: 600;
                                             font-size: 16px;
                                         }
@@ -279,7 +280,7 @@
 
                                     .price-text {
                                         font-family: "Montserrat";
-                                        color: #9b9b9b;
+                                        color: var(--Text2);
                                         font-weight: 300;
                                         font-size: 13px;
                                     }
@@ -291,7 +292,7 @@
                                         .trip-price {
                                             display: block;
                                             font-family: "Montserrat";
-                                            color: white;
+                                            color: var(--Text1);
                                             font-weight: 600;
                                             font-size: 30px;
                                         }
@@ -309,7 +310,7 @@
                                     float: right;
 
                                     .addToCart {
-                                        background-color: #ffc32b;
+                                        background-color: var(--accent);
                                         color: black;
                                         border-radius: 50px;
                                         padding: 0.7vw 1.6vw 0.7vw 1.6vw;

@@ -4,8 +4,12 @@ import "../styles/_commonFiles.scss";
 import { Link, NavLink } from "react-router-dom";
 import { company_logo_url } from "../links";
 import { useSelector } from "react-redux";
+import App from "./App";
 
-const Header = () => {
+
+const Header = (props) => {
+
+
     //Redux session varaible
     const user = useSelector((state) => state.user);
     const isLoggedIn = useSelector((state) => state.isLoggedIn);
@@ -37,7 +41,7 @@ const Header = () => {
     });
 
     return (
-        <div className="header">
+        <div className="header" >
             <div
                 className={
                     "header-container " + (isScrolled ? "header-scrolled" : "")

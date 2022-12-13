@@ -171,15 +171,13 @@ $spaceman-timing: 2s;
                         line-height: 2.6rem;
                     }
 
-                    .sign-in-button-inverse {
-                        background-color: #ffc32b;
-                        color: #000000;
+                    .sign-in-text{
+                        color: #ffffff;
                         width: 100%;
-                        margin-top: 1rem;
-                        border-radius: 7px;
-                        font-size: 15px;
+                        text-align: center;
                         font-weight: 600;
-                        line-height: 2.6rem;
+                        text-decoration: none;
+                        padding-top: 1rem;
                     }
 
                     .login-here{
