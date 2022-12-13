@@ -110,10 +110,14 @@ $spaceman-timing: 2s;
             align-items: center;
             padding: 5vw 0 5vw 10vw;
 
+            .signup-area{
+                margin-top: 5rem;
+            }
+
             .login-area {
                 background-color: #222222;
                 border-radius: 20px;
-
+                
                 form {
                     width: 30vw;
                     padding: 55px;
@@ -165,6 +169,24 @@ $spaceman-timing: 2s;
                         font-size: 15px;
                         font-weight: 600;
                         line-height: 2.6rem;
+                    }
+
+                    .sign-in-button-inverse {
+                        background-color: #ffc32b;
+                        color: #000000;
+                        width: 100%;
+                        margin-top: 1rem;
+                        border-radius: 7px;
+                        font-size: 15px;
+                        font-weight: 600;
+                        line-height: 2.6rem;
+                    }
+
+                    .login-here{
+                        color: #ffffff;
+                        width: 100%;
+                        text-align: center;
+                        padding-top: 1rem;
                     }
                 }
             }

@@ -9,7 +9,7 @@ const userModel = require('../models/user');
 userRoute.post("/signup", async (req, res) => {
     const { email, firstname, lastname, password } = req.body;
 
-    if (!email || !firstname || !password) {
+    if (!email || !firstname || !lastname || !password) {
         res.status(400).json({ message: "Please provide mandatory information" });
         return;
     }
