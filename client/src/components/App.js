@@ -14,6 +14,10 @@ import { signIn } from "../Features/userSlice";
 import { createContext, useEffect, useState } from "react";
 import { Celebration } from "./celebration";
 import NotFoundPage from "./NotFoundPage";
+<<<<<<< HEAD
+=======
+
+>>>>>>> f1407b9ae66292b8996107388cc49e7217f65396
 
 //All routes are declared here
 const AppRoutes = () => {
