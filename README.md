@@ -72,12 +72,15 @@ Go to link below to see whole API route Documentation in Postman
 Because we have services which can be stored as a document, Also we can change or add new schema.
 
 ### Images:
+```
 "_id":"63867e9b2eb27423d24fa1f5"},
 "image_id":{"$numberInt":"1"},
 "image_name":"home gradient",
 "image_url":"https://cal-generator.web.app/res/graphics/home-hero-grad.png"}
+```
 
 ### agencies:
+```
 "$oid":"638d4f2012fc45e813244877"},
 "agency_id":"1",
 "agency_name":"SpaceX",
@@ -85,8 +88,10 @@ Because we have services which can be stored as a document, Also we can change o
 "createdAt":{"$date":{"$numberLong":"1670205216635"}},
 "updatedAt":{"$date":{"$numberLong":"1670205216635"}},
 "__v":{"$numberInt":"0"}}
+```
 
 ### services:
+```
 "$oid":"638cea1f1ea886626b971be6"},
 "trip_id":"st1",
 "trip_name":"Mars",
@@ -109,8 +114,10 @@ Because we have services which can be stored as a document, Also we can change o
 "createdAt":{"$date":{"$numberLong":"1670179359124"}},
 "updatedAt":{"$date":{"$numberLong":"1670863327479"}},
  "__v":{"$numberInt":"33"}}
+```
 
 ### userSessions
+```
 "_id":"K-IU9fZUSOmlWHXEbT67EUFiUuGdrkRA",
 "expires":{"$date":{"$numberLong":"1670976467085"}},
 "session":{
@@ -133,7 +140,7 @@ Because we have services which can be stored as a document, Also we can change o
                         },
                         "username":"Mayank Shiroya"
                         }}}
-
+```
 
 ### usercarts
 `
@@ -155,7 +162,7 @@ Because we have services which can be stored as a document, Also we can change o
         "__v":{"$numberInt":"1"}}
 `
 ### users
-`
+```
 "$oid":"638cde24fd756c90ce43b91d"},
 "email":"yashpatelit024@gmail.com",
 "firstname":"Yash",
@@ -167,12 +174,12 @@ Because we have services which can be stored as a document, Also we can change o
         "$date":{"$numberLong":"1670176292167"}
         },
 "__v":{"$numberInt":"0"}}
-`
+```
 ## Amazon RDS
 Managing orders are very complicated so we need relations so we have used SQL for order managemnet
 
 ### UserOrderDetails
-`
+```
 CREATE TABLE `UserOrderDetails` (
   `id` int NOT NULL AUTO_INCREMENT,
   `user_id` varchar(50) NOT NULL,
@@ -190,9 +197,9 @@ CREATE TABLE `UserOrderDetails` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=utf8mb3
-`
+```
 ### OrderPaymentDetails
-`
+```
 CREATE TABLE `OrderPaymentDetails` (
   `id` int NOT NULL AUTO_INCREMENT,
   `order_id` int NOT NULL,
@@ -205,9 +212,9 @@ CREATE TABLE `OrderPaymentDetails` (
   KEY `fk_payment_userorderdetails` (`order_id`),
   CONSTRAINT `fk_payment_userorderdetails` FOREIGN KEY (`order_id`) REFERENCES `UserOrderDetails` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb3
-`
+```
 ### OrderItemDetails
-`
+```
 CREATE TABLE `OrderItemDetails` (
   `id` int NOT NULL AUTO_INCREMENT,
   `service_id` varchar(50) NOT NULL,
@@ -220,10 +227,10 @@ CREATE TABLE `OrderItemDetails` (
   KEY `fk_item_userorderdetails` (`order_id`),
   CONSTRAINT `fk_item_userorderdetails` FOREIGN KEY (`order_id`) REFERENCES `UserOrderDetails` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb3
-`
+```
 
 ### OrderTravelDateDetials
-`
+```
 CREATE TABLE `OrderTravelDateDetails` (
   `id` int NOT NULL AUTO_INCREMENT,
   `order_id` int NOT NULL,
@@ -234,6 +241,6 @@ CREATE TABLE `OrderTravelDateDetails` (
   KEY `fk_travel_userorderdetails` (`order_id`),
   CONSTRAINT `fk_travel_userorderdetails` FOREIGN KEY (`order_id`) REFERENCES `UserOrderDetails` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb3
-`
+```
 
 # Technical Challanges
