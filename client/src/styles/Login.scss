@@ -115,7 +115,7 @@ $spaceman-timing: 2s;
             }
 
             .login-area {
-                background-color: #222222;
+                background-color: var(--gray1);
                 border-radius: 20px;
                 
                 form {
@@ -129,14 +129,14 @@ $spaceman-timing: 2s;
                         width: 100%;
                         margin: 0px 0 30px 0;
                         border-radius: 7px;
-                        border-bottom: #ffc32b;
+                        border-bottom: var(--accent);
 
                         div {
-                            background-color: #333333;
+                            background-color: var(--gray2);
                         }
 
                         .css-g9m4e0-MuiInputBase-root-MuiFilledInput-root:after {
-                            border-bottom: 2px solid #ffc32b;
+                            border-bottom: 2px solid var(--accent);
                         }
 
                         .css-g9m4e0-MuiInputBase-root-MuiFilledInput-root.Mui-error:after {
@@ -148,12 +148,12 @@ $spaceman-timing: 2s;
                         }
 
                         input {
-                            color: #ffffff;
+                            color: var(--Text1);
                         }
 
                         label,
                         button {
-                            color: #808080;
+                            color: var(--Text3);
                         }
 
                         button {
@@ -162,8 +162,8 @@ $spaceman-timing: 2s;
                     }
 
                     .sign-in-button {
-                        background-color: #ffc32b;
-                        color: #000000;
+                        background-color: var(--accent);
+                        color: var(--gray1);
                         width: 100%;
                         border-radius: 7px;
                         font-size: 15px;
@@ -172,7 +172,7 @@ $spaceman-timing: 2s;
                     }
 
                     .sign-in-text{
-                        color: #ffffff;
+                        color: var(--Text1);
                         width: 100%;
                         text-align: center;
                         font-weight: 600;
@@ -181,7 +181,7 @@ $spaceman-timing: 2s;
                     }
 
                     .login-here{
-                        color: #ffffff;
+                        color: var(--Text1);
                         width: 100%;
                         text-align: center;
                         padding-top: 1rem;
