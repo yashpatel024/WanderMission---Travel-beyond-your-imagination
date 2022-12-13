@@ -1,7 +1,6 @@
 const express = require('express');
 const userRoute = express.Router();
 const userModel = require('../models/user');
-const databaseConn = require("../database/conn");
 
 /**
  * User Routes
