@@ -2,19 +2,19 @@ const express = require('express');
 const userOrderRoute = express.Router();
 const userOrderController = require('../controller/UserOrderController');
 
-//Find Order details
-// userOrderRoute.post("/", userOrderController.find);
+//find order details
+userOrderRoute.get("/get/:id", userOrderController.get);
 
-//findAll - TODO
-// userOrderRoute.post("/findall", userOrderController.findall);
+//findAll orders
+userOrderRoute.get("/getall", userOrderController.getAll);
 
 //create new order
 userOrderRoute.post("/neworder", userOrderController.create);
 
-//update order
-// userOrderRoute.get("/updateorder", userOrderController.update);
+//update Payment status
+userOrderRoute.patch("/update/paymentstatus/:id", userOrderController.updatePaymentStatus);
 
-//delete order
-// userOrderRoute.delete("/delete", userOrderController.delete);
+//update Order status
+userOrderRoute.patch("/update/orderstatus/:id", userOrderController.updateOrderStatus);
 
 module.exports = userOrderRoute;

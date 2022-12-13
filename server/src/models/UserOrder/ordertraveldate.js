@@ -1,18 +1,24 @@
 const mysql = require('../../database/mysql_conn');
 
-const OrderItems = function () {};
+const OrderTravelDates = function () {};
 
-OrderItems.create = (newOrderPayment, result) => {
-    mysql.query("INSERT INTO OrderPaymentDetails SET ?", newOrderPayment, (err, res) => {
+/**
+ * CREATE new entry of Travel dates
+ * @param {*} newTravelDateData 
+ * @param {*} result 
+ */
+OrderTravelDates.create = (newTravelDateData, result) => {
+    mysql.query(
+        "INSERT INTO OrderTravelDateDetails (order_id, travel_date) VALUES ?",
+        [newTravelDateData.travel_dates.map(date => 
+            [newTravelDateData.order_id, date])], (err, res) => {
         if (err) {
             console.log("error: ", err);
             result(err, null);
             return;
         }
-        console.log("Order Payment id: "+res.insertId);
-        result
-
+        return;
     });
 }
 
-module.exports = OrderItems;
+module.exports = OrderTravelDates;

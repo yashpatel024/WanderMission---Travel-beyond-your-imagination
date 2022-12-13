@@ -14,23 +14,3 @@ var connection = mysql.createPool({
 });
 
 module.exports = connection;
-
-// module.exports = {
-//     connectDb: () => {
-//         connection.connect(function (error) {
-//             if (error) {
-//                 console.log('MYSQL Connection failed', error.message);
-//                 return;
-//             }
-//             console.log("Mysql connected");
-
-//             return connection;
-//         });
-//     },
-//     disconnectDb: () => {
-//         connection.end();
-//     },
-//     executeFetchQuery: (args) =>{
-        
-//     }
-// }
