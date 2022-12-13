@@ -22,7 +22,7 @@
                     }
 
                     .heading-text {
-                        @include wanderText(300, 0.8vw, #B4B4B4);
+                        @include wanderText(300, 0.8vw, var(--Text2));
                         padding-left: 10px;
 
                     }
@@ -32,13 +32,13 @@
                     margin-top: 2vh;
 
                     .hash-title-main {
-                        @include wanderText(500, 1vw, white)
+                        @include wanderText(500, 1vw, var(--Text1));
                     }
                 }
 
                 .input-section {
                     display: inline-flex;
-                    height: 7vh;
+                    height: 7vh;    
                     margin-top: 1vh;
                     align-items: center;
 
@@ -46,18 +46,18 @@
 
 
                         .input-eth {
-                            background-color: #333333;
+                            background-color: var(--gray2);
                             height: 5.7vh;
                             width: 25vw;
                             border-radius: 0.8vw;
                         }
                         .css-19mk8g1-MuiInputBase-root-MuiFilledInput-root:hover:not{
-                            border-bottom: 1px solid rgba(53, 53, 53, 0);
+                            border-bottom: 1px solid var(--gray2);
                         }
                     }
 
                     .eth-btn {
-                        background-color: white;
+                        background-color: var(--gray2);
                         padding: 20px;
                         border-radius: 0.5vw;
                         margin-left: 0.9vw;
@@ -86,7 +86,7 @@
                     }
 
                     .heading-text {
-                        @include wanderText(300, 0.8vw, #B4B4B4);
+                        @include wanderText(300, 0.8vw, var(--Text2));
                         padding-left: 10px;
                     }
                 }
@@ -99,14 +99,14 @@
                             .fname-title-main {
                                 margin-top: 2vh;
                                 margin-bottom: 1vh;
-                                @include wanderText(500, 1vw, white);
+                                @include wanderText(500, 1vw, var(--Text1));
 
                             }
 
                             .input-fname {
 
                                 .input-field-fname {
-                                    background-color: #333333;
+                                    background-color:var(--gray1);
                                     height: 5.7vh;
                                     width: 13vw;
                                     border-radius: 0.5vw;
@@ -123,14 +123,14 @@
                             .lname-title-main {
                                 margin-top: 2vh;
                                 margin-bottom: 1vh;
-                                @include wanderText(500, 1vw, white);
+                                @include wanderText(500, 1vw, var(--Text1));
 
                             }
 
                             .input-lname {
 
                                 .input-field-lname {
-                                    background-color: #333333;
+                                    background-color: var(--gray2);
                                     height: 5.7vh;
                                     width: 13vw;
                                     border-radius: 0.5vw;
@@ -147,14 +147,14 @@
                             .passport-title-main {
                                 margin-top: 2vh;
                                 margin-bottom: 1vh;
-                                @include wanderText(500, 1vw, white);
+                                @include wanderText(500, 1vw, var(--Text1));
 
                             }
 
                             .input-passport {
 
                                 .input-field-passport {
-                                    background-color: #333333;
+                                    background-color: var(--gray2);
                                     height: 5.7vh;
                                     width: 28vw;
                                     border-radius: 0.5vw;
@@ -174,14 +174,14 @@
                             .citizen-title-main {
                                 margin-top: 2vh;
                                 margin-bottom: 1vh;
-                                @include wanderText(500, 1vw, white);
+                                @include wanderText(500, 1vw, var(--Text1));
 
                             }
 
                             .input-citizen {
 
                                 .input-field-citizen {
-                                    background-color: #333333;
+                                    background-color: var(--gray2);
                                     height: 5.7vh;
                                     width: 13vw;
                                     border-radius: 0.5vw;
@@ -198,14 +198,14 @@
                             .date-title-main {
                                 margin-top: 2vh;
                                 margin-bottom: 1vh;
-                                @include wanderText(500, 1vw, white);
+                                @include wanderText(500, 1vw, var(--Text1));
 
                             }
 
                             .input-date {
 
                                 .input-field-date {
-                                    background-color: #333333;
+                                    background-color: var(--gray2);
                                     height: 5.7vh;
                                     width: 13vw;
                                     border-radius: 0.5vw;
@@ -236,7 +236,7 @@
                     }
 
                     .heading-text {
-                        @include wanderText(300, 0.8vw, #B4B4B4);
+                        @include wanderText(300, 0.8vw, var(--Text2));
                         padding-left: 10px;
                     }
                 }
@@ -264,7 +264,7 @@
                         .product-name {
 
                             .product-name-main {
-                                @include wanderText(700, 2.5vw, white);
+                                @include wanderText(700, 2.5vw, var(--Text1));
                             }
                         }
                     }
@@ -274,7 +274,7 @@
                         padding: 20px;
 
                         .product-name-main {
-                            @include wanderText(700, 1vw, white);
+                            @include wanderText(700, 1vw, var(--Text1));
                         }
                     }
                 }
@@ -285,7 +285,7 @@
 
                     .heading {
                         .heading-text {
-                            @include wanderText(300, 1vw, #B4B4B4);
+                            @include wanderText(300, 1vw, var(--Text2));
                             padding-left: 10px;
                         }
                     }
@@ -298,64 +298,64 @@
 
                             .date1 {
                                 padding: 4vh 5vh 4vh 5vh;
-                                background-color: #333333;
+                                background-color: var(--gray2);
                                 border-radius: 100px;
                                 margin-right: 10px;
                                 margin-bottom: 10px;
                                 border-width: 10px;
-                                @include wanderText(300, 1vw, white);
+                                @include wanderText(300, 1vw, var(--Text1));
 
                                 &:hover{
                                     cursor: pointer;
-                                    background-color: #e0e0e0;
-                                    @include wanderText(300, 1vw, rgb(24, 24, 24));
+                                    background-color:var(--Text3);
+                                    @include wanderText(300, 1vw,var(--gray1));
                                 }
                             }
                             .date1Active {
                                 padding: 4vh 5vh 4vh 5vh;
-                                background-color: #e0e0e0;
+                                background-color:var(--Text3);
                                 border-radius: 100px;
                                 margin-right: 10px;
                                 margin-bottom: 10px;
                                 border-width: 10px;
-                                @include wanderText(300, 1vw, rgb(24, 24, 24));
+                                @include wanderText(300, 1vw, var(--gray1));
 
                                 &:hover{
                                     cursor: pointer;
-                                    background-color: #111111;
-                                    @include wanderText(300, 1vw, rgb(206, 206, 206));
+                                    background-color:var(--gray1);
+                                    @include wanderText(300, 1vw, var(--Text2));
                                 }
                             }
                            
 
                             .date2 {
                                 padding: 4vh 5vh 4vh 5vh;
-                                background-color: #333333;
+                                background-color: var(--gray2);
                                 border-radius: 100px;
                                 margin-right: 10px;
                                 margin-bottom: 10px;
                                 border-width: 10px;
-                                @include wanderText(300, 1vw, white);
+                                @include wanderText(300, 1vw,var(--Text1));
 
                                 &:hover{
                                     cursor: pointer;
-                                    background-color: #e0e0e0;
-                                    @include wanderText(300, 1vw, rgb(24, 24, 24));
+                                    background-color:var(--Text2);
+                                    @include wanderText(300, 1vw,var(--gray1));
                                 }
                             }
                             .date2Active {
                                 padding: 4vh 5vh 4vh 5vh;
-                                background-color: #e0e0e0;
+                                background-color:var(--Text2);
                                 border-radius: 100px;
                                 margin-right: 10px;
                                 margin-bottom: 10px;
                                 border-width: 10px;
-                                @include wanderText(300, 1vw, rgb(24, 24, 24));
+                                @include wanderText(300, 1vw,var(--gray1));
 
                                 &:hover{
                                     cursor: pointer;
-                                    background-color: #111111;
-                                    @include wanderText(300, 1vw, rgb(206, 206, 206));
+                                    background-color:var(--gray1);
+                                    @include wanderText(300, 1vw, var(--Text1));
                                 }
                             }
                         }
@@ -364,62 +364,62 @@
 
                             .date3 {
                                 padding: 4vh 5vh 4vh 5vh;
-                                background-color: #333333;
+                                background-color: var(--gray2);
                                 border-radius: 100px;
                                 margin-right: 10px;
                                 margin-bottom: 10px;
                                 border-width: 10px;
-                                @include wanderText(300, 1vw, white);
+                                @include wanderText(300, 1vw,var(--Text1));
 
                                 &:hover{
                                     cursor: pointer;
-                                    background-color: #e0e0e0;
-                                    @include wanderText(300, 1vw, rgb(24, 24, 24));
+                                    background-color: var(--Text2);
+                                    @include wanderText(300, 1vw,var(--gray1));
                                 }
                             }
                             .date3Active {
                                 padding: 4vh 5vh 4vh 5vh;
-                                background-color: #e0e0e0;
+                                background-color:var(--Text2);
                                 border-radius: 100px;
                                 margin-right: 10px;
                                 margin-bottom: 10px;
                                 border-width: 10px;
-                                @include wanderText(300, 1vw, rgb(24, 24, 24));
+                                @include wanderText(300, 1vw,var(--gray1));
 
                                 &:hover{
                                     cursor: pointer;
-                                    background-color: #111111;
-                                    @include wanderText(300, 1vw, rgb(206, 206, 206));
+                                    background-color: var(--gray1);
+                                    @include wanderText(300, 1vw,var(--gray2));
                                 }
                             }
                             .date4 {
                                 padding: 4vh 5vh 4vh 5vh;
-                                background-color: #333333;
+                                background-color: var(--gray2);
                                 border-radius: 100px;
                                 margin-right: 10px;
                                 margin-bottom: 10px;
                                 border-width: 10px;
-                                @include wanderText(300, 1vw, white);
+                                @include wanderText(300, 1vw,var(--Text1));
 
                                 &:hover{
                                     cursor: pointer;
-                                    background-color: #e0e0e0;
-                                    @include wanderText(300, 1vw, rgb(24, 24, 24));
+                                    background-color:var(--Text2);
+                                    @include wanderText(300, 1vw, var(--gray1));
                                 }
                             }
                             .date4Active {
                                 padding: 4vh 5vh 4vh 5vh;
-                                background-color: #e0e0e0;
+                                background-color:var(--Text2);
                                 border-radius: 100px;
                                 margin-right: 10px;
                                 margin-bottom: 10px;
                                 border-width: 10px;
-                                @include wanderText(300, 1vw, rgb(24, 24, 24));
+                                @include wanderText(300, 1vw,var(--gray1));
 
                                 &:hover{
                                     cursor: pointer;
-                                    background-color: #111111;
-                                    @include wanderText(300, 1vw, rgb(206, 206, 206));
+                                    background-color:var(--gray1);
+                                    @include wanderText(300, 1vw,var(--Text2));
                                 }
                             }
                             
@@ -440,7 +440,7 @@
                     }
 
                     .heading-text {
-                        @include wanderText(300, 0.8vw, #B4B4B4);
+                        @include wanderText(300, 0.8vw, var(--Text2));
                         padding-left: 10px;
                     }
                 }
@@ -452,14 +452,14 @@
                     margin-top: 2vh;
 
                     .trip-name {
-                        @include wanderText(600, 1.5vw, white);
+                        @include wanderText(600, 1.5vw, var(--Text1));
                         display: flex;
                         margin-right: 3vw;
                     }
 
                     .actual-price {
 
-                        @include wanderText(600, 1.5vw, white);
+                        @include wanderText(600, 1.5vw,var(--Text1));
                         display: flex;
                         align-self: flex-end;
                     }
@@ -472,14 +472,14 @@
                     justify-content: space-between;
 
                     .international-tax {
-                        @include wanderText(600, 1.1vw, white);
+                        @include wanderText(600, 1.1vw,var(--Text1));
                         display: flex;
                         margin-right: 3vw;
 
                     }
 
                     .tax-number {
-                        @include wanderText(600, 1.1vw, white);
+                        @include wanderText(600, 1.1vw,var(--Text1));
                         display: flex;
                         align-self: flex-end;
 
@@ -493,13 +493,13 @@
                     justify-content: space-between;
 
                     .gas-fees {
-                        @include wanderText(600, 1.1vw, white);
+                        @include wanderText(600, 1.1vw,var(--Text1));
                         display: flex;
                         margin-right: 3vw;
                     }
 
                     .gas-fees-number {
-                        @include wanderText(600, 1.1vw, white);
+                        @include wanderText(600, 1.1vw, var(--Text1));
                         display: flex;
                         align-self: flex-end;
                     }
@@ -507,7 +507,7 @@
 
                 .divider {
                     margin-top: 1vh;
-                    background-color: white;
+                    background-color:var(--Text1);
                     padding-top: 1px;
                     margin-bottom: 1vh;
                 }
@@ -518,11 +518,11 @@
                     justify-content: space-between;
 
                     .grand-total {
-                        @include wanderText(600, 1.6vw, white);
+                        @include wanderText(600, 1.6vw,var(--Text1));
                     }
 
                     .final-price-number {
-                        @include wanderText(600, 1.6vw, #FFC32B);
+                        @include wanderText(600, 1.6vw,var(--accent));
                     }
 
                 }
@@ -532,8 +532,8 @@
                     margin-top: 2vh;
                     justify-content: flex-end;
                     .pay {
-                        background-color: #ffc32b;
-                        color: black;
+                        background-color:var(--accent);
+                        color:var(--gray1);
                         border-radius: 50px;
                         padding: 0.7vw 2vw 0.7vw 2vw;
                         font-family: "Montserrat";
@@ -553,14 +553,14 @@
     width: 100%;
     margin: 0px 0 30px 0;
     border-radius: 7px;
-    border-bottom: #ffc32b;
+    border-bottom:var(--accent);
 
     div {
-        background-color: #333333;
+        background-color: var(--gray2);
     }
 
     .css-g9m4e0-MuiInputBase-root-MuiFilledInput-root:after {
-        border-bottom: 2px solid #ffc32b;
+        border-bottom: 2px solid var(--accent);
     }
 
     .css-g9m4e0-MuiInputBase-root-MuiFilledInput-root.Mui-error:after {
@@ -572,11 +572,11 @@
     }
 
     input {
-        color: #ffffff;
+        color: var(--Text1);
     }
 
     label,
     button {
-        color: #808080;
+        color: var(--Text3);
     }
 }

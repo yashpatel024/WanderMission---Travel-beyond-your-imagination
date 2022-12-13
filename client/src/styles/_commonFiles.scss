@@ -12,7 +12,8 @@ $tablet-bp: 768px;
 
 #light{
     background-color:  #ffffff;  
-    --gray1: #D2D2D2;   
+    --gray1: #D2D2D2;
+    --gray2: #c6c6c6;     
     --Text1: #000000;   
     --Text2: #1a1a1a; 
     --Text3: #333333; 
@@ -26,6 +27,7 @@ $tablet-bp: 768px;
 #dark{
     background-color:  #1b1a1d;
     --gray1: #222222;
+    --gray2: #333333;
     --Text1: #ffffff;
     --Text2: #b4b4b4;
     --Text3: #979797;
