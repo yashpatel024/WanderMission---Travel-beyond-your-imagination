@@ -13,13 +13,13 @@
 
         .congratulations {
             .congratulations-text {
-                @include wanderText(700, 3vw, #FFC32B);
+                @include wanderText(700, 3vw,var(--accent));
             }
         }
 
         .username {
             .username-text {
-                @include wanderText(800, 3vw, #FFC32B);
+                @include wanderText(800, 3vw,var(--accent));
             }
         }
     }
@@ -32,7 +32,7 @@
 
         .top {
             .top-text {
-                @include wanderText(400, 1vw, #ffffff);
+                @include wanderText(400, 1vw,var(--Text1));
             }
         }
 
@@ -40,7 +40,7 @@
             margin-top: 7vh;
 
             .bottum-text {
-                @include wanderText(600, 1vw, #ffffff);
+                @include wanderText(600, 1vw,var(--Text1));
             }
         }
     }
@@ -69,7 +69,7 @@
                 .product-name {
 
                     .product-name-main {
-                        @include wanderText(700, 2.5vw, white);
+                        @include wanderText(700, 2.5vw,var(--Text1));
                     }
                 }
             }
@@ -79,7 +79,7 @@
                 padding: 20px;
 
                 .product-name-main {
-                    @include wanderText(700, 1vw, white);
+                    @include wanderText(700, 1vw,var(--Text1));
                 }
             }
         }
@@ -336,7 +336,7 @@
             margin-top: 4vh;
 
             .email-text {
-                @include wanderText(400, 0.8vw, white);
+                @include wanderText(400, 0.8vw,var(--Text1));
             }
         }
     }
