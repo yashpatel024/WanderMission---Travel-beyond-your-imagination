@@ -140,43 +140,6 @@ export function Product() {
 
     }
 
-    // const moveToCart = (e) => {
-    //     e.preventDefault();
-
-    //     var serviceData = {
-    //         "service_id": location.state.service_id,
-    //         "quantity": quantityNumber,
-    //         "service_name": location.state.tripName,
-    //         "price": location.state.price
-    //     }
-
-    //     fetch('http://localhost:5000/wandermission/user/cart/update', {
-    //         method: 'POST',
-    //         body: serviceData
-    //     })
-
-
-    //     localStorage.setItem("cart_product", location.state.id);
-    //     navigation(
-    //         "/cart"
-    //         , {
-    //             state: {
-    //                 tripimageURL: location.state.tripimageURL,
-    //                 agencyLogo: location.state.agencyLogo,
-    //                 tripName: location.state.tripName,
-    //                 agencyName: location.state.agencyName,
-    //                 description: location.state.description,
-    //                 stars: location.state.stars,
-    //                 travelTime: location.state.travelTime,
-    //                 stayTime: location.state.stayTime,
-    //                 userComments: location.state.userComments,
-    //                 price: location.state.price,
-    //                 service_id: location.state.service_id,
-    //             }
-    //         }
-    //     );
-    // };
-
     const addComment = async (e) => {
         e.preventDefault();
 
@@ -373,7 +336,19 @@ export function Product() {
                                             comment => {
                                                 return (
                                                     <div className="comment" key={comment._id}>
-                                                        <h3 className="Person-name">{comment.user_name}</h3>
+                                                        <h3 className="Person-name">{comment.user_name}
+                                                            {/* <StyledRating
+                                                                name="size-small"
+                                                                value={comment.given_rating?comment.given_rating:null}
+                                                                size="small"
+                                                                precision={0.5}
+                                                                onChange={changeFeedback("rating")}
+                                                                icon={<StarIcon />}
+                                                                emptyIcon={<StarIcon />}
+                                                                readOnly
+                                                            /> */}
+                                                        </h3>
+
                                                         <h3 className="comment-text">{comment.content} </h3>
                                                     </div>
                                                 )
@@ -383,7 +358,7 @@ export function Product() {
                                     <div className={isLoggedIn ? "" : "hidden"}>
                                         <div className="divider"></div>
                                         <div className="rating-text">
-                                        <h4 className="rating-text-main">Give a Rating</h4>   
+                                            <h4 className="rating-text-main">Give a Rating</h4>
                                         </div>
                                         <div className="rating">
                                             <StyledRating
