@@ -74,6 +74,15 @@ const Header = () => {
                             //If logged in, Set Username in profile badge
                             !isLoggedIn? (
                                 <Link to="/login">Login</Link>
+                            ) : ""
+                        }
+                    </div>
+                    
+                    <div>
+                        {
+                            //If logged in, Set Username in profile badge
+                            !isLoggedIn? (
+                                <Link to="/signup">Signup</Link>
                             ) : (
                                 <Link to="/logout">
                                     {user.username}
@@ -81,6 +90,8 @@ const Header = () => {
                             )
                         }
                     </div>
+
+
                 </nav>
             </div>
         </div>
