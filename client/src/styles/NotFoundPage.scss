@@ -1,9 +1,57 @@
 @import "./commonFiles";
 
 .container-notfound {
-    height: 100vh;
 
-    .congratulations-text {
-        @include wanderText(800, 3vw, #FFC32B);
+    margin: 10vw 11vw 5vw 11vw;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+    .lost {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .lost-text {
+            @include wanderText(800, 5vw, #FFC32B);
+        }
     }
+
+    .a404 {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .a404-text {
+            @include wanderText(800, 8vw, #FFC32B);
+        }
+    }
+
+    .cry {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .cry-text {
+            @include wanderText(800, 2vw, #ffffff);
+        }
+        .spaceman-btn {
+            margin-top: 2vh;
+            background-color:var(--accent);
+            color:var(--gray1);
+            border-radius: 50px;
+            padding: 0.7vw 2vw 0.7vw 2vw;
+            font-family: "Montserrat";
+            font-weight: 600;
+            font-size: 16px;
+            text-transform: none;
+        }
+    }
+    }
+    .spaceman {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        
 }
