@@ -1,6 +1,6 @@
 import "../styles/_commonFiles.scss";
 import "../styles/Home.scss";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ShortTrips from "./ShortTrips";
 import { spaceman_url } from "../links";
 import { star_url } from "../links";
@@ -13,10 +13,10 @@ import Trip from "./Trip";
 
 
 const Home = () => {
+    //State for Filtering Long and short trip
     const [tripLengthFilterValue, setTripLengthFilterValue] = useState('all');
 
     const handleTripLengthFilter = (e) => {
-        console.log(e);
         if (e == 'short') {
             setTripLengthFilterValue('short');
         } else if (e == 'long') {

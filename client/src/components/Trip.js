@@ -1,14 +1,25 @@
 import "../styles/Home.scss";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "../styles/_commonFiles.scss";
 import { eth_logo } from "../links";
 import { gold_star } from "../links";
 import Button from "@mui/material/Button";
 import { useNavigate } from "react-router-dom";
 import { convertToYear } from "./Generic/convertToYear";
-import { GetAgencyURL } from "./Generic/getAgencyURL";
 
-function Trip(props) {
+const Trip = (props) => {
+    const[agencyURL, setAgencyURL] = useState();
+
+    useEffect(() => {
+        const getAgencyURL = async () => {
+            const response = await fetch("/wandermission/agency/a-id/"+props.agency_id);
+
+            const resp = await response.json();
+
+            setAgencyURL(resp[0].agency_logo);
+        }
+        getAgencyURL(props.agency_id);
+    });
 
     const navigate = useNavigate();
 
@@ -33,8 +44,6 @@ function Trip(props) {
         });
     };
 
-    
-    
     return (
 
         <div className="main-container">
@@ -42,7 +51,7 @@ function Trip(props) {
                 <img className="trip-image" src={props.tripimageURL} />
                 <div className="first-container">
                     <span className="trip-name-container">
-                        {GetAgencyURL(props.agency_id)}
+                        <img className="travelPartner-logo" src={agencyURL} />
                         <h2 className="destination-name">{props.tripName}</h2>
                     </span>
                     <span className="star-container">
@@ -89,6 +98,7 @@ function Trip(props) {
         </div>
     );
 }
+
 export const shortlink ='/wandermission/service/shortTrips';
 export const longlink ='/wandermission/service/longTrips';
 export default Trip;

@@ -1,7 +1,7 @@
+import "../styles/_commonFiles.scss";
 import "../styles/NotFoundPage.scss";
 
-
-export function NotFoundPage() {
+const NotFoundPage = () => {
 
     return (
         <div className="container-notfound">
@@ -11,3 +11,5 @@ export function NotFoundPage() {
         </div >
     );
 }
+
+export default NotFoundPage;

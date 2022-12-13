@@ -1,24 +1,23 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import Trip from "./Trip";
 import {shortlink} from "./Trip";
 
 const ShortTrips = () => {
-    const [items, setItems] = useState([])
+    const [items, setItems] = useState([]);
+   
     //To Fetch MetaData JSON
-
     useEffect(() => {
         const fetchTrip = async () => {
             const response = await fetch(shortlink);
 
             const resp = await response.json();
             setItems(resp)
-        }
+        };
 
         if(items.length <=0 ){
             fetchTrip();
         }            
     });
-
     
     return (
         <ul >
