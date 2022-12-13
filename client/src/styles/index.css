@@ -23,7 +23,6 @@ body {
     width: 100%;
     scroll-snap-type: y mandatory;
     overflow-y: scroll;
-    background-color: #1b1a1d;
 }
 
 #root > * {

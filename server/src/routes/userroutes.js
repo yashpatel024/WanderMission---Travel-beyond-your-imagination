@@ -88,4 +88,21 @@ userRoute.delete("/logout", async (req, res) => {
     })
 });
 
+userRoute.post("/updatetheme", async (req, res) => {
+    let user_id;
+    if (req.session.user) {
+        user_id = req.session.user.userid;
+    } else {
+        user_id = req.body.user_id;
+    }
+    
+    req.session.destroy((error) => {
+        if(error) throw error;
+
+        //clear cookie using sessionID in cookie
+        res.clearCookie(process.env.SESSION_KEY);
+        res.status(200).send("Logged out successfully");
+    })
+});
+
 module.exports = userRoute;

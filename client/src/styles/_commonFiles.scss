@@ -19,6 +19,7 @@ $tablet-bp: 768px;
     --Text3: #333333; 
     --accent: #e2a91a;  
 }
+
 //gray1 = For card backgrounds
 //Text1 = For Heading Texts
 //Text2 = For Heading Assist Text
@@ -33,8 +34,6 @@ $tablet-bp: 768px;
     --Text3: #979797;
     --accent: #FFC32B;
 }
-
-
 
 @mixin cartContainer() {
     background-color: var(--gray1);
@@ -59,6 +58,7 @@ $tablet-bp: 768px;
         width: $scroll-bar-width;
         padding-right: 10px;
         right: 10px;
+        z-index: 5000;
     }
 
     /* Track */

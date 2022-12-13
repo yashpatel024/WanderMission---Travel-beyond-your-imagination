@@ -14,7 +14,6 @@ import { signIn } from "../Features/userSlice";
 import { createContext, useEffect, useState } from "react";
 import { Celebration } from "./celebration";
 import NotFoundPage from "./NotFoundPage";
-import { ParallaxProvider } from 'react-scroll-parallax';
 
 //All routes are declared here
 const AppRoutes = () => {
