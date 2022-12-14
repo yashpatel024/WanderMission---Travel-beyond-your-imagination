@@ -103,12 +103,78 @@ export function Cart() {
     });
 
     //On Click of Pay
-    const sendPurchaseRequest = () => { 
-        navigate("/pay", {
-            state: {
-                totalAmount: totalAmount
-            },
+    const sendPurchaseRequest = async () => { 
+
+        let walletHashError =  "",
+        firstNameError =  "",
+        lastNameError =  "",
+        passportNumberError =  "",
+        citizenshipError = "",
+        dateOfBirthError = "";
+
+         //Check for blank values
+         walletHashError = !formData.walletHash ? "Please enter your WalletHash" : "";
+         firstNameError = !formData.firstName ? "Please enter first name" : "";
+         lastNameError = !formData.lastName ? "Please enter last name" : "";
+         passportNumberError = !formData.passportNumber ? "Please enter your passport number" : "";
+         citizenshipError = !formData.citizenship ? "Please enter your Citizenship" : "";
+         dateOfBirthError = !formData.dateOfBirth ? "Please enter your DOB" : "";
+
+         setErrorText({
+            walletHashError: walletHashError,
+            firstNameError: firstNameError,
+            lastNameError: lastNameError,
+            passportNumberError: passportNumberError,
+            citizenshipError: citizenshipError,
+            dateOfBirthError: dateOfBirthError,
+
         });
+
+        if (!formData.walletHashError || !formData.firstNameError || !formData.lastNameError || !formData.passportNumberError || !formData.citizenshipError || !formData.dateOfBirthError) {
+            return;
+        }
+
+        try {
+            const res = await fetch('/wandermission/user/cart/reset', {
+                method: 'DELETE',
+                headers: {
+                    'Content-type': 'application/json'
+                },
+                body: JSON.stringify({
+                    firstname: formData.firstname,
+                    lastname: formData.lastname,
+                    email: formData.email,
+                    password: formData.password
+                }),
+            })
+
+            const resp = await res.json();
+
+            if (!res.ok) {
+                const error = resp;
+                setErrorText({
+                   
+                });
+
+                return;
+            }
+
+            //Navigate
+            navigate("/pay", {
+                state: {
+                    totalAmount: totalAmount
+                },
+            });
+        } catch (error) {
+            setErrorText({
+                
+                fetchError: true,
+                fetchErrorMessage: "Problem with server, Please try again!"
+            });
+            return console.log(error);
+        }
+
+        
     };
 
 
