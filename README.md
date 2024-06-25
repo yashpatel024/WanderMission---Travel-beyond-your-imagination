@@ -60,6 +60,10 @@ nodemon 2.0.20
 Go to link below to see whole API route Documentation in Postman
 ## https://documenter.getpostman.com/view/7663716/2s8YzUwgpL
 
+# Figma Design
+Final Design of the project is in Figma
+## https://www.figma.com/design/UagMqwq1MuRUKjGUzT56RI/WEB-ASS2?node-id=20-2&t=I3yg2Joe4ZF5rWcD-1
+
 ## Security
 1. Convert all passwords in HASH as soon as user inputs them.
 2. Server Side validation for user passwords.
@@ -242,5 +246,3 @@ CREATE TABLE `OrderTravelDateDetails` (
   CONSTRAINT `fk_travel_userorderdetails` FOREIGN KEY (`order_id`) REFERENCES `UserOrderDetails` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb3
 ```
-
-# Technical Challanges
